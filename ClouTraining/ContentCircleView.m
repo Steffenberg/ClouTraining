@@ -56,9 +56,8 @@
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0f);
-    CGContextSetFillColorWithColor( context, [UIColor greenColor].CGColor );
-    CGContextSetStrokeColorWithColor(context,[UIColor greenColor].CGColor);
-    
+    CGContextSetFillColorWithColor( context, UIColorFromRGB(SECONDARY_PRIME).CGColor );
+    CGContextSetStrokeColorWithColor(context,UIColorFromRGB(SECONDARY_PRIME).CGColor);
     //CGContextAddEllipseInRect(context, CGRectMake(self.frame.size.width/4, self.frame.size.height/2-self.frame.size.width/4, self.frame.size.width/2, self.frame.size.width/2));
     CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
     

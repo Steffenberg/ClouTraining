@@ -50,7 +50,7 @@
 #pragma mark handle begin-movement of children
 
 -(void)handleContentViewMoveBegin:(NSNotification*)note{
-    
+
     ContentCircleView *child = [note.userInfo objectForKey:@"Object"];
     NSInteger changeIndex = -1;
     for(NSDictionary *dic in _anchors){
@@ -129,8 +129,8 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0f);
-    CGContextSetFillColorWithColor( context, [UIColor redColor].CGColor );
-    CGContextSetStrokeColorWithColor(context,[UIColor redColor].CGColor);
+    CGContextSetFillColorWithColor( context, UIColorFromRGB(PRIMARY_PRIME).CGColor );
+    CGContextSetStrokeColorWithColor(context,UIColorFromRGB(PRIMARY_PRIME).CGColor);
     
     //CGContextAddEllipseInRect(context, CGRectMake(self.frame.size.width/4, self.frame.size.height/2-self.frame.size.width/4, self.frame.size.width/2, self.frame.size.width/2));
     CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));

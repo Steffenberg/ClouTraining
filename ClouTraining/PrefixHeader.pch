@@ -1,0 +1,50 @@
+//
+//  PrefixHeader.pch
+//  ClouTraining
+//
+//  Created by fastline on 15.04.15.
+//  Copyright (c) 2015 fastline. All rights reserved.
+//
+
+#ifndef ClouTraining_PrefixHeader_pch
+#define ClouTraining_PrefixHeader_pch
+
+#define IS_IPHONE6PLUS (([[UIScreen mainScreen] bounds].size.height-736.0)?NO:YES)
+#define IS_IPHONE6 (([[UIScreen mainScreen] bounds].size.height-667.0)?NO:YES)
+#define IS_IPHONE5 (([[UIScreen mainScreen] bounds].size.height-568)?NO:YES)
+#define IS_IPHONE4 (([[UIScreen mainScreen] bounds].size.height-480)?NO:YES)
+#define IS_OS_5_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0)
+#define IS_OS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IS_OS_8_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+#define EXAMPLE_WHITE_COLOR [UIColor colorWithRed:253/255.0 green:253/255.0 blue:253/255.0 alpha:1.0]
+
+#define PRIMARY_PRIME 0x2D8632
+#define PRIMARY_SECOND 0x86C98A
+#define PRIMARY_THIRD 0x54A759
+#define PRIMARY_FOURTH 0x116416
+#define PRIMARY_FIFTH 0x004304
+
+#define SECONDARY_PRIME 0x236467
+#define SECONDARY_SECOND 0x67989A
+#define SECONDARY_THIRD 0x417E80
+#define SECONDARY_FOURTH 0x0D4A4D
+#define SECONDARY_FIFTH 0x003133
+
+#define TERTIARY_PRIME 0x7A9E35
+#define TERTIARY_SECOND 0xD2ED9E
+#define TERTIARY_THIRD 0xA4C663
+#define TERTIARY_FOURTH 0x557714
+#define TERTIARY_FIFTH 0x344F00
+
+#define DARK_GRAY 0x282828
+#define MID_GRAY 0x808080
+#define LIGHT_GRAY 0xE0E0E0
+
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif

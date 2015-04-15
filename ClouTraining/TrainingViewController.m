@@ -25,6 +25,10 @@
     
     _gravityCircleView.contentView = _contentGravityView;
     _contentGravityView.circleView = _gravityCircleView;
+    
+    _dragHereLabel.shadowColor = UIColorFromRGB(DARK_GRAY);
+    _dragHereLabel.shadowOffset = CGSizeMake(-0.5, -0.5);
+    
 }
 
 -(void)handleContentViewMoved:(NSNotification*)note{

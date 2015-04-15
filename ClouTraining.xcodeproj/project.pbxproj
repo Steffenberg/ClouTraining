@@ -18,6 +18,7 @@
 		072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D31ADE546A001F4370 /* ContentGravityView.m */; };
 		072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D51ADE546A001F4370 /* GravityCircleView.m */; };
 		072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D71ADE546A001F4370 /* TrainingViewController.m */; };
+		072D87E01ADE5D45001F4370 /* Colors in Resources */ = {isa = PBXBuildFile; fileRef = 072D87DF1ADE5D45001F4370 /* Colors */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		072D87D51ADE546A001F4370 /* GravityCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GravityCircleView.m; sourceTree = "<group>"; };
 		072D87D61ADE546A001F4370 /* TrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingViewController.h; sourceTree = "<group>"; };
 		072D87D71ADE546A001F4370 /* TrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingViewController.m; sourceTree = "<group>"; };
+		072D87DE1ADE595E001F4370 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		072D87DF1ADE5D45001F4370 /* Colors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Colors; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,18 +102,20 @@
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
 				072D87AE1ADE51CF001F4370 /* ClouTraining.xcdatamodeld */,
-				072D87A71ADE51CF001F4370 /* Supporting Files */,
+				072D87A71ADE51CF001F4370 /* SupportingFiles */,
 			);
 			path = ClouTraining;
 			sourceTree = "<group>";
 		};
-		072D87A71ADE51CF001F4370 /* Supporting Files */ = {
+		072D87A71ADE51CF001F4370 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				072D87A81ADE51CF001F4370 /* Info.plist */,
 				072D87A91ADE51CF001F4370 /* main.m */,
+				072D87DE1ADE595E001F4370 /* PrefixHeader.pch */,
+				072D87DF1ADE5D45001F4370 /* Colors */,
 			);
-			name = "Supporting Files";
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		072D87C31ADE51CF001F4370 /* ClouTrainingTests */ = {
@@ -225,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072D87E01ADE5D45001F4370 /* Colors in Resources */,
 				072D87B61ADE51CF001F4370 /* Main.storyboard in Resources */,
 				072D87BB1ADE51CF001F4370 /* LaunchScreen.xib in Resources */,
 				072D87B81ADE51CF001F4370 /* Images.xcassets in Resources */,
@@ -377,6 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "/Users/fastline/Documents/iOS Developement/ClouTraining/ClouTraining/PrefixHeader.pch";
 				INFOPLIST_FILE = ClouTraining/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -387,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "/Users/fastline/Documents/iOS Developement/ClouTraining/ClouTraining/PrefixHeader.pch";
 				INFOPLIST_FILE = ClouTraining/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
