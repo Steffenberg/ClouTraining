@@ -8,7 +8,7 @@
 
 #import "TrainingViewController.h"
 #import "GravityCircleView.h"
-#import "ContentCircleView.h"
+#import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
 
 @interface TrainingViewController ()
@@ -29,10 +29,11 @@
     _dragHereLabel.shadowColor = UIColorFromRGB(DARK_GRAY);
     _dragHereLabel.shadowOffset = CGSizeMake(-0.5, -0.5);
     
+    _firstStart = YES;
 }
 
 -(void)handleContentViewMoved:(NSNotification*)note{
-    ContentCircleView *child = [note.userInfo objectForKey:@"Object"];
+    ExerciseCircleView *child = [note.userInfo objectForKey:@"Object"];
     if(CGRectContainsPoint(_contentGravityView.frame, child.center)){
         if(!_contentGravityView.occupied){
             [_contentGravityView handleContentViewMoved:note];
@@ -45,6 +46,7 @@
             _contentGravityView.occupied = NO;
         }
         [_gravityCircleView handleContentViewMoved:note];
+        
     }
     
 }
@@ -53,9 +55,13 @@
     [super viewDidLayoutSubviews];
     //NSLog(@"Layout");
     
-    _gravityCircleView = [[GravityCircleView alloc]initWithFrame:CGRectMake(15, 15, _circleSuperView.frame.size.width-30, _circleSuperView.frame.size.height-30) amountOfChildren:5.0f];
+    if(_firstStart){
+        _gravityCircleView = [[GravityCircleView alloc]initWithFrame:CGRectMake(15, 15, _circleSuperView.frame.size.width-30, _circleSuperView.frame.size.height-30) amountOfChildren:5.0f];
+        
+        [_circleSuperView addSubview:_gravityCircleView];
+        _firstStart = NO;
+    }
     
-    [_circleSuperView addSubview:_gravityCircleView];
 }
 
 -(void)viewDidAppear:(BOOL)animated{

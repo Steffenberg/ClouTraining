@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIView *circleSuperView;
 @property (weak, nonatomic) IBOutlet ContentGravityView *contentGravityView;
 @property (weak, nonatomic) IBOutlet UILabel *dragHereLabel;
-
+@property BOOL firstStart;
 @end
 

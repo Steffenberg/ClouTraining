@@ -7,7 +7,7 @@
 //
 
 #import "GravityCircleView.h"
-#import "ContentCircleView.h"
+#import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
 #include <math.h>
 
@@ -36,7 +36,7 @@
 -(void)createChildren{
     _anchors = [NSMutableArray array];
     for(int i = 0; i<children; i++){
-        ContentCircleView *child = [[ContentCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
+        ExerciseCircleView *child = [[ExerciseCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
         child.backgroundColor = [UIColor clearColor];
         CGFloat radian = (360.0/children)* (M_PI / 180);
         CGFloat xy = self.frame.size.width/2;
@@ -51,7 +51,7 @@
 
 -(void)handleContentViewMoveBegin:(NSNotification*)note{
 
-    ContentCircleView *child = [note.userInfo objectForKey:@"Object"];
+    ExerciseCircleView *child = [note.userInfo objectForKey:@"Object"];
     NSInteger changeIndex = -1;
     for(NSDictionary *dic in _anchors){
         if([[dic objectForKey:@"Occupied"]isEqual:child]){
@@ -67,7 +67,7 @@
 #pragma mark handle end-movement of children
 
 -(void)handleContentViewMoved:(NSNotification*)note{
-    ContentCircleView *child = [note.userInfo objectForKey:@"Object"];
+    ExerciseCircleView *child = [note.userInfo objectForKey:@"Object"];
     
     //child is not on circle view -> previously showed content
     if(![child.superview isEqual:self]){

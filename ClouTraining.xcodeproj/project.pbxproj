@@ -14,11 +14,12 @@
 		072D87B81ADE51CF001F4370 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 072D87B71ADE51CF001F4370 /* Images.xcassets */; };
 		072D87BB1ADE51CF001F4370 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 072D87B91ADE51CF001F4370 /* LaunchScreen.xib */; };
 		072D87C71ADE51CF001F4370 /* ClouTrainingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87C61ADE51CF001F4370 /* ClouTrainingTests.m */; };
-		072D87D81ADE546A001F4370 /* ContentCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D11ADE546A001F4370 /* ContentCircleView.m */; };
+		072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D11ADE546A001F4370 /* ExerciseCircleView.m */; };
 		072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D31ADE546A001F4370 /* ContentGravityView.m */; };
 		072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D51ADE546A001F4370 /* GravityCircleView.m */; };
 		072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D71ADE546A001F4370 /* TrainingViewController.m */; };
 		072D87E01ADE5D45001F4370 /* Colors in Resources */ = {isa = PBXBuildFile; fileRef = 072D87DF1ADE5D45001F4370 /* Colors */; };
+		079BE3E71AE6844D00B981B2 /* ExerciseContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 079BE3E61AE6844D00B981B2 /* ExerciseContentView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +45,8 @@
 		072D87C01ADE51CF001F4370 /* ClouTrainingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClouTrainingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		072D87C51ADE51CF001F4370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		072D87C61ADE51CF001F4370 /* ClouTrainingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClouTrainingTests.m; sourceTree = "<group>"; };
-		072D87D01ADE546A001F4370 /* ContentCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentCircleView.h; sourceTree = "<group>"; };
-		072D87D11ADE546A001F4370 /* ContentCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentCircleView.m; sourceTree = "<group>"; };
+		072D87D01ADE546A001F4370 /* ExerciseCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCircleView.h; sourceTree = "<group>"; };
+		072D87D11ADE546A001F4370 /* ExerciseCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCircleView.m; sourceTree = "<group>"; };
 		072D87D21ADE546A001F4370 /* ContentGravityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentGravityView.h; sourceTree = "<group>"; };
 		072D87D31ADE546A001F4370 /* ContentGravityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentGravityView.m; sourceTree = "<group>"; };
 		072D87D41ADE546A001F4370 /* GravityCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GravityCircleView.h; sourceTree = "<group>"; };
@@ -54,6 +55,8 @@
 		072D87D71ADE546A001F4370 /* TrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingViewController.m; sourceTree = "<group>"; };
 		072D87DE1ADE595E001F4370 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		072D87DF1ADE5D45001F4370 /* Colors */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Colors; sourceTree = "<group>"; };
+		079BE3E51AE6844D00B981B2 /* ExerciseContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseContentView.h; sourceTree = "<group>"; };
+		079BE3E61AE6844D00B981B2 /* ExerciseContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseContentView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,14 +143,24 @@
 			children = (
 				072D87D61ADE546A001F4370 /* TrainingViewController.h */,
 				072D87D71ADE546A001F4370 /* TrainingViewController.m */,
-				072D87D01ADE546A001F4370 /* ContentCircleView.h */,
-				072D87D11ADE546A001F4370 /* ContentCircleView.m */,
+				079BE3E81AE6845500B981B2 /* ContentView */,
 				072D87D21ADE546A001F4370 /* ContentGravityView.h */,
 				072D87D31ADE546A001F4370 /* ContentGravityView.m */,
 				072D87D41ADE546A001F4370 /* GravityCircleView.h */,
 				072D87D51ADE546A001F4370 /* GravityCircleView.m */,
 			);
 			name = TrainingViewController;
+			sourceTree = "<group>";
+		};
+		079BE3E81AE6845500B981B2 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				072D87D01ADE546A001F4370 /* ExerciseCircleView.h */,
+				072D87D11ADE546A001F4370 /* ExerciseCircleView.m */,
+				079BE3E51AE6844D00B981B2 /* ExerciseContentView.h */,
+				079BE3E61AE6844D00B981B2 /* ExerciseContentView.m */,
+			);
+			name = ContentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,11 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079BE3E71AE6844D00B981B2 /* ExerciseContentView.m in Sources */,
 				072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */,
 				072D87AD1ADE51CF001F4370 /* AppDelegate.m in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
-				072D87D81ADE546A001F4370 /* ContentCircleView.m in Sources */,
+				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,
 				072D87B01ADE51CF001F4370 /* ClouTraining.xcdatamodeld in Sources */,
 				072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */,
 			);
@@ -454,6 +468,7 @@
 				072D87CC1ADE51CF001F4370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		072D87CD1ADE51CF001F4370 /* Build configuration list for PBXNativeTarget "ClouTrainingTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +477,7 @@
 				072D87CF1ADE51CF001F4370 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

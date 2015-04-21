@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExerciseContentView.h"
 
-@class ContentCircleView, GravityCircleView;
+@class ExerciseCircleView, GravityCircleView;
 
 @interface ContentGravityView : UIView
 
-@property (strong)ContentCircleView *child;
+@property (strong)ExerciseCircleView *child;
 @property CGRect backupFrame;
 
 @property GravityCircleView *circleView;

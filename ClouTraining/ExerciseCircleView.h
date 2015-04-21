@@ -7,16 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExerciseContentView.h"
 
-@interface ContentCircleView : UIView{
+@interface ExerciseCircleView : UIView{
     UITouch *touch;
     CGPoint previousPoint;
     CGPoint currentPoint;
     
     
 }
-
+@property ExerciseContentView *contentView;
 @property BOOL displaysContent;
+@property BOOL canMove;
+@property NSTimer *unlockTimer;
 
 -(void)snapToAnchor:(CGPoint)anchor;
+-(void)showContent;
+-(void)hideContent;
 @end

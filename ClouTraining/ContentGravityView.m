@@ -7,7 +7,7 @@
 //
 
 #import "ContentGravityView.h"
-#import "ContentCircleView.h"
+#import "ExerciseCircleView.h"
 #import "GravityCircleView.h"
 
 @implementation ContentGravityView
@@ -28,6 +28,10 @@
 #pragma mark handle unfold child
 
 -(void)maximizeChild{
+    //change shape
+    _child.displaysContent = YES;
+    [_child setNeedsDisplay];
+    
     //get point that child would have in self
     _child.center = [self convertPoint:_child.center fromView:_child.superview];
     [self addSubview:_child];
@@ -37,14 +41,18 @@
         _child.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
        // _child.center = [self.superview convertPoint:self.center toView:_child.superview];
     } completion:^(BOOL finished){
-        _child.displaysContent = YES;
+        _child.canMove = NO;
         _occupied = YES;
+        [_child showContent];
     }];
 }
 
 #pragma mark handle begin-movement of children
 
 -(void)handleContentViewMoveBegin:(NSNotification*)note{
+    _child.displaysContent = NO;
+    [_child hideContent];
+    [_child setNeedsDisplay];
     
     NSDictionary *touch = [note.userInfo objectForKey:@"Touch"];
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -59,6 +67,7 @@
         
     }];
 }
+
 
 
 /*
