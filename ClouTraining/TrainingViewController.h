@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class GravityCircleView, ContentGravityView;
+@class GravityCircleView, ContentGravityView, ExerciseCircleView;
 
-@interface TrainingViewController : UIViewController
+@interface TrainingViewController : UIViewController<UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) GravityCircleView *gravityCircleView;
-@property (weak, nonatomic) IBOutlet UIView *circleSuperView;
+@property (strong, nonatomic) IBOutlet GravityCircleView *gravityCircleView;
 @property (weak, nonatomic) IBOutlet ContentGravityView *contentGravityView;
 @property (weak, nonatomic) IBOutlet UILabel *dragHereLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navItem;
+
+@property ExerciseCircleView *currentOpenCircle;
+@property (weak, nonatomic) IBOutlet UIView *contentTabSuperview;
 @property BOOL firstStart;
 @end
 

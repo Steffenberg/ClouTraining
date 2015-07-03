@@ -13,6 +13,8 @@
 @interface GravityCircleView : UIView{
     CGRect circleRect;
     
+    
+    
     CGFloat caliber;
     float extent;
     float lowerExtend;
@@ -24,6 +26,8 @@
 @property NSMutableArray *anchors;
 @property ContentGravityView *contentView;
 
+
 -(id)initWithFrame:(CGRect)frame amountOfChildren:(CGFloat)childAmount;
+-(void)setupView:(CGFloat)childAmount;
 -(void)handleContentViewMoved:(NSNotification*)note;
 @end

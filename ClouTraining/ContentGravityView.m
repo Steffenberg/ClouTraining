@@ -49,6 +49,23 @@
 
 #pragma mark handle begin-movement of children
 
+-(void)shrinkChild:(ExerciseCircleView*)child{
+    _child.displaysContent = NO;
+    [_child hideContent];
+    [_child setNeedsDisplay];
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        
+        CGRect frame = _child.frame;
+        frame.size.width = _backupFrame.size.width;
+        frame.size.height = _backupFrame.size.height;
+        _child.frame = frame;
+    } completion:^(BOOL finished){
+        
+        
+    }];
+}
+
 -(void)handleContentViewMoveBegin:(NSNotification*)note{
     _child.displaysContent = NO;
     [_child hideContent];

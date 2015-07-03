@@ -19,21 +19,27 @@
     }
     self = [super initWithFrame:frame];
     if(self){
-        caliber = self.frame.size.height;
-        extent = 2*(caliber/2)*M_PI;
-        childCaliber = (extent/childAmount)/2;
-        children = childAmount;
-        self.backgroundColor = [UIColor clearColor];
-        [self createChildren];
         
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoveBegin:) name:@"ContentViewMoveBegin" object:nil];
         
         
     }
     return self;
 }
 
+-(void)setupView:(CGFloat)childAmount{
+    NSLog(@"Frame:%@", NSStringFromCGRect(self.frame));
+    caliber = self.frame.size.height;
+    extent = 2*(caliber/2)*M_PI;
+    childCaliber = (extent/childAmount)/2;
+    children = childAmount;
+    self.backgroundColor = [UIColor clearColor];
+    [self createChildren];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoveBegin:) name:@"ContentViewMoveBegin" object:nil];
+}
+
 -(void)createChildren{
+    
     _anchors = [NSMutableArray array];
     for(int i = 0; i<children; i++){
         ExerciseCircleView *child = [[ExerciseCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
@@ -123,6 +129,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    self.backgroundColor = [UIColor clearColor];
     
     CGRect frame = self.frame;
     CGRect superFrame = self.superview.frame;

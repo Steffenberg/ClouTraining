@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ExerciseContentView.h"
 
 @class ExerciseCircleView, GravityCircleView;
 
@@ -21,4 +20,5 @@
 @property BOOL occupied;
 
 -(void)handleContentViewMoved:(NSNotification*)note;
+-(void)shrinkChild:(ExerciseCircleView*)child;
 @end

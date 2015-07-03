@@ -20,6 +20,15 @@
     return self;
 }
 
+-(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    CGPoint pointInB = [_contentSuperview convertPoint:point fromView:self];
+    
+    if ([_contentSuperview pointInside:pointInB withEvent:event])
+        return self;
+    
+    return [super hitTest:point withEvent:event];
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     touch = [touches anyObject];
     previousPoint = [touch locationInView:self.superview];
@@ -68,7 +77,6 @@
 }
 
 
-
 -(void)snapToAnchor:(CGPoint)anchor{
 
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -79,21 +87,12 @@
 }
 
 -(void)showContent{
-    if(!_contentView){
-        _contentView = [[ExerciseContentView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        [self addSubview:_contentView];
-    }else{
-        _contentView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    }
-    [_contentView reloadData];
-    _contentView.hidden = NO;
-    
-    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"ChildMaximized" object:self userInfo:@{@"training":@"Test",@"shown":[NSNumber numberWithBool:NO]}];
     
 }
 
 -(void)hideContent{
-    _contentView.hidden = YES;
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"ChildMaximized" object:self userInfo:@{@"training":@"Test",@"shown":[NSNumber numberWithBool:NO]}];
 }
 
 - (void)drawRect:(CGRect)rect {

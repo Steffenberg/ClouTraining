@@ -23,13 +23,45 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
     
-    _gravityCircleView.contentView = _contentGravityView;
-    _contentGravityView.circleView = _gravityCircleView;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleChildMaximized:) name:@"ChildMaximized" object:nil];
+    
+    
+    UITapGestureRecognizer *doubleRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTab:)];
+    doubleRec.numberOfTapsRequired = 2;
+    doubleRec.delegate = self;
+    [self.view addGestureRecognizer:doubleRec];
     
     _dragHereLabel.shadowColor = UIColorFromRGB(DARK_GRAY);
     _dragHereLabel.shadowOffset = CGSizeMake(-0.5, -0.5);
     
     _firstStart = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [_gravityCircleView setupView:5];
+    [_gravityCircleView setNeedsDisplay];
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if(CGRectContainsPoint(_contentTabSuperview.frame, [touch locationInView:_contentTabSuperview])){
+        return YES;
+    }
+    return NO;
+}
+
+-(void)handleDoubleTab:(UITapGestureRecognizer*)doubleTap{
+    if(_currentOpenCircle){
+        if([_currentOpenCircle.superview isEqual:_contentGravityView] && _contentGravityView.occupied){
+            _contentGravityView.occupied = NO;
+            _currentOpenCircle.hidden = NO;
+            _contentTabSuperview.hidden = YES;
+            [_contentGravityView shrinkChild:_currentOpenCircle];
+        }
+        [_gravityCircleView handleContentViewMoved:[NSNotification notificationWithName:@"" object:nil userInfo:@{@"Object":_currentOpenCircle}]];
+    }
+    
 }
 
 -(void)handleContentViewMoved:(NSNotification*)note{
@@ -51,22 +83,33 @@
     
 }
 
+-(void)handleChildMaximized:(NSNotification*)note{
+    
+    _currentOpenCircle = note.object;
+    _currentOpenCircle.hidden = !_currentOpenCircle.hidden;
+    _currentOpenCircle.contentSuperview = _contentTabSuperview;
+    _contentTabSuperview.hidden = !_contentTabSuperview.hidden;
+    
+    
+}
+
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     //NSLog(@"Layout");
     
-    if(_firstStart){
-        _gravityCircleView = [[GravityCircleView alloc]initWithFrame:CGRectMake(15, 15, _circleSuperView.frame.size.width-30, _circleSuperView.frame.size.height-30) amountOfChildren:5.0f];
+    if(_firstStart && _gravityCircleView){
         
-        [_circleSuperView addSubview:_gravityCircleView];
+        
+        _gravityCircleView.contentView = _contentGravityView;
+        _contentGravityView.circleView = _gravityCircleView;
+        
         _firstStart = NO;
     }
     
 }
 
--(void)viewDidAppear:(BOOL)animated{
-     [_gravityCircleView setNeedsDisplay];
-}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
