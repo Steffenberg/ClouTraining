@@ -53,17 +53,18 @@
     _child.displaysContent = NO;
     [_child hideContent];
     [_child setNeedsDisplay];
-    
-    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    CGRect frame = _child.frame;
+    frame.size.width = _backupFrame.size.width;
+    frame.size.height = _backupFrame.size.height;
+    _child.frame = frame;
+    child.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    /*[UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         
-        CGRect frame = _child.frame;
-        frame.size.width = _backupFrame.size.width;
-        frame.size.height = _backupFrame.size.height;
-        _child.frame = frame;
+        
     } completion:^(BOOL finished){
         
         
-    }];
+    }];*/
 }
 
 -(void)handleContentViewMoveBegin:(NSNotification*)note{

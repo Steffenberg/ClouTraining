@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class ContentGravityView;
+@class ContentGravityView, ExerciseCircleView;
 
 @interface GravityCircleView : UIView{
     CGRect circleRect;
@@ -30,4 +30,6 @@
 -(id)initWithFrame:(CGRect)frame amountOfChildren:(CGFloat)childAmount;
 -(void)setupView:(CGFloat)childAmount;
 -(void)handleContentViewMoved:(NSNotification*)note;
+-(NSMutableDictionary*)getClosestAnchorForChild:(ExerciseCircleView*)child;
+-(void)occuyAnchorForChildren:(ExerciseCircleView *)child;
 @end

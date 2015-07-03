@@ -84,6 +84,24 @@
         
     }
     
+    
+    [self occuyAnchorForChildren:child];
+}
+
+-(void)occuyAnchorForChildren:(ExerciseCircleView *)child{
+    NSMutableDictionary *closestAnchor = [self getClosestAnchorForChild:child];
+    
+    if(closestAnchor){
+        [child snapToAnchor:CGPointMake([[closestAnchor objectForKey:@"X"]floatValue],[[closestAnchor objectForKey:@"Y"]floatValue])];
+        [closestAnchor setObject:child forKey:@"Occupied"];
+    }
+}
+
+-(NSMutableDictionary*)getClosestAnchorForChild:(ExerciseCircleView*)child{
+    NSMutableDictionary *closestAnchor;
+    CGFloat closeDistance = 0.0f;
+    CGFloat closeX;
+    CGFloat closeY;
     // determine possible anchors
     NSMutableArray *possibleAnchors = [NSMutableArray array];
     for(NSMutableDictionary *dic in _anchors){
@@ -92,10 +110,7 @@
         }
         
     }
-    NSMutableDictionary *closestAnchor;
-    CGFloat closeDistance = 0.0f;
-    CGFloat closeX;
-    CGFloat closeY;
+    
     
     //find closest anchor on circleview
     for(NSMutableDictionary *dic in possibleAnchors){
@@ -119,10 +134,8 @@
             NSLog(@"Current: %f - Closest: %f", currentDistance, closeDistance);
         }
     }
-    if(closestAnchor){
-        [child snapToAnchor:CGPointMake([[closestAnchor objectForKey:@"X"]floatValue],[[closestAnchor objectForKey:@"Y"]floatValue])];
-        [closestAnchor setObject:child forKey:@"Occupied"];
-    }
+    
+    return closestAnchor;
 }
 
 // Only override drawRect: if you perform custom drawing.

@@ -52,15 +52,23 @@
 }
 
 -(void)handleDoubleTab:(UITapGestureRecognizer*)doubleTap{
-    if(_currentOpenCircle){
-        if([_currentOpenCircle.superview isEqual:_contentGravityView] && _contentGravityView.occupied){
-            _contentGravityView.occupied = NO;
-            _currentOpenCircle.hidden = NO;
-            _contentTabSuperview.hidden = YES;
-            [_contentGravityView shrinkChild:_currentOpenCircle];
-        }
-        [_gravityCircleView handleContentViewMoved:[NSNotification notificationWithName:@"" object:nil userInfo:@{@"Object":_currentOpenCircle}]];
-    }
+    [_contentGravityView shrinkChild:_currentOpenCircle];
+    
+    CGPoint pt = [_contentGravityView convertPoint:_currentOpenCircle.center toView:_gravityCircleView];
+    [_currentOpenCircle removeFromSuperview];
+    [_gravityCircleView addSubview:_currentOpenCircle];
+    _currentOpenCircle.center = pt;
+    
+    NSMutableDictionary *dic = [_gravityCircleView getClosestAnchorForChild:_currentOpenCircle];
+    
+    [_currentOpenCircle snapToAnchor:CGPointMake([[dic objectForKey:@"X"]floatValue], [[dic objectForKey:@"Y"]floatValue])];
+    
+    _contentGravityView.occupied = NO;
+    
+    [_gravityCircleView occuyAnchorForChildren:_currentOpenCircle];
+    _currentOpenCircle.displaysContent = NO;
+    _currentOpenCircle.canMove = YES;
+    _currentOpenCircle = nil;
     
 }
 

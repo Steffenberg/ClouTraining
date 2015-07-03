@@ -7,7 +7,7 @@
 //
 
 #import "ExerciseCircleView.h"
-#import "ContentGravityView.h"
+#import "GravityCircleView.h"
 
 @implementation ExerciseCircleView
 
@@ -22,9 +22,9 @@
 
 -(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     CGPoint pointInB = [_contentSuperview convertPoint:point fromView:self];
-    
-    if ([_contentSuperview pointInside:pointInB withEvent:event])
-        return self;
+   
+    //if ([_contentSuperview pointInside:pointInB withEvent:event])
+        //return self;
     
     return [super hitTest:point withEvent:event];
 }
@@ -32,7 +32,7 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     touch = [touches anyObject];
     previousPoint = [touch locationInView:self.superview];
-    
+    NSLog(@"Began");
     if(!_displaysContent){
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ContentViewMoveBegin" object:nil userInfo:@{@"Object":self}];
     }else{
@@ -41,6 +41,7 @@
         }else{
             [_unlockTimer invalidate];
             _unlockTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(freeChild) userInfo:nil repeats:NO];
+            [_contentSuperview touchesBegan:touches withEvent:event];
         }
         
     }
@@ -77,8 +78,17 @@
 }
 
 
--(void)snapToAnchor:(CGPoint)anchor{
+-(void)snapToAnchor:(CGPoint)anchor completition:(myCompletion) compblock{
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        self.center = anchor;
+    } completion:^(BOOL finished){
+        compblock(YES);
+    }];
+}
 
+-(void)snapToAnchor:(CGPoint)anchor{
+    
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.center = anchor;
     } completion:^(BOOL finished){

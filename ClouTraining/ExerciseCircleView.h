@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^myCompletion)(BOOL);
+
 @interface ExerciseCircleView : UIView{
     UITouch *touch;
     CGPoint previousPoint;
@@ -24,5 +26,5 @@
 -(void)showContent;
 -(void)hideContent;
 -(void)freeChild;
-
+-(void)snapToAnchor:(CGPoint)anchor completition:(myCompletion) compblock;
 @end
