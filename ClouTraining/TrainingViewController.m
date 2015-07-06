@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *trainings = [[DataController sharedInstance]getAllTrainings];
+    /*NSArray *trainings = [[DataController sharedInstance]getAllTrainings];
     for (Training *t in trainings) {
         NSLog(@"%@",t.name);
         NSArray *arr = [[DataController sharedInstance]getExercisesForTraining:t];
@@ -30,9 +30,9 @@
             NSLog(@"  --%@",e.name);
             
         }
-    }
+    }*/
     
-    // Do any additional setup after loading the view, typically from a nib.
+    _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
     
@@ -53,7 +53,8 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [_gravityCircleView setupView:8];
+    [_gravityCircleView setupView:_exercises.count];
+    [[DataController sharedInstance]updateTraining:_activeTraining withData:nil];
     [_gravityCircleView setNeedsDisplay];
 }
 

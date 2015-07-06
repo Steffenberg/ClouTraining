@@ -129,6 +129,12 @@
     
 }
 
+-(void)updateTraining:(Training *)t withData:(NSDictionary*)data{
+    //t.lastUsed = [NSDate dateWithTimeIntervalSinceNow:-(31*24*60*60)];
+    t.lastUsed = [NSDate date];
+    [self save];
+}
+
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t{
 
         [t addExerciseObject:e];
@@ -143,6 +149,10 @@
 
 -(NSArray*)getForeignTrainings{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES predicateWithFormat:@"own = 0"];
+}
+
+-(NSArray*)getRecentTrainings{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES predicateWithFormat:@"lastUsed>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
 }
 
 -(NSArray*)getAllTrainings{
@@ -220,6 +230,8 @@
     
     
 }
+
+
 
 -(NSArray*)getExercisesForTraining:(Training*)t{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"training=%@",t];

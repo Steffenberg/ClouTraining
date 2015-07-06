@@ -26,8 +26,12 @@ typedef void (^ObjectReturnBlock)(id);
 -(void)save;
 
 -(void)createTrainingWithName:(NSString *)name andDescription:(NSString*)desc completition:(ObjectReturnBlock)block;
+-(void)updateTraining:(Training *)t withData:(NSDictionary*)data;
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t;
+-(NSArray*)getOwnTrainings;
+-(NSArray*)getForeignTrainings;
 -(NSArray*)getAllTrainings;
+-(NSArray*)getRecentTrainings;
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t completition:(ObjectReturnBlock)block;

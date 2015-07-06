@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class GravityCircleView, ContentGravityView, ExerciseCircleView;
+@class GravityCircleView, ContentGravityView, ExerciseCircleView, Training, Exercise;
 
 @interface TrainingViewController : UIViewController<UIGestureRecognizerDelegate>
 
@@ -20,5 +20,7 @@
 @property ExerciseCircleView *currentOpenCircle;
 @property (weak, nonatomic) IBOutlet UIView *contentTabSuperview;
 @property BOOL firstStart;
+@property Training *activeTraining;
+@property NSArray *exercises;
 @end
 

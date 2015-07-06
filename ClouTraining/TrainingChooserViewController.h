@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class Training;
+
 @interface TrainingChooserViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
+
+@property NSArray *recentTrainings;
+@property NSArray *ownTrainings;
+@property NSArray *foreignTrainings;
+
+@property Training *chosenTraining;
 
 @end

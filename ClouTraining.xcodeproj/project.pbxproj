@@ -33,6 +33,8 @@
 		F9EFFAB11B4A719B00E87DC6 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB01B4A719B00E87DC6 /* Media.m */; };
 		F9EFFAB41B4A719B00E87DC6 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB31B4A719B00E87DC6 /* Training.m */; };
 		F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */; };
+		F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */; };
+		F9EFFAF41B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		F9EFFAB21B4A719B00E87DC6 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
 		F9EFFAB31B4A719B00E87DC6 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 		F9EFFAB61B4AA1A100E87DC6 /* ClouTraining.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClouTraining.xcdatamodel; sourceTree = "<group>"; };
+		F9EFFAF01B4AF72700E87DC6 /* TrainingSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectionTableViewCell.h; sourceTree = "<group>"; };
+		F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectionTableViewCell.m; sourceTree = "<group>"; };
+		F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingSelectionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +232,9 @@
 			children = (
 				F95FF57C1B469C1500555327 /* TrainingChooserViewController.h */,
 				F95FF57D1B469C1500555327 /* TrainingChooserViewController.m */,
+				F9EFFAF01B4AF72700E87DC6 /* TrainingSelectionTableViewCell.h */,
+				F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */,
+				F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */,
 			);
 			name = TrainingSelection;
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 				072D87B61ADE51CF001F4370 /* Main.storyboard in Resources */,
 				072D87BB1ADE51CF001F4370 /* LaunchScreen.xib in Resources */,
 				072D87B81ADE51CF001F4370 /* Images.xcassets in Resources */,
+				F9EFFAF41B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +389,7 @@
 				F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				F9EFFAB41B4A719B00E87DC6 /* Training.m in Sources */,
+				F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
