@@ -74,6 +74,15 @@
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:10000]
                                                                              } forTraining:t];
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Sit ups",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:12],
+                                                                             @"sets":[NSNumber numberWithInteger:3],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:0]
+                                                                             } forTraining:t];
                     
                     
                 }
