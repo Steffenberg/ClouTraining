@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "Training.h"
+#import "Exercise.h"
 
 @interface AppDelegate ()
 
@@ -18,9 +20,74 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [DataController sharedInstanceWithCallback:^{
+    [DataController sharedInstance];
         NSLog(@"DataController created");
-    }];
+        if(![[NSUserDefaults standardUserDefaults]objectForKey:@"CTVersion"]){
+            
+            [[DataController sharedInstance]createTrainingWithName:@"TestTraining1" andDescription:@"" completition:^(id object){
+                if(object){
+                    Training *t = object;
+                    NSLog(@"Created: %@",t.name);
+                    
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Bankdrücken",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:6],
+                                                                             @"sets":[NSNumber numberWithInteger:3],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:60000]
+                                                                             } forTraining:t];
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Kniebeugen",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:8],
+                                                                             @"sets":[NSNumber numberWithInteger:3],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:60000]
+                                                                             } forTraining:t];
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Arnoldpress",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:10],
+                                                                             @"sets":[NSNumber numberWithInteger:3],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:12500]
+                                                                             } forTraining:t];
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Klimmzüge Maschine",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:5],
+                                                                             @"sets":[NSNumber numberWithInteger:4],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:25000]
+                                                                             } forTraining:t];
+                    [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Hyperextension",
+                                                                             @"describe":@"",
+                                                                             @"distance":[NSNumber numberWithInteger:0],
+                                                                             @"duration":[NSNumber numberWithInteger:0],
+                                                                             @"repititions":[NSNumber numberWithInteger:10],
+                                                                             @"sets":[NSNumber numberWithInteger:3],
+                                                                             @"shared":[NSNumber numberWithBool:YES],
+                                                                             @"weight":[NSNumber numberWithInteger:10000]
+                                                                             } forTraining:t];
+                    
+                    
+                }
+                
+                
+            }];
+            ;
+            [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithFloat:1.0] forKey:@"CTVersion"];
+            [[NSUserDefaults standardUserDefaults]synchronize];
+        }
+    
+    
+    
+    
     return YES;
 }
 
@@ -38,6 +105,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

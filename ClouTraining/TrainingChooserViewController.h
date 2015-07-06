@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrainingChooserViewController : UIViewController
+@interface TrainingChooserViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end

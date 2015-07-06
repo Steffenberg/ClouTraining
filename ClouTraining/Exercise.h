@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * exerciseid;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * repititions;
+@property (nonatomic, retain) NSNumber *sets;
 @property (nonatomic, retain) NSNumber * shared;
 @property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSSet *medias;

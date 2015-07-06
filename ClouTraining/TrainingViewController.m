@@ -11,6 +11,7 @@
 #import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
 #import "Training.h"
+#import "Exercise.h"
 
 @interface TrainingViewController ()
 
@@ -24,6 +25,11 @@
     NSArray *trainings = [[DataController sharedInstance]getAllTrainings];
     for (Training *t in trainings) {
         NSLog(@"%@",t.name);
+        NSArray *arr = [[DataController sharedInstance]getExercisesForTraining:t];
+        for (Exercise *e in arr) {
+            NSLog(@"  --%@",e.name);
+            
+        }
     }
     
     // Do any additional setup after loading the view, typically from a nib.

@@ -17,5 +17,7 @@
 @dynamic publicate;
 @dynamic trainingid;
 @dynamic exercise;
+@dynamic own;
+@dynamic lastUsed;
 
 @end

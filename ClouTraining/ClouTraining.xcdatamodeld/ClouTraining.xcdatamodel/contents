@@ -7,6 +7,7 @@
         <attribute name="exerciseid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="repititions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sets" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="shared" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="medias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media" inverseName="exercise" inverseEntity="Media" syncable="YES"/>
@@ -22,14 +23,16 @@
     </entity>
     <entity name="Training" representedClassName="Training" syncable="YES">
         <attribute name="describe" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="own" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="publicate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="trainingid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Training" positionX="-281" positionY="9" width="128" height="118"/>
-        <element name="Exercise" positionX="-63" positionY="54" width="128" height="193"/>
+        <element name="Exercise" positionX="-63" positionY="54" width="128" height="210"/>
         <element name="Media" positionX="169" positionY="18" width="128" height="133"/>
+        <element name="Training" positionX="-281" positionY="9" width="128" height="150"/>
     </elements>
 </model>

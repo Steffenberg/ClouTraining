@@ -7,6 +7,7 @@
 //
 
 #import "TrainingChooserViewController.h"
+#import "Training.h"
 
 @interface TrainingChooserViewController ()
 
@@ -16,8 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    DataController *ctr = [DataController sharedInstance];
     // Do any additional setup after loading the view.
+    
+   
 }
 
 - (void)didReceiveMemoryWarning {

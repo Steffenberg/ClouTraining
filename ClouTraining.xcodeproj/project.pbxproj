@@ -29,10 +29,10 @@
 		F9EFFA831B4A5EB500E87DC6 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */; };
 		F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFA851B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m */; };
 		F9EFFA891B4A60A900E87DC6 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFA881B4A60A900E87DC6 /* DataController.m */; };
-		F9EFFAAB1B4A713800E87DC6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAA91B4A713800E87DC6 /* Model.xcdatamodeld */; };
 		F9EFFAAE1B4A719A00E87DC6 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAAD1B4A719A00E87DC6 /* Exercise.m */; };
 		F9EFFAB11B4A719B00E87DC6 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB01B4A719B00E87DC6 /* Media.m */; };
 		F9EFFAB41B4A719B00E87DC6 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB31B4A719B00E87DC6 /* Training.m */; };
+		F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,13 +87,13 @@
 		F9EFFA851B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext-EasyFetch.m"; sourceTree = "<group>"; };
 		F9EFFA871B4A60A900E87DC6 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		F9EFFA881B4A60A900E87DC6 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
-		F9EFFAAA1B4A713800E87DC6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F9EFFAAC1B4A719A00E87DC6 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		F9EFFAAD1B4A719A00E87DC6 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		F9EFFAAF1B4A719B00E87DC6 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
 		F9EFFAB01B4A719B00E87DC6 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		F9EFFAB21B4A719B00E87DC6 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
 		F9EFFAB31B4A719B00E87DC6 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
+		F9EFFAB61B4AA1A100E87DC6 /* ClouTraining.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClouTraining.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,13 +139,13 @@
 		072D87A61ADE51CF001F4370 /* ClouTraining */ = {
 			isa = PBXGroup;
 			children = (
+				072D87AB1ADE51CF001F4370 /* AppDelegate.h */,
+				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				F9EFFA761B4A559100E87DC6 /* DataManagement */,
 				F95FF5691B468E6100555327 /* MainMenu */,
 				F95FF5681B468E4700555327 /* TrainingSelection */,
 				072D87DC1ADE547D001F4370 /* TrainingViewController */,
 				F95FF5671B468E3F00555327 /* Settings */,
-				072D87AB1ADE51CF001F4370 /* AppDelegate.h */,
-				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				072D87B41ADE51CF001F4370 /* Main.storyboard */,
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
@@ -255,7 +255,7 @@
 		F9EFFA931B4A6A7700E87DC6 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				F9EFFAA91B4A713800E87DC6 /* Model.xcdatamodeld */,
+				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
 				F9EFFAB21B4A719B00E87DC6 /* Training.h */,
 				F9EFFAB31B4A719B00E87DC6 /* Training.m */,
 				F9EFFAAF1B4A719B00E87DC6 /* Media.h */,
@@ -378,7 +378,6 @@
 				F95FF57E1B469C1500555327 /* TrainingChooserViewController.m in Sources */,
 				F9EFFA891B4A60A900E87DC6 /* DataController.m in Sources */,
 				F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */,
-				F9EFFAAB1B4A713800E87DC6 /* Model.xcdatamodeld in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				F9EFFAB41B4A719B00E87DC6 /* Training.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
@@ -386,6 +385,7 @@
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
 				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,
 				F95FF5781B4696D800555327 /* ImageContentViewController.m in Sources */,
+				F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */,
 				072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,13 +606,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F9EFFAA91B4A713800E87DC6 /* Model.xcdatamodeld */ = {
+		F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F9EFFAAA1B4A713800E87DC6 /* Model.xcdatamodel */,
+				F9EFFAB61B4AA1A100E87DC6 /* ClouTraining.xcdatamodel */,
 			);
-			currentVersion = F9EFFAAA1B4A713800E87DC6 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = F9EFFAB61B4AA1A100E87DC6 /* ClouTraining.xcdatamodel */;
+			path = ClouTraining.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

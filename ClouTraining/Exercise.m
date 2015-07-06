@@ -20,6 +20,7 @@
 @dynamic name;
 @dynamic repititions;
 @dynamic shared;
+@dynamic sets;
 @dynamic weight;
 @dynamic medias;
 @dynamic training;

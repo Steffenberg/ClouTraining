@@ -7,6 +7,25 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="RmH-LO-2TN">
+            <objects>
+                <tabBarController id="7zi-tz-1V2" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="sLe-jW-ftL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="uvR-N8-4TS" kind="relationship" relationship="viewControllers" id="leM-u2-DJ1"/>
+                        <segue destination="qnK-oQ-aO5" kind="relationship" relationship="viewControllers" id="HGF-kh-810"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5cO-WM-jqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576" y="-817"/>
+        </scene>
         <!--Training-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -194,6 +213,25 @@
             </objects>
             <point key="canvasLocation" x="-165" y="-773"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="hXf-FZ-ym8">
+            <objects>
+                <viewController id="qnK-oQ-aO5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j1H-I1-WMt"/>
+                        <viewControllerLayoutGuide type="bottom" id="W2v-hy-NNl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qMZ-NW-NUW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="SN0-mU-vM2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YOy-ps-x1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="155" y="-1829"/>
+        </scene>
         <!--Training Chooser View Controller-->
         <scene sceneID="fgU-Sx-lBd">
             <objects>
@@ -206,25 +244,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chS-Q6-Q7b">
-                                <rect key="frame" x="16" y="80" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showTraining:" destination="uvR-N8-4TS" eventType="touchUpInside" id="6wh-mH-YKy"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-yV-WiI">
+                                <rect key="frame" x="0.0" y="64" width="600" height="486"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bVe-yV-WiI" firstAttribute="leading" secondItem="HGK-nC-Zhi" secondAttribute="leadingMargin" constant="-16" id="08i-02-RYM"/>
+                            <constraint firstItem="WTQ-74-Sfe" firstAttribute="top" secondItem="bVe-yV-WiI" secondAttribute="bottom" constant="1" id="Fzy-cT-ZeZ"/>
+                            <constraint firstItem="bVe-yV-WiI" firstAttribute="top" secondItem="6YH-b2-rAb" secondAttribute="bottom" id="Xbt-tB-gPL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bVe-yV-WiI" secondAttribute="trailing" constant="-16" id="pql-mg-vEn"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="63O-2v-5LK"/>
                     <connections>
+                        <outlet property="table" destination="bVe-yV-WiI" id="UYT-e8-TSx"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="ShowTraining" id="7cc-bO-yTP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z4x-r5-GJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="579" y="-771"/>
+            <point key="canvasLocation" x="1191" y="-1895"/>
         </scene>
         <!--ClouTraining-->
         <scene sceneID="zuz-zL-ewp">
@@ -294,15 +335,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="ClouTraining" id="beg-0h-LlW"/>
                     <connections>
-                        <segue destination="uvR-N8-4TS" kind="show" identifier="ShowTrainingChooser" id="LHX-3n-nT0"/>
                         <segue destination="KzW-zw-bhN" kind="show" identifier="ShowCreateTraining" id="9ll-ef-h0V"/>
                         <segue destination="RKB-Qj-7wK" kind="show" identifier="ShowSettings" id="Dp2-4s-axP"/>
                         <segue destination="WZY-K0-PSW" kind="show" id="iO7-vc-7be"/>
+                        <segue destination="7zi-tz-1V2" kind="show" identifier="ShowTrainingChooser" id="5UM-zf-7vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m6J-dg-Ecj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165" y="123"/>
+            <point key="canvasLocation" x="-169" y="-11"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="sRV-GN-o0y">

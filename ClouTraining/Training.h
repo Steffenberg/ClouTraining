@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSNumber * publicate;
 @property (nonatomic, retain) NSNumber * trainingid;
 @property (nonatomic, retain) NSSet *exercise;
+@property (nonatomic, retain) NSNumber *own;
+@property (nonatomic, retain) NSDate *lastUsed;
 @end
 
 @interface Training (CoreDataGeneratedAccessors)
