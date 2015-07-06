@@ -10,6 +10,7 @@
 #import "GravityCircleView.h"
 #import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
+#import "Training.h"
 
 @interface TrainingViewController ()
 
@@ -19,6 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSArray *trainings = [[DataController sharedInstance]getAllTrainings];
+    for (Training *t in trainings) {
+        NSLog(@"%@",t.name);
+    }
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
@@ -40,7 +47,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [_gravityCircleView setupView:5];
+    [_gravityCircleView setupView:8];
     [_gravityCircleView setNeedsDisplay];
 }
 

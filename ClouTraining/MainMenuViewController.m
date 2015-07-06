@@ -16,6 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[DataController sharedInstance]createTrainingWithName:@"Bankdrücken" andDescription:@""];
+    [[DataController sharedInstance]createTrainingWithName:@"Bizeps Curls" andDescription:@""];
+    [[DataController sharedInstance]createTrainingWithName:@"Rudern" andDescription:@""];
+    
     // Do any additional setup after loading the view.
 }
 
