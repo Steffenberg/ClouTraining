@@ -10,6 +10,7 @@
 #import "TrainingSelectionTableViewCell.h"
 #import "TrainingViewController.h"
 #import "Training.h"
+#import "TrainingProtocol.h"
 
 @interface TrainingChooserViewController ()
 
@@ -26,7 +27,9 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    _recentTrainings = [[DataController sharedInstance]getRecentTrainings];
+    _chosenTraining = nil;
+    _chosenProtocol = nil;
+    _recentProtocols = [[DataController sharedInstance]getRecentProtocols];
     _ownTrainings = [[DataController sharedInstance]getOwnTrainings];
     _foreignTrainings = [[DataController sharedInstance]getForeignTrainings];
     [_table reloadData];
@@ -60,7 +63,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if(section == 0){
-        return _recentTrainings.count;
+        return _recentProtocols.count;
     }
     if(section == 1){
         return _ownTrainings.count;
@@ -83,7 +86,7 @@
     }
     
     if(section == 0){
-        cell.titleLabel.text =[NSString stringWithFormat:@"%@",[(Training*)[_recentTrainings objectAtIndex:row]name]];
+        cell.titleLabel.text =[NSString stringWithFormat:@"%@",[(Training*)[(TrainingProtocol*)[_recentProtocols objectAtIndex:row]training]name]];
     }
     if(section == 1){
          cell.titleLabel.text =[NSString stringWithFormat:@"%@",[(Training*)[_ownTrainings objectAtIndex:row]name]];
@@ -100,7 +103,8 @@
     NSInteger section = indexPath.section;
     NSInteger row = indexPath.row;
     if(section == 0){
-        _chosenTraining = [_recentTrainings objectAtIndex:row];
+        _chosenProtocol = [_recentProtocols objectAtIndex:row];
+        
     }
     if(section == 1){
         _chosenTraining = [_ownTrainings objectAtIndex:row];
@@ -121,7 +125,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"ShowTraining"]){
         TrainingViewController *tvc = (TrainingViewController*)segue.destinationViewController;
-        tvc.activeTraining = _chosenTraining;
+        if(_chosenProtocol){
+            tvc.activeProtocol = _chosenProtocol;
+            tvc.activeTraining = _chosenProtocol.training;
+            
+        }else{
+            tvc.activeTraining = _chosenTraining;
+        }
+        
+        
+        
+        
+        
     }
 }
 

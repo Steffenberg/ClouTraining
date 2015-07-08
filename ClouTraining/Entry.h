@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Exercise, Protocol;
+@class Exercise, TrainingProtocol;
 
 @interface Entry : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * duration;
-@property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) NSNumber * repititions;
+@property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) Exercise *exercise;
-@property (nonatomic, retain) Protocol *protocol;
+@property (nonatomic, retain) TrainingProtocol *protocol;
 
 @end

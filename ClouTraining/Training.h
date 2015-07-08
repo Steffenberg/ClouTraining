@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Exercise, Protocol;
+@class Exercise, TrainingProtocol;
 
 @interface Training : NSManagedObject
 
@@ -30,8 +30,8 @@
 - (void)addExercise:(NSSet *)values;
 - (void)removeExercise:(NSSet *)values;
 
-- (void)addProtocolsObject:(Protocol *)value;
-- (void)removeProtocolsObject:(Protocol *)value;
+- (void)addProtocolsObject:(TrainingProtocol *)value;
+- (void)removeProtocolsObject:(TrainingProtocol *)value;
 - (void)addProtocols:(NSSet *)values;
 - (void)removeProtocols:(NSSet *)values;
 

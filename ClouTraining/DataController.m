@@ -12,7 +12,7 @@
 #import "Training.h"
 #import "Exercise.h"
 #import "Media.h"
-#import "Protocol.h"
+#import "TrainingProtocol.h"
 #import "Entry.h"
 
 @interface DataController()
@@ -132,7 +132,7 @@
 }
 
 -(void)updateTraining:(Training *)t withData:(NSDictionary*)data{
-    Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
+    Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
     training.lastUsed = [NSDate date];
     training.describe = [data objectForKey:@"describe"];
     training.publicate = [data objectForKey:@"publicate"];
@@ -140,9 +140,10 @@
 }
 
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t{
-
-        [t addExerciseObject:e];
-        [e setTraining:t];
+        Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
+    
+        [training addExerciseObject:e];
+        [e setTraining:training];
         [self save];
     
 }
@@ -235,16 +236,20 @@
     
 }
 
-#pragma mark - Protocol
+-(NSArray*)getExercisesForTraining:(Training*)t{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"training=%@",t];
+}
 
--(Protocol*)createProtocolForTraining:(Training*)training{
+#pragma mark - TrainingProtocol
+
+-(TrainingProtocol*)createProtocolForTraining:(Training*)training{
     
-    __block Protocol *protocol;
+    __block TrainingProtocol *protocol;
     [[self privateContext]performBlockAndWait:^{
         
         Training *tmp = (Training*)[[self privateContext]existingObjectWithID:training.objectID error:nil];
         
-        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"Protocol" inManagedObjectContext:[self privateContext]];
+        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"TrainingProtocol" inManagedObjectContext:[self privateContext]];
         protocol.date = [NSDate date];
         protocol.comment = @"";
         protocol.duration = [NSNumber numberWithInteger:0];
@@ -259,11 +264,20 @@
     return protocol;
 }
 
-
-
--(NSArray*)getExercisesForTraining:(Training*)t{
-    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"training=%@",t];
+-(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data{
+    TrainingProtocol *protocol = (TrainingProtocol*)[[self managedObjectContext]existingObjectWithID:p.objectID error:nil];
+    protocol.date = [NSDate date];
+    protocol.comment = [data objectForKey:@"comment"];
+    protocol.duration = [data objectForKey:@"duration"];
+    [self save];
 }
+
+-(NSArray*)getRecentProtocols{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
+}
+
+
+
 
 #pragma mark - Media
 

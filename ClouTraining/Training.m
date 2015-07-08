@@ -8,7 +8,7 @@
 
 #import "Training.h"
 #import "Exercise.h"
-#import "Protocol.h"
+#import "TrainingProtocol.h"
 
 
 @implementation Training

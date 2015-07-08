@@ -1,5 +1,5 @@
 //
-//  Protocol.h
+//  TrainingProtocol.h
 //  ClouTraining
 //
 //  Created by fastline on 08.07.15.
@@ -11,16 +11,16 @@
 
 @class Entry, Training;
 
-@interface Protocol : NSManagedObject
+@interface TrainingProtocol : NSManagedObject
 
-@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * comment;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) Training *training;
 @end
 
-@interface Protocol (CoreDataGeneratedAccessors)
+@interface TrainingProtocol (CoreDataGeneratedAccessors)
 
 - (void)addEntriesObject:(Entry *)value;
 - (void)removeEntriesObject:(Entry *)value;

@@ -8,14 +8,14 @@
 
 #import "Entry.h"
 #import "Exercise.h"
-#import "Protocol.h"
+#import "TrainingProtocol.h"
 
 
 @implementation Entry
 
 @dynamic duration;
-@dynamic weight;
 @dynamic repititions;
+@dynamic weight;
 @dynamic exercise;
 @dynamic protocol;
 

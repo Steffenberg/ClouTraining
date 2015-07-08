@@ -12,7 +12,7 @@
 typedef void (^InitCallbackBlock)(void);
 typedef void (^ObjectReturnBlock)(id);
 
-@class Training, Exercise, Media;
+@class Training, Exercise, Media, TrainingProtocol;
 
 @interface DataController : NSObject
 
@@ -36,4 +36,8 @@ typedef void (^ObjectReturnBlock)(id);
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t completition:(ObjectReturnBlock)block;
 -(NSArray*)getExercisesForTraining:(Training*)t;
+
+-(TrainingProtocol*)createProtocolForTraining:(Training*)training;
+-(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;
+-(NSArray*)getRecentProtocols;
 @end

@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class Training;
+@class Training, TrainingProtocol;
 
 @interface TrainingChooserViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
-@property NSArray *recentTrainings;
+@property NSArray *recentProtocols;
 @property NSArray *ownTrainings;
 @property NSArray *foreignTrainings;
 
+@property TrainingProtocol *chosenProtocol;
 @property Training *chosenTraining;
 
 @end
