@@ -24,10 +24,9 @@
         NSLog(@"DataController created");
         if(![[NSUserDefaults standardUserDefaults]objectForKey:@"CTVersion"]){
             
-            [[DataController sharedInstance]createTrainingWithName:@"TestTraining1" andDescription:@"" completition:^(id object){
-                if(object){
-                    Training *t = object;
-                    NSLog(@"Created: %@",t.name);
+            Training *training = [[DataController sharedInstance]createTrainingWithName:@"TestTraining1" andDescription:@""];
+                if(training){
+                    NSLog(@"Created: %@",training.name);
                     
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Bankdrücken",
                                                                              @"describe":@"",
@@ -37,7 +36,7 @@
                                                                              @"sets":[NSNumber numberWithInteger:3],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:60000]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Kniebeugen",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
@@ -46,7 +45,7 @@
                                                                              @"sets":[NSNumber numberWithInteger:3],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:60000]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Arnoldpress",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
@@ -55,7 +54,7 @@
                                                                              @"sets":[NSNumber numberWithInteger:3],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:12500]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Klimmzüge Maschine",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
@@ -64,7 +63,7 @@
                                                                              @"sets":[NSNumber numberWithInteger:4],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:25000]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Hyperextension",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
@@ -73,7 +72,7 @@
                                                                              @"sets":[NSNumber numberWithInteger:3],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:10000]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Sit ups",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
@@ -82,14 +81,11 @@
                                                                              @"sets":[NSNumber numberWithInteger:3],
                                                                              @"shared":[NSNumber numberWithBool:YES],
                                                                              @"weight":[NSNumber numberWithInteger:0]
-                                                                             } forTraining:t];
+                                                                             } forTraining:training];
                     
                     
                 }
-                
-                
-            }];
-            ;
+            
             [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithFloat:1.0] forKey:@"CTVersion"];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }

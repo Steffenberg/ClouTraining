@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class Exercise;
+
 @interface TrainingContentViewController : UIViewController
+
+@property Exercise *exercise;
 
 @end

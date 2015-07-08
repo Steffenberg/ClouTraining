@@ -12,6 +12,8 @@
 #import "Training.h"
 #import "Exercise.h"
 #import "Media.h"
+#import "Protocol.h"
+#import "Entry.h"
 
 @interface DataController()
 
@@ -103,35 +105,37 @@
 
 #pragma mark - Trainings
 
--(void)createTrainingWithName:(NSString *)name andDescription:(NSString*)desc completition:(ObjectReturnBlock)block{
+-(Training*)createTrainingWithName:(NSString *)name andDescription:(NSString*)desc{
     
     if([[self privateContext]fetchObjectsForEntityName:@"Training" predicateWithFormat:@"name = %@",name].count <1){
         
-        
-        [[self privateContext]performBlock:^{
-            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Training" inManagedObjectContext:[self privateContext]];
+        __block Training *t;
+        [[self privateContext]performBlockAndWait:^{
             
-            Training *t = [[Training alloc]initWithEntity:entityDescription insertIntoManagedObjectContext:[self privateContext]];
+            t = [NSEntityDescription insertNewObjectForEntityForName:@"Training" inManagedObjectContext:[self privateContext]];;
             [t setName:name];
             [t setDescribe:desc];
             [t setOwn:[NSNumber numberWithBool:YES]];
             
-            [[self privateContext] insertObject:t];
+            
             [self save];
             
-            block(t);
+            
         }];
         
+        return t;
     }
     
-    block(nil);
+    return nil;
 
     
 }
 
 -(void)updateTraining:(Training *)t withData:(NSDictionary*)data{
-    //t.lastUsed = [NSDate dateWithTimeIntervalSinceNow:-(31*24*60*60)];
-    t.lastUsed = [NSDate date];
+    Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
+    training.lastUsed = [NSDate date];
+    training.describe = [data objectForKey:@"describe"];
+    training.publicate = [data objectForKey:@"publicate"];
     [self save];
 }
 
@@ -229,6 +233,30 @@
     
     
     
+}
+
+#pragma mark - Protocol
+
+-(Protocol*)createProtocolForTraining:(Training*)training{
+    
+    __block Protocol *protocol;
+    [[self privateContext]performBlockAndWait:^{
+        
+        Training *tmp = (Training*)[[self privateContext]existingObjectWithID:training.objectID error:nil];
+        
+        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"Protocol" inManagedObjectContext:[self privateContext]];
+        protocol.date = [NSDate date];
+        protocol.comment = @"";
+        protocol.duration = [NSNumber numberWithInteger:0];
+        protocol.training = tmp;
+        [tmp addProtocolsObject:protocol];
+        
+        [self save];
+        
+        
+    }];
+    
+    return protocol;
 }
 
 

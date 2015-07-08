@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Entry" representedClassName="Entry" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="repititions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" syncable="YES"/>
+        <relationship name="protocol" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Protocol" inverseName="entries" inverseEntity="Protocol" syncable="YES"/>
+    </entity>
     <entity name="Exercise" representedClassName="Exercise" syncable="YES">
         <attribute name="describe" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -21,6 +28,13 @@
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="medias" inverseEntity="Exercise" syncable="YES"/>
     </entity>
+    <entity name="Protocol" representedClassName="Protocol" syncable="YES">
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="protocol" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="protocols" inverseEntity="Training" syncable="YES"/>
+    </entity>
     <entity name="Training" representedClassName="Training" syncable="YES">
         <attribute name="describe" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
@@ -29,10 +43,13 @@
         <attribute name="publicate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="trainingid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="protocols" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Protocol" inverseName="training" inverseEntity="Protocol" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-63" positionY="54" width="128" height="210"/>
+        <element name="Exercise" positionX="-65" positionY="27" width="128" height="208"/>
         <element name="Media" positionX="169" positionY="18" width="128" height="133"/>
-        <element name="Training" positionX="-281" positionY="9" width="128" height="150"/>
+        <element name="Training" positionX="-281" positionY="9" width="128" height="163"/>
+        <element name="Protocol" positionX="-270" positionY="414" width="128" height="118"/>
+        <element name="Entry" positionX="-83" positionY="407" width="128" height="118"/>
     </elements>
 </model>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oBE-Wl-aKu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oBE-Wl-aKu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -38,7 +38,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjU-Dt-Xyz" customClass="ContentGravityView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pjU-Dt-Xyz" customClass="ContentGravityView">
                                 <rect key="frame" x="20" y="331" width="560" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziehe die Übung hier her" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBR-gT-kOe">
@@ -68,7 +68,7 @@
                                     <constraint firstAttribute="centerY" secondItem="hBR-gT-kOe" secondAttribute="centerY" constant="0.5" id="uLH-C2-4pk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-bc-0TC" userLabel="CircleView" customClass="GravityCircleView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-bc-0TC" userLabel="CircleView" customClass="GravityCircleView">
                                 <rect key="frame" x="190" y="84" width="222" height="222"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NvC-bc-0TC" secondAttribute="height" multiplier="1:1" id="Iu1-X9-apG"/>
@@ -141,7 +141,7 @@
         <!--Item 1-->
         <scene sceneID="RUL-on-egk">
             <objects>
-                <viewController id="W2H-fP-HJH" sceneMemberID="viewController">
+                <viewController id="W2H-fP-HJH" customClass="TrainingContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mhS-yR-au7"/>
                         <viewControllerLayoutGuide type="bottom" id="ycl-ff-ddg"/>
@@ -246,7 +246,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="bVe-yV-WiI">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uvR-N8-4TS" id="EIs-aY-NZt"/>
                                     <outlet property="delegate" destination="uvR-N8-4TS" id="s2e-Rc-RRJ"/>
