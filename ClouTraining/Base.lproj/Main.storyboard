@@ -38,7 +38,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pjU-Dt-Xyz" customClass="ContentGravityView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArnieBG.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VTy-8I-iVC">
+                                <rect key="frame" x="0.0" y="64" width="616" height="536"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjU-Dt-Xyz" customClass="ContentGravityView">
                                 <rect key="frame" x="20" y="331" width="560" height="240"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziehe die Übung hier her" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBR-gT-kOe">
@@ -57,7 +60,6 @@
                                         </connections>
                                     </containerView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="80X-mY-eG3" secondAttribute="trailing" id="JHt-bf-dEz"/>
                                     <constraint firstAttribute="bottom" secondItem="80X-mY-eG3" secondAttribute="bottom" id="NXv-yz-Zes"/>
@@ -68,7 +70,7 @@
                                     <constraint firstAttribute="centerY" secondItem="hBR-gT-kOe" secondAttribute="centerY" constant="0.5" id="uLH-C2-4pk"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-bc-0TC" userLabel="CircleView" customClass="GravityCircleView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-bc-0TC" userLabel="CircleView" customClass="GravityCircleView">
                                 <rect key="frame" x="190" y="84" width="222" height="222"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NvC-bc-0TC" secondAttribute="height" multiplier="1:1" id="Iu1-X9-apG"/>
@@ -78,16 +80,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pjU-Dt-Xyz" firstAttribute="top" secondItem="NvC-bc-0TC" secondAttribute="bottom" constant="25" id="0Ph-8p-nKx"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="VTy-8I-iVC" secondAttribute="bottom" id="4pK-0d-gzp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VTy-8I-iVC" secondAttribute="trailing" constant="-32" id="5N4-Rl-OOp"/>
                             <constraint firstAttribute="centerX" secondItem="NvC-bc-0TC" secondAttribute="centerX" constant="-0.5" id="7rQ-mk-9nk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pjU-Dt-Xyz" secondAttribute="trailing" constant="4" id="GjU-v1-0k4"/>
+                            <constraint firstItem="VTy-8I-iVC" firstAttribute="leading" secondItem="ilp-BC-jvD" secondAttribute="leadingMargin" constant="-16" id="Sfy-oL-1mL"/>
                             <constraint firstItem="pjU-Dt-Xyz" firstAttribute="leading" secondItem="ilp-BC-jvD" secondAttribute="leadingMargin" constant="4" id="TVk-FR-lDE"/>
                             <constraint firstItem="NvC-bc-0TC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="ajw-bA-WAb"/>
                             <constraint firstItem="pjU-Dt-Xyz" firstAttribute="height" secondItem="ilp-BC-jvD" secondAttribute="height" multiplier="0.4" id="duF-nt-gRw"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pjU-Dt-Xyz" secondAttribute="bottom" constant="29" id="t3W-zE-J1X"/>
+                            <constraint firstItem="VTy-8I-iVC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="yB6-Z1-WPh"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="NuU-Zb-5Id"/>
                     <navigationItem key="navigationItem" title="Training" id="d3c-T6-fft"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="contentGravityView" destination="pjU-Dt-Xyz" id="Nch-QR-EQm"/>
                         <outlet property="contentTabSuperview" destination="80X-mY-eG3" id="KSU-w7-xFG"/>
@@ -100,7 +107,7 @@
             </objects>
             <point key="canvasLocation" x="1489" y="-841"/>
         </scene>
-        <!--Item-->
+        <!--Images-->
         <scene sceneID="vCy-00-YPc">
             <objects>
                 <viewController id="URO-e8-VUH" sceneMemberID="viewController">
@@ -113,13 +120,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Sa0-ga-dFk"/>
+                    <tabBarItem key="tabBarItem" title="Images" image="camera19" id="Sa0-ga-dFk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNq-vd-m9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3087" y="-843"/>
         </scene>
-        <!--Item 2-->
+        <!--Videos-->
         <scene sceneID="4Ir-th-ya9">
             <objects>
                 <viewController id="ErO-CA-DZc" sceneMemberID="viewController">
@@ -132,13 +139,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="1w9-to-n84"/>
+                    <tabBarItem key="tabBarItem" title="Videos" image="film9" id="1w9-to-n84"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lev-VD-v6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3087" y="-1399"/>
         </scene>
-        <!--Item 1-->
+        <!--Training-->
         <scene sceneID="RUL-on-egk">
             <objects>
                 <viewController id="W2H-fP-HJH" customClass="TrainingContentViewController" sceneMemberID="viewController">
@@ -149,9 +156,8 @@
                     <view key="view" contentMode="scaleToFill" id="XFH-Al-zey">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Tlz-Cv-cxR"/>
+                    <tabBarItem key="tabBarItem" title="Training" image="standingMan" id="Tlz-Cv-cxR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRD-eO-I3D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="2287" y="-843"/>
         </scene>
-        <!--Item-->
+        <!--Tipps-->
         <scene sceneID="m4a-6i-tY1">
             <objects>
                 <viewController id="AeW-Gd-NCC" sceneMemberID="viewController">
@@ -191,7 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="JZ8-3d-WNc"/>
+                    <tabBarItem key="tabBarItem" title="Tipps" image="pencil9" id="JZ8-3d-WNc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDF-2K-Gdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,4 +432,11 @@
             <point key="canvasLocation" x="815" y="938"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ArnieBG.jpg" width="1080" height="1920"/>
+        <image name="camera19" width="16" height="16"/>
+        <image name="film9" width="16" height="16"/>
+        <image name="pencil9" width="16" height="16"/>
+        <image name="standingMan" width="16" height="16"/>
+    </resources>
 </document>
