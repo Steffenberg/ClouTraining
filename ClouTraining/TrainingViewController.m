@@ -10,6 +10,7 @@
 #import "GravityCircleView.h"
 #import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
+#import "ContentTabBarViewController.h"
 #import "Training.h"
 #import "Exercise.h"
 
@@ -57,7 +58,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [_gravityCircleView setupView:_exercises.count];
+    [_gravityCircleView setupView:_exercises];
     [[DataController sharedInstance]updateTraining:_activeTraining withData:nil];
     [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
                                                                               @"duration":[NSNumber numberWithInteger:0]}];
@@ -116,8 +117,11 @@
     _currentOpenCircle = note.object;
     _currentOpenCircle.hidden = !_currentOpenCircle.hidden;
     _currentOpenCircle.contentSuperview = _contentTabSuperview;
-    _contentTabSuperview.hidden = !_contentTabSuperview.hidden;
     
+    ContentTabBarViewController *ctbvc = (ContentTabBarViewController*)[self.childViewControllers lastObject];
+    [ctbvc reloadToExercise:_currentOpenCircle.exercise hide:_contentTabSuperview.hidden completition:^(BOOL complete){
+        _contentTabSuperview.hidden = !_contentTabSuperview.hidden;
+    }];
     
 }
 
@@ -135,9 +139,6 @@
     }
     
 }
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

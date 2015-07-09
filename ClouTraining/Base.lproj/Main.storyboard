@@ -53,7 +53,7 @@
                                     <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80X-mY-eG3">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
                                         <connections>
-                                            <segue destination="Yfd-q6-nF4" kind="embed" id="p74-vk-Vi4"/>
+                                            <segue destination="Yfd-q6-nF4" kind="embed" identifier="EmbedTabBar" id="p74-vk-Vi4"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -157,10 +157,10 @@
             </objects>
             <point key="canvasLocation" x="2287" y="-1399"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Content Tab Bar View Controller-->
         <scene sceneID="hLK-ip-qOM">
             <objects>
-                <tabBarController id="Yfd-q6-nF4" sceneMemberID="viewController">
+                <tabBarController id="Yfd-q6-nF4" customClass="ContentTabBarViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DgF-eD-bA2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

@@ -3,6 +3,7 @@
     <entity name="Entry" representedClassName="Entry" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="repititions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="set" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" syncable="YES"/>
         <relationship name="protocol" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainingProtocol" inverseName="entries" inverseEntity="TrainingProtocol" syncable="YES"/>
@@ -46,10 +47,10 @@
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="protocols" inverseEntity="Training" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-83" positionY="407" width="128" height="118"/>
+        <element name="Entry" positionX="-83" positionY="407" width="128" height="135"/>
         <element name="Exercise" positionX="-65" positionY="27" width="128" height="208"/>
         <element name="Media" positionX="169" positionY="18" width="128" height="133"/>
-        <element name="TrainingProtocol" positionX="-270" positionY="414" width="128" height="120"/>
         <element name="Training" positionX="-281" positionY="9" width="128" height="163"/>
+        <element name="TrainingProtocol" positionX="-270" positionY="414" width="128" height="120"/>
     </elements>
 </model>

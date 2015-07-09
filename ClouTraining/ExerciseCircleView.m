@@ -20,15 +20,6 @@
     return self;
 }
 
--(UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    CGPoint pointInB = [_contentSuperview convertPoint:point fromView:self];
-   
-    //if ([_contentSuperview pointInside:pointInB withEvent:event])
-        //return self;
-    
-    return [super hitTest:point withEvent:event];
-}
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     touch = [touches anyObject];
     previousPoint = [touch locationInView:self.superview];

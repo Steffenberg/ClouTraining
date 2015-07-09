@@ -24,6 +24,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete{
+    _exercise = e;
+    if(_exercise){
+        complete(YES);
+    }else{
+        complete(NO);
+    }
+
+}
+
 /*
 #pragma mark - Navigation
 

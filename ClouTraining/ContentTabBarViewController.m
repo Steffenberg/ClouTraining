@@ -7,6 +7,8 @@
 //
 
 #import "ContentTabBarViewController.h"
+#import "ExerciseCircleView.h"
+#import "TrainingContentViewController.h"
 
 @interface ContentTabBarViewController ()
 
@@ -17,7 +19,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
+
+-(void)reloadToExercise:(Exercise*)e hide:(BOOL)hide completition:(SetupComplete)setupComplete{
+    if(!hide){
+        _exercise = e;
+        TrainingContentViewController *tcvc = [self.viewControllers objectAtIndex:0];
+        [tcvc reloadToExercise:e completition:^(BOOL complete){
+            if(complete){
+                setupComplete(YES);
+            }else{
+                setupComplete(NO);
+            }
+        }];
+   }else{
+        _exercise = nil;
+       setupComplete (YES);
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

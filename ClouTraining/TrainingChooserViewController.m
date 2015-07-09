@@ -132,11 +132,7 @@
         }else{
             tvc.activeTraining = _chosenTraining;
         }
-        
-        
-        
-        
-        
+    
     }
 }
 

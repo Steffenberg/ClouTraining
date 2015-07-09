@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^SetupComplete)(BOOL);
+
+@class Exercise;
+
 @interface ContentTabBarViewController : UITabBarController
+
+@property Exercise *exercise;
+
+-(void)reloadToExercise:(Exercise*)e hide:(BOOL)hide completition:(SetupComplete)setupComplete;
 
 @end

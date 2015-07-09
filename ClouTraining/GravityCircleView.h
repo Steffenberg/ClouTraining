@@ -28,7 +28,7 @@
 
 
 -(id)initWithFrame:(CGRect)frame amountOfChildren:(CGFloat)childAmount;
--(void)setupView:(CGFloat)childAmount;
+-(void)setupView:(NSArray*)exercises;
 -(void)handleContentViewMoved:(NSNotification*)note;
 -(NSMutableDictionary*)getClosestAnchorForChild:(ExerciseCircleView*)child;
 -(void)occuyAnchorForChildren:(ExerciseCircleView *)child;

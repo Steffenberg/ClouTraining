@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^SetupComplete)(BOOL);
+
 @class Exercise;
 
 @interface TrainingContentViewController : UIViewController
 
 @property Exercise *exercise;
+
+-(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete;
 
 @end

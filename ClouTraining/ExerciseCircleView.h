@@ -10,6 +10,8 @@
 
 typedef void(^myCompletion)(BOOL);
 
+@class Exercise;
+
 @interface ExerciseCircleView : UIView{
     UITouch *touch;
     CGPoint previousPoint;
@@ -21,6 +23,8 @@ typedef void(^myCompletion)(BOOL);
 @property BOOL canMove;
 @property NSTimer *unlockTimer;
 @property UIView *contentSuperview;
+
+@property Exercise *exercise;
 
 -(void)snapToAnchor:(CGPoint)anchor;
 -(void)showContent;

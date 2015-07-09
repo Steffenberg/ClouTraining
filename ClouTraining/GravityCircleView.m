@@ -26,23 +26,25 @@
     return self;
 }
 
--(void)setupView:(CGFloat)childAmount{
+-(void)setupView:(NSArray*)exercises{
+    NSInteger childAmount = exercises.count;
     NSLog(@"Frame:%@", NSStringFromCGRect(self.frame));
     caliber = self.frame.size.height;
     extent = 2*(caliber/2)*M_PI;
     childCaliber = (extent/childAmount)/2;
     children = childAmount;
     self.backgroundColor = [UIColor clearColor];
-    [self createChildren];
+    [self createChildren:exercises];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoveBegin:) name:@"ContentViewMoveBegin" object:nil];
 }
 
--(void)createChildren{
+-(void)createChildren:(NSArray*)exercises{
     
     _anchors = [NSMutableArray array];
     for(int i = 0; i<children; i++){
         ExerciseCircleView *child = [[ExerciseCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
+        child.exercise = [exercises objectAtIndex:i];
         child.backgroundColor = [UIColor clearColor];
         CGFloat radian = (360.0/children)* (M_PI / 180);
         CGFloat xy = self.frame.size.width/2;
