@@ -7,6 +7,8 @@
 //
 
 #import "TrainingContentViewController.h"
+#import "TrainingContentTableViewCell.h"
+#import "Exercise.h"
 
 @interface TrainingContentViewController ()
 
@@ -17,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [_table registerNib:[UINib nibWithNibName:@"TrainingContentTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"TrainingContentTableViewCell"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,11 +30,30 @@
 -(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete{
     _exercise = e;
     if(_exercise){
+        _titleLabel.text = e.name;
+        
         complete(YES);
     }else{
         complete(NO);
     }
 
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _exercise.sets.integerValue;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    static NSString *CellIdentifier = @"TrainingContentTableViewCell";
+    TrainingContentTableViewCell *cell = (TrainingContentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+    
+    
+    return cell;
 }
 
 /*

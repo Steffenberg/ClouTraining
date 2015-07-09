@@ -940,6 +940,8 @@
 		F95FF5781B4696D800555327 /* ImageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF5771B4696D800555327 /* ImageContentViewController.m */; };
 		F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF57A1B4696E900555327 /* TippsContentViewController.m */; };
 		F95FF57E1B469C1500555327 /* TrainingChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF57D1B469C1500555327 /* TrainingChooserViewController.m */; };
+		F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */; };
+		F9D5F3951B4EAB6400097B84 /* TrainingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */; };
 		F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */; };
 		F9EFFA831B4A5EB500E87DC6 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */; };
 		F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFA851B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m */; };
@@ -1939,6 +1941,9 @@
 		F95FF57A1B4696E900555327 /* TippsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TippsContentViewController.m; sourceTree = "<group>"; };
 		F95FF57C1B469C1500555327 /* TrainingChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingChooserViewController.h; sourceTree = "<group>"; };
 		F95FF57D1B469C1500555327 /* TrainingChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingChooserViewController.m; sourceTree = "<group>"; };
+		F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingContentTableViewCell.h; sourceTree = "<group>"; };
+		F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingContentTableViewCell.m; sourceTree = "<group>"; };
+		F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingContentTableViewCell.xib; sourceTree = "<group>"; };
 		F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
 		F9EFFA841B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext-EasyFetch.h"; sourceTree = "<group>"; };
@@ -2072,6 +2077,8 @@
 				072D87D31ADE546A001F4370 /* ContentGravityView.m */,
 				072D87D41ADE546A001F4370 /* GravityCircleView.h */,
 				072D87D51ADE546A001F4370 /* GravityCircleView.m */,
+				072D87D01ADE546A001F4370 /* ExerciseCircleView.h */,
+				072D87D11ADE546A001F4370 /* ExerciseCircleView.m */,
 				079BE3E81AE6845500B981B2 /* ContentView */,
 			);
 			name = TrainingViewController;
@@ -2080,12 +2087,9 @@
 		079BE3E81AE6845500B981B2 /* ContentView */ = {
 			isa = PBXGroup;
 			children = (
-				072D87D01ADE546A001F4370 /* ExerciseCircleView.h */,
-				072D87D11ADE546A001F4370 /* ExerciseCircleView.m */,
 				F95FF56D1B46969900555327 /* ContentTabBarViewController.h */,
 				F95FF56E1B46969900555327 /* ContentTabBarViewController.m */,
-				F95FF5701B4696B100555327 /* TrainingContentViewController.h */,
-				F95FF5711B4696B100555327 /* TrainingContentViewController.m */,
+				F9D5F3901B4EAB4500097B84 /* Content */,
 				F95FF5731B4696C800555327 /* VideoContentViewController.h */,
 				F95FF5741B4696C800555327 /* VideoContentViewController.m */,
 				F95FF5761B4696D800555327 /* ImageContentViewController.h */,
@@ -3064,6 +3068,18 @@
 			name = MainMenu;
 			sourceTree = "<group>";
 		};
+		F9D5F3901B4EAB4500097B84 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				F95FF5701B4696B100555327 /* TrainingContentViewController.h */,
+				F95FF5711B4696B100555327 /* TrainingContentViewController.m */,
+				F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */,
+				F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */,
+				F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */,
+			);
+			name = Content;
+			sourceTree = "<group>";
+		};
 		F9EFFA761B4A559100E87DC6 /* DataManagement */ = {
 			isa = PBXGroup;
 			children = (
@@ -3717,6 +3733,7 @@
 				07F7324F1B4E5D5A005ECE10 /* little13.png in Resources */,
 				07F734AC1B4E5D5A005ECE10 /* little9@3x.png in Resources */,
 				07F734861B4E5D5A005ECE10 /* group2@3x.png in Resources */,
+				F9D5F3951B4EAB6400097B84 /* TrainingContentTableViewCell.xib in Resources */,
 				07F732631B4E5D5A005ECE10 /* lock7.png in Resources */,
 				07F735221B4E5D5A005ECE10 /* stop8@3x.png in Resources */,
 				07F732B31B4E5D5A005ECE10 /* small77.png in Resources */,
@@ -4109,6 +4126,7 @@
 			files = (
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
+				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
 				F95FF56F1B46969900555327 /* ContentTabBarViewController.m in Sources */,
 				072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */,
 				072D87AD1ADE51CF001F4370 /* AppDelegate.m in Sources */,
