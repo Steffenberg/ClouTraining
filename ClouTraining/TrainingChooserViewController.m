@@ -40,6 +40,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - tableView
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
 }
@@ -55,6 +57,10 @@
         return @"Andere";
     }
     return nil;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

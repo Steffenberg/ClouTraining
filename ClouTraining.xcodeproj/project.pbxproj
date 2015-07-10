@@ -18,11 +18,6 @@
 		072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D51ADE546A001F4370 /* GravityCircleView.m */; };
 		072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D71ADE546A001F4370 /* TrainingViewController.m */; };
 		072D87E01ADE5D45001F4370 /* Colors in Resources */ = {isa = PBXBuildFile; fileRef = 072D87DF1ADE5D45001F4370 /* Colors */; };
-		07B7336B1B4D54D100D31399 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B7336A1B4D54D100D31399 /* Exercise.m */; };
-		07B7336E1B4D54D100D31399 /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B7336D1B4D54D100D31399 /* TrainingProtocol.m */; };
-		07B733711B4D54D200D31399 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B733701B4D54D200D31399 /* Training.m */; };
-		07B733741B4D54D200D31399 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B733731B4D54D200D31399 /* Entry.m */; };
-		07B733771B4D54D200D31399 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 07B733761B4D54D200D31399 /* Media.m */; };
 		07F731CF1B4E5D5A005ECE10 /* 2x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5B1B4E5D59005ECE10 /* 2x2.png */; };
 		07F731D01B4E5D5A005ECE10 /* 3x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5C1B4E5D59005ECE10 /* 3x3.png */; };
 		07F731D11B4E5D5A005ECE10 /* adjust2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5D1B4E5D59005ECE10 /* adjust2.png */; };
@@ -933,6 +928,8 @@
 		07F737C21B4E743F005ECE10 /* runningShoe.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F737B91B4E743F005ECE10 /* runningShoe.png */; };
 		07F737C31B4E743F005ECE10 /* standingMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F737BA1B4E743F005ECE10 /* standingMan.png */; };
 		07F737C51B4E7515005ECE10 /* ArnieBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07F737C41B4E7515005ECE10 /* ArnieBG.jpg */; };
+		F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */; };
+		F909D68B1B4FB99C0041792E /* CreateTrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */; };
 		F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF56B1B468ECD00555327 /* MainMenuViewController.m */; };
 		F95FF56F1B46969900555327 /* ContentTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF56E1B46969900555327 /* ContentTabBarViewController.m */; };
 		F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF5711B4696B100555327 /* TrainingContentViewController.m */; };
@@ -940,6 +937,12 @@
 		F95FF5781B4696D800555327 /* ImageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF5771B4696D800555327 /* ImageContentViewController.m */; };
 		F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF57A1B4696E900555327 /* TippsContentViewController.m */; };
 		F95FF57E1B469C1500555327 /* TrainingChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF57D1B469C1500555327 /* TrainingChooserViewController.m */; };
+		F96B08561B4FA859001BDEA1 /* CreateTrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B08551B4FA859001BDEA1 /* CreateTrainingViewController.m */; };
+		F96B08591B4FA953001BDEA1 /* CreateExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B08581B4FA953001BDEA1 /* CreateExerciseViewController.m */; };
+		F96B085F1B4FA9C0001BDEA1 /* LoadExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B085E1B4FA9C0001BDEA1 /* LoadExercisesViewController.m */; };
+		F96B08621B4FAE2D001BDEA1 /* ManageTrainingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B08611B4FAE2D001BDEA1 /* ManageTrainingsViewController.m */; };
+		F96B086C1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B086A1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m */; };
+		F96B086D1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */; };
 		F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */; };
 		F9D5F3951B4EAB6400097B84 /* TrainingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */; };
 		F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */; };
@@ -949,6 +952,14 @@
 		F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */; };
 		F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */; };
 		F9EFFAF41B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */; };
+		F9FCCF0E1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */; };
+		F9FCCF0F1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */; };
+		F9FCCF121B4FDAB700E72CFB /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */; };
+		F9FCCF151B4FDAB800E72CFB /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF141B4FDAB800E72CFB /* Entry.m */; };
+		F9FCCF181B4FDAB800E72CFB /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF171B4FDAB800E72CFB /* Exercise.m */; };
+		F9FCCF1B1B4FDAB900E72CFB /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1A1B4FDAB900E72CFB /* Set.m */; };
+		F9FCCF1E1B4FDAB900E72CFB /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1D1B4FDAB900E72CFB /* Media.m */; };
+		F9FCCF211B4FDAB900E72CFB /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF201B4FDAB900E72CFB /* Training.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1007,16 +1018,6 @@
 		07B7332B1B4D42B600D31399 /* setTrainerAboDate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = setTrainerAboDate.php; sourceTree = "<group>"; };
 		07B733421B4D42D000D31399 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		07B733431B4D42D000D31399 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		07B733691B4D54D100D31399 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		07B7336A1B4D54D100D31399 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
-		07B7336C1B4D54D100D31399 /* TrainingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingProtocol.h; sourceTree = "<group>"; };
-		07B7336D1B4D54D100D31399 /* TrainingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingProtocol.m; sourceTree = "<group>"; };
-		07B7336F1B4D54D200D31399 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
-		07B733701B4D54D200D31399 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
-		07B733721B4D54D200D31399 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		07B733731B4D54D200D31399 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		07B733751B4D54D200D31399 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
-		07B733761B4D54D200D31399 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		07F72E5B1B4E5D59005ECE10 /* 2x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2x2.png; sourceTree = "<group>"; };
 		07F72E5C1B4E5D59005ECE10 /* 3x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3x3.png; sourceTree = "<group>"; };
 		07F72E5D1B4E5D59005ECE10 /* adjust2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adjust2.png; sourceTree = "<group>"; };
@@ -1927,6 +1928,9 @@
 		07F737B91B4E743F005ECE10 /* runningShoe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = runningShoe.png; sourceTree = "<group>"; };
 		07F737BA1B4E743F005ECE10 /* standingMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = standingMan.png; sourceTree = "<group>"; };
 		07F737C41B4E7515005ECE10 /* ArnieBG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArnieBG.jpg; sourceTree = "<group>"; };
+		F909D6871B4FB99C0041792E /* CreateTrainingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTrainingTableViewCell.h; sourceTree = "<group>"; };
+		F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTrainingTableViewCell.m; sourceTree = "<group>"; };
+		F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTrainingTableViewCell.xib; sourceTree = "<group>"; };
 		F95FF56A1B468ECD00555327 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		F95FF56B1B468ECD00555327 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		F95FF56D1B46969900555327 /* ContentTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTabBarViewController.h; sourceTree = "<group>"; };
@@ -1941,6 +1945,17 @@
 		F95FF57A1B4696E900555327 /* TippsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TippsContentViewController.m; sourceTree = "<group>"; };
 		F95FF57C1B469C1500555327 /* TrainingChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingChooserViewController.h; sourceTree = "<group>"; };
 		F95FF57D1B469C1500555327 /* TrainingChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingChooserViewController.m; sourceTree = "<group>"; };
+		F96B08541B4FA859001BDEA1 /* CreateTrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTrainingViewController.h; sourceTree = "<group>"; };
+		F96B08551B4FA859001BDEA1 /* CreateTrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTrainingViewController.m; sourceTree = "<group>"; };
+		F96B08571B4FA953001BDEA1 /* CreateExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateExerciseViewController.h; sourceTree = "<group>"; };
+		F96B08581B4FA953001BDEA1 /* CreateExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateExerciseViewController.m; sourceTree = "<group>"; };
+		F96B085D1B4FA9C0001BDEA1 /* LoadExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadExercisesViewController.h; sourceTree = "<group>"; };
+		F96B085E1B4FA9C0001BDEA1 /* LoadExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadExercisesViewController.m; sourceTree = "<group>"; };
+		F96B08601B4FAE2D001BDEA1 /* ManageTrainingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageTrainingsViewController.h; sourceTree = "<group>"; };
+		F96B08611B4FAE2D001BDEA1 /* ManageTrainingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageTrainingsViewController.m; sourceTree = "<group>"; };
+		F96B08691B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageTrainingsTableViewCell.h; sourceTree = "<group>"; };
+		F96B086A1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageTrainingsTableViewCell.m; sourceTree = "<group>"; };
+		F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageTrainingsTableViewCell.xib; sourceTree = "<group>"; };
 		F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingContentTableViewCell.h; sourceTree = "<group>"; };
 		F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingContentTableViewCell.m; sourceTree = "<group>"; };
 		F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -1954,6 +1969,21 @@
 		F9EFFAF01B4AF72700E87DC6 /* TrainingSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectionTableViewCell.h; sourceTree = "<group>"; };
 		F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectionTableViewCell.m; sourceTree = "<group>"; };
 		F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		F9FCCF0B1B4FD0B000E72CFB /* CreateExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateExerciseTableViewCell.h; sourceTree = "<group>"; };
+		F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateExerciseTableViewCell.m; sourceTree = "<group>"; };
+		F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateExerciseTableViewCell.xib; sourceTree = "<group>"; };
+		F9FCCF101B4FDAB700E72CFB /* TrainingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingProtocol.h; sourceTree = "<group>"; };
+		F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingProtocol.m; sourceTree = "<group>"; };
+		F9FCCF131B4FDAB800E72CFB /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		F9FCCF141B4FDAB800E72CFB /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		F9FCCF161B4FDAB800E72CFB /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		F9FCCF171B4FDAB800E72CFB /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		F9FCCF191B4FDAB900E72CFB /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
+		F9FCCF1A1B4FDAB900E72CFB /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
+		F9FCCF1C1B4FDAB900E72CFB /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		F9FCCF1D1B4FDAB900E72CFB /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		F9FCCF1F1B4FDAB900E72CFB /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
+		F9FCCF201B4FDAB900E72CFB /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2028,10 +2058,13 @@
 				07B7332B1B4D42B600D31399 /* setTrainerAboDate.php */,
 				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				072D87B41ADE51CF001F4370 /* Main.storyboard */,
+				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
 				F9EFFA761B4A559100E87DC6 /* DataManagement */,
 				F95FF5691B468E6100555327 /* MainMenu */,
 				F95FF5681B468E4700555327 /* TrainingSelection */,
 				072D87DC1ADE547D001F4370 /* TrainingViewController */,
+				F96B08631B4FAEE2001BDEA1 /* DataManagementViewControllers */,
+				F96B08531B4FA73E001BDEA1 /* DataCreation */,
 				F95FF5671B468E3F00555327 /* Settings */,
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
@@ -3040,6 +3073,19 @@
 			path = IconsAt2;
 			sourceTree = "<group>";
 		};
+		F909D6861B4FB9840041792E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F909D6871B4FB99C0041792E /* CreateTrainingTableViewCell.h */,
+				F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */,
+				F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */,
+				F9FCCF0B1B4FD0B000E72CFB /* CreateExerciseTableViewCell.h */,
+				F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */,
+				F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		F95FF5671B468E3F00555327 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -3066,6 +3112,40 @@
 				F95FF56B1B468ECD00555327 /* MainMenuViewController.m */,
 			);
 			name = MainMenu;
+			sourceTree = "<group>";
+		};
+		F96B08531B4FA73E001BDEA1 /* DataCreation */ = {
+			isa = PBXGroup;
+			children = (
+				F96B08541B4FA859001BDEA1 /* CreateTrainingViewController.h */,
+				F96B08551B4FA859001BDEA1 /* CreateTrainingViewController.m */,
+				F96B08571B4FA953001BDEA1 /* CreateExerciseViewController.h */,
+				F96B08581B4FA953001BDEA1 /* CreateExerciseViewController.m */,
+				F96B085D1B4FA9C0001BDEA1 /* LoadExercisesViewController.h */,
+				F96B085E1B4FA9C0001BDEA1 /* LoadExercisesViewController.m */,
+				F909D6861B4FB9840041792E /* Cells */,
+			);
+			name = DataCreation;
+			sourceTree = "<group>";
+		};
+		F96B08631B4FAEE2001BDEA1 /* DataManagementViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F96B08601B4FAE2D001BDEA1 /* ManageTrainingsViewController.h */,
+				F96B08611B4FAE2D001BDEA1 /* ManageTrainingsViewController.m */,
+				F96B08651B4FAF1A001BDEA1 /* Cells */,
+			);
+			name = DataManagementViewControllers;
+			sourceTree = "<group>";
+		};
+		F96B08651B4FAF1A001BDEA1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F96B08691B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.h */,
+				F96B086A1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m */,
+				F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		F9D5F3901B4EAB4500097B84 /* Content */ = {
@@ -3095,17 +3175,18 @@
 		F9EFFA931B4A6A7700E87DC6 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
-				07B733751B4D54D200D31399 /* Media.h */,
-				07B733761B4D54D200D31399 /* Media.m */,
-				07B733721B4D54D200D31399 /* Entry.h */,
-				07B733731B4D54D200D31399 /* Entry.m */,
-				07B7336F1B4D54D200D31399 /* Training.h */,
-				07B733701B4D54D200D31399 /* Training.m */,
-				07B7336C1B4D54D100D31399 /* TrainingProtocol.h */,
-				07B7336D1B4D54D100D31399 /* TrainingProtocol.m */,
-				07B733691B4D54D100D31399 /* Exercise.h */,
-				07B7336A1B4D54D100D31399 /* Exercise.m */,
+				F9FCCF1F1B4FDAB900E72CFB /* Training.h */,
+				F9FCCF201B4FDAB900E72CFB /* Training.m */,
+				F9FCCF1C1B4FDAB900E72CFB /* Media.h */,
+				F9FCCF1D1B4FDAB900E72CFB /* Media.m */,
+				F9FCCF191B4FDAB900E72CFB /* Set.h */,
+				F9FCCF1A1B4FDAB900E72CFB /* Set.m */,
+				F9FCCF161B4FDAB800E72CFB /* Exercise.h */,
+				F9FCCF171B4FDAB800E72CFB /* Exercise.m */,
+				F9FCCF131B4FDAB800E72CFB /* Entry.h */,
+				F9FCCF141B4FDAB800E72CFB /* Entry.m */,
+				F9FCCF101B4FDAB700E72CFB /* TrainingProtocol.h */,
+				F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -3395,6 +3476,7 @@
 				07F732DE1B4E5D5A005ECE10 /* thin3.png in Resources */,
 				07F737891B4E6F93005ECE10 /* wordpress2@2x.png in Resources */,
 				07F735211B4E5D5A005ECE10 /* stop5@3x.png in Resources */,
+				F9FCCF0F1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib in Resources */,
 				07F732951B4E5D5A005ECE10 /* question3.png in Resources */,
 				07F7322B1B4E5D5A005ECE10 /* error5.png in Resources */,
 				07F736B71B4E6F93005ECE10 /* double7@2x.png in Resources */,
@@ -3744,6 +3826,7 @@
 				07F732751B4E5D5A005ECE10 /* mini3.png in Resources */,
 				07F734B31B4E5D5A005ECE10 /* mail9@3x.png in Resources */,
 				07F732AD1B4E5D5A005ECE10 /* small70.png in Resources */,
+				F909D68B1B4FB99C0041792E /* CreateTrainingTableViewCell.xib in Resources */,
 				07F7377E1B4E6F93005ECE10 /* triangular1@2x.png in Resources */,
 				07F7327B1B4E5D5A005ECE10 /* mini9.png in Resources */,
 				07F732021B4E5D5A005ECE10 /* circle8.png in Resources */,
@@ -3811,6 +3894,7 @@
 				07F737881B4E6F93005ECE10 /* wheel1@2x.png in Resources */,
 				07F734E81B4E5D5A005ECE10 /* screwdriver3@3x.png in Resources */,
 				07F736771B4E6F93005ECE10 /* arrow74@2x.png in Resources */,
+				F96B086D1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib in Resources */,
 				07F732541B4E5D5A005ECE10 /* little19.png in Resources */,
 				07F7345D1B4E5D5A005ECE10 /* cone1@3x.png in Resources */,
 				07F737201B4E6F93005ECE10 /* paperclip3@2x.png in Resources */,
@@ -4127,26 +4211,34 @@
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
 				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
+				F96B08591B4FA953001BDEA1 /* CreateExerciseViewController.m in Sources */,
 				F95FF56F1B46969900555327 /* ContentTabBarViewController.m in Sources */,
+				F9FCCF181B4FDAB800E72CFB /* Exercise.m in Sources */,
+				F9FCCF1E1B4FDAB900E72CFB /* Media.m in Sources */,
 				072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */,
 				072D87AD1ADE51CF001F4370 /* AppDelegate.m in Sources */,
-				07B733711B4D54D200D31399 /* Training.m in Sources */,
 				F95FF57E1B469C1500555327 /* TrainingChooserViewController.m in Sources */,
+				F96B08561B4FA859001BDEA1 /* CreateTrainingViewController.m in Sources */,
 				F9EFFA891B4A60A900E87DC6 /* DataController.m in Sources */,
-				07B7336B1B4D54D100D31399 /* Exercise.m in Sources */,
-				07B733741B4D54D200D31399 /* Entry.m in Sources */,
-				07B733771B4D54D200D31399 /* Media.m in Sources */,
+				F96B085F1B4FA9C0001BDEA1 /* LoadExercisesViewController.m in Sources */,
 				F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */,
+				F9FCCF151B4FDAB800E72CFB /* Entry.m in Sources */,
+				F9FCCF0E1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */,
+				F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
 				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,
+				F9FCCF1B1B4FDAB900E72CFB /* Set.m in Sources */,
 				F95FF5781B4696D800555327 /* ImageContentViewController.m in Sources */,
+				F9FCCF211B4FDAB900E72CFB /* Training.m in Sources */,
+				F96B08621B4FAE2D001BDEA1 /* ManageTrainingsViewController.m in Sources */,
+				F96B086C1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m in Sources */,
 				F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */,
-				07B7336E1B4D54D100D31399 /* TrainingProtocol.m in Sources */,
 				072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */,
+				F9FCCF121B4FDAB700E72CFB /* TrainingProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,11 @@
         NSLog(@"DataController created");
         if(![[NSUserDefaults standardUserDefaults]objectForKey:@"CTVersion"]){
             
-            Training *training = [[DataController sharedInstance]createTrainingWithName:@"TestTraining1" andDescription:@""];
+            Training *training = [[DataController sharedInstance]createTrainingWithData:@{@"name":@"TestTraining1",
+                                                                                          @"describe":@"Check",
+                                                                                          @"publicate":[NSNumber numberWithBool:YES],
+                                                                                          @"own":[NSNumber numberWithBool:YES]
+                                                                                          }];
                 if(training){
                     NSLog(@"Created: %@",training.name);
                     
@@ -32,55 +36,37 @@
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:6],
-                                                                             @"sets":[NSNumber numberWithInteger:3],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:60000]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Kniebeugen",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:8],
-                                                                             @"sets":[NSNumber numberWithInteger:3],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:60000]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Arnoldpress",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:10],
-                                                                             @"sets":[NSNumber numberWithInteger:3],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:12500]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Klimmzüge Maschine",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:5],
-                                                                             @"sets":[NSNumber numberWithInteger:4],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:25000]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Hyperextension",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:10],
-                                                                             @"sets":[NSNumber numberWithInteger:3],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:10000]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Sit ups",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"repititions":[NSNumber numberWithInteger:12],
-                                                                             @"sets":[NSNumber numberWithInteger:3],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"weight":[NSNumber numberWithInteger:0]
+                                                                             @"shared":[NSNumber numberWithBool:YES]
                                                                              } forTraining:training];
                     
                     

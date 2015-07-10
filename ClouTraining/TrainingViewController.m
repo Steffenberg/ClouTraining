@@ -119,7 +119,7 @@
     _currentOpenCircle.contentSuperview = _contentTabSuperview;
     
     ContentTabBarViewController *ctbvc = (ContentTabBarViewController*)[self.childViewControllers lastObject];
-    [ctbvc reloadToExercise:_currentOpenCircle.exercise hide:_contentTabSuperview.hidden completition:^(BOOL complete){
+    [ctbvc reloadToExercise:_currentOpenCircle.exercise hide:!_contentTabSuperview.hidden completition:^(BOOL complete){
         _contentTabSuperview.hidden = !_contentTabSuperview.hidden;
     }];
     

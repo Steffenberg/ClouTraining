@@ -1,23 +1,21 @@
 //
-//  MainMenuViewController.m
+//  LoadExercisesViewController.m
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 03.07.15.
+//  Created by Steffen Gruschka on 10.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
-#import "MainMenuViewController.h"
+#import "LoadExercisesViewController.h"
 
-@interface MainMenuViewController ()
+@interface LoadExercisesViewController ()
 
 @end
 
-@implementation MainMenuViewController
+@implementation LoadExercisesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     // Do any additional setup after loading the view.
 }
 
@@ -26,13 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)showChooseTraining:(id)sender{
-    [self performSegueWithIdentifier:@"ShowTrainingChooser" sender:self];
-}
-
--(IBAction)showCreateTraining:(id)sender{
-    [self performSegueWithIdentifier:@"ShowManageTrainings" sender:self];
-}
 /*
 #pragma mark - Navigation
 

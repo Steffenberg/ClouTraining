@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -19,5 +20,17 @@
 
     // Configure the view for the selected state
 }
+
+-(IBAction)sliderValueChanged:(id)sender{
+    UISlider *slider = (UISlider*)sender;
+    if(slider.tag == 1){
+        slider.value = round(slider.value);
+        _repLabel.text = [NSString stringWithFormat:@"WDH: %.0f",slider.value];
+    }
+    if (slider.tag == 2) {
+        
+    }
+}
+
 
 @end

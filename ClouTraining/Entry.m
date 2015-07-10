@@ -2,12 +2,12 @@
 //  Entry.m
 //  ClouTraining
 //
-//  Created by fastline on 08.07.15.
+//  Created by Steffen Gruschka on 10.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
 #import "Entry.h"
-#import "Exercise.h"
+#import "Set.h"
 #import "TrainingProtocol.h"
 
 
@@ -15,8 +15,7 @@
 
 @dynamic duration;
 @dynamic repititions;
-@dynamic weight;
-@dynamic exercise;
 @dynamic protocol;
+@dynamic set;
 
 @end

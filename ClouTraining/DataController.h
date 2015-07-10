@@ -10,9 +10,8 @@
 #import <CoreData/CoreData.h>
 
 typedef void (^InitCallbackBlock)(void);
-typedef void (^ObjectReturnBlock)(id);
 
-@class Training, Exercise, Media, TrainingProtocol;
+@class Training, Exercise, Media, Set, Entry,TrainingProtocol;
 
 @interface DataController : NSObject
 
@@ -25,8 +24,9 @@ typedef void (^ObjectReturnBlock)(id);
 
 -(void)save;
 
--(Training*)createTrainingWithName:(NSString *)name andDescription:(NSString*)desc;
+-(Training*)createTrainingWithData:(NSDictionary*)data;
 -(void)updateTraining:(Training *)t withData:(NSDictionary*)data;
+-(BOOL)deleteTraining:(Training*)t;
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t;
 -(NSArray*)getOwnTrainings;
 -(NSArray*)getForeignTrainings;
@@ -34,8 +34,12 @@ typedef void (^ObjectReturnBlock)(id);
 -(NSArray*)getRecentTrainings;
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
--(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t completition:(ObjectReturnBlock)block;
+-(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(NSArray*)getExercisesForTraining:(Training*)t;
+
+-(void)createSets:(NSArray *)sets forExercise:(Exercise*)e;
+-(BOOL)deleteSet:(Set*)s;
+-(NSArray*)getSetsForExercise:(Exercise*)e;
 
 -(TrainingProtocol*)createProtocolForTraining:(Training*)training;
 -(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;

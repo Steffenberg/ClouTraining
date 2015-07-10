@@ -14,6 +14,7 @@
 #import "Media.h"
 #import "TrainingProtocol.h"
 #import "Entry.h"
+#import "Set.h"
 
 @interface DataController()
 
@@ -105,17 +106,18 @@
 
 #pragma mark - Trainings
 
--(Training*)createTrainingWithName:(NSString *)name andDescription:(NSString*)desc{
+-(Training*)createTrainingWithData:(NSDictionary*)data{
     
-    if([[self privateContext]fetchObjectsForEntityName:@"Training" predicateWithFormat:@"name = %@",name].count <1){
+    if([[self privateContext]fetchObjectsForEntityName:@"Training" predicateWithFormat:@"name = %@",[data objectForKey:@"name"]].count <1){
         
         __block Training *t;
         [[self privateContext]performBlockAndWait:^{
             
-            t = [NSEntityDescription insertNewObjectForEntityForName:@"Training" inManagedObjectContext:[self privateContext]];;
-            [t setName:name];
-            [t setDescribe:desc];
-            [t setOwn:[NSNumber numberWithBool:YES]];
+            t = [NSEntityDescription insertNewObjectForEntityForName:@"Training" inManagedObjectContext:[self privateContext]];
+            [t setName:[data objectForKey:@"name"]];
+            [t setDescribe:[data objectForKey:@"describe"]];
+            [t setOwn:[data objectForKey:@"own"]];
+            [t setPublicate:[data objectForKey:@"publicate"]];
             
             
             [self save];
@@ -133,10 +135,21 @@
 
 -(void)updateTraining:(Training *)t withData:(NSDictionary*)data{
     Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
-    training.lastUsed = [NSDate date];
-    training.describe = [data objectForKey:@"describe"];
-    training.publicate = [data objectForKey:@"publicate"];
+    [training setLastUsed:[NSDate date]];
+    [training setName:[data objectForKey:@"name"]];
+    [training setDescribe:[data objectForKey:@"describe"]];
+     [training setPublicate:[data objectForKey:@"publicate"]];
     [self save];
+}
+
+-(BOOL)deleteTraining:(Training*)t{
+    Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
+    if(training){
+        [[self managedObjectContext]deleteObject:training];
+        [self save];
+        return YES;
+    }
+    return NO;
 }
 
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t{
@@ -172,24 +185,21 @@
     
     if([[self privateContext]fetchObjectsForEntityName:@"Exercise" predicateWithFormat:@"name = %@",name].count <1){
         
+        Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
         
         [[self privateContext]performBlock:^{
-            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
             
-            Exercise *e = [[Exercise alloc]initWithEntity:entityDescription insertIntoManagedObjectContext:[self privateContext]];
+            Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
             e.name = name;
             e.describe = [data objectForKey:@"describe"];
             e.distance = [data objectForKey:@"distance"];
             e.duration = [data objectForKey:@"duration"];
-            e.repititions = [data objectForKey:@"repititions"];
-            e.sets = [data objectForKey:@"sets"];
             e.shared = [data objectForKey:@"shared"];
-            e.weight = [data objectForKey:@"weight"];
             
-            [e setTraining:t];
-            [t addExerciseObject:e];
+            [e setTraining:training];
+            [training addExerciseObject:e];
             
-            [[self privateContext] insertObject:e];
+            
             [self save];
             
         }];
@@ -199,38 +209,36 @@
     
     
 }
--(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t completition:(ObjectReturnBlock)block{
+-(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t{
     
     NSString *name = [data objectForKey:@"name"];
     
-    if([[self privateContext]fetchObjectsForEntityName:@"Exercise" predicateWithFormat:@"name = %@",name].count <1){
-        
-        
-        [[self privateContext]performBlock:^{
-            NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+    
+    
+    __block Exercise *e;
+        [[self privateContext]performBlockAndWait:^{
             
-            Exercise *e = [[Exercise alloc]initWithEntity:entityDescription insertIntoManagedObjectContext:[self privateContext]];
+            Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
+            
+            e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
             e.name = name;
             e.describe = [data objectForKey:@"describe"];
             e.distance = [data objectForKey:@"distance"];
             e.duration = [data objectForKey:@"duration"];
-            e.repititions = [data objectForKey:@"repititions"];
-            e.sets = [data objectForKey:@"sets"];
             e.shared = [data objectForKey:@"shared"];
-            e.weight = [data objectForKey:@"weight"];
             
-            [e setTraining:t];
-            [t addExerciseObject:e];
             
-            [[self privateContext] insertObject:e];
+            [e setTraining:training];
+            [training addExerciseObject:e];
+            
             [self save];
             
-            block(e);
+            
             
         }];
         
-    }
-    block(nil);
+    
+    return e;
     
     
     
@@ -238,6 +246,45 @@
 
 -(NSArray*)getExercisesForTraining:(Training*)t{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"training=%@",t];
+}
+
+#pragma mark - Sets
+
+-(void)createSets:(NSArray *)sets forExercise:(Exercise*)e{
+    
+        [[self privateContext]performBlock:^{
+            Exercise *exercise = (Exercise*)[[self privateContext]existingObjectWithID:e.objectID error:nil];
+            
+            for(NSDictionary *data in sets){
+                Set *s = [NSEntityDescription insertNewObjectForEntityForName:@"Set" inManagedObjectContext:[self privateContext]];
+                [s setNumber:[data objectForKey:@"number"]];
+                [s setRepititions:[data objectForKey:@"repititions"]];
+                [s setWeight:[data objectForKey:@"weight"]];
+                
+                [s setExercise:exercise];
+                [exercise addSetsObject:s];
+            }
+            
+            
+            
+            [self save];
+            
+        }];
+    
+}
+
+-(BOOL)deleteSet:(Set*)s{
+    Set *set = (Set*)[[self managedObjectContext]existingObjectWithID:s.objectID error:nil];
+    if(set){
+        [[self managedObjectContext]deleteObject:set];
+        [self save];
+        return YES;
+    }
+    return NO;
+}
+
+-(NSArray*)getSetsForExercise:(Exercise*)e{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Set" sortByKey:@"number"ascending:YES predicateWithFormat:@"exercise=%@",e];
 }
 
 #pragma mark - TrainingProtocol

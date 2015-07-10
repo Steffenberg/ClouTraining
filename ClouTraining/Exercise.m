@@ -2,12 +2,13 @@
 //  Exercise.m
 //  ClouTraining
 //
-//  Created by fastline on 08.07.15.
+//  Created by Steffen Gruschka on 10.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
 #import "Exercise.h"
 #import "Media.h"
+#import "Set.h"
 #import "Training.h"
 
 
@@ -18,11 +19,9 @@
 @dynamic duration;
 @dynamic exerciseid;
 @dynamic name;
-@dynamic repititions;
-@dynamic sets;
 @dynamic shared;
-@dynamic weight;
 @dynamic medias;
+@dynamic sets;
 @dynamic training;
 
 @end

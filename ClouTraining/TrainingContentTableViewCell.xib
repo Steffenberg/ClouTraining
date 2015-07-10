@@ -15,56 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g22-gz-cXq" userLabel="GymView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satz 1:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDT-W9-lPo">
-                                <rect key="frame" x="8" y="8" width="173" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99999.99 KG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pio-Uf-FMe">
-                                <rect key="frame" x="190" y="8" width="114" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WDH: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aR-bm-IG9">
-                                <rect key="frame" x="8" y="38" width="69" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziel: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nc-LQ-eiG">
-                                <rect key="frame" x="8" y="55" width="69" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="l0t-3Z-GsN">
-                                <rect key="frame" x="82" y="38" width="224" height="31"/>
-                            </slider>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="l0t-3Z-GsN" secondAttribute="trailing" constant="16" id="8u0-XS-n6p"/>
-                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="leading" secondItem="5aR-bm-IG9" secondAttribute="trailing" constant="7" id="HRK-ca-PCJ"/>
-                            <constraint firstItem="5aR-bm-IG9" firstAttribute="width" secondItem="l0t-3Z-GsN" secondAttribute="width" multiplier="0.31" id="IBL-8e-dwC"/>
-                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="width" secondItem="5aR-bm-IG9" secondAttribute="width" id="Kbv-kf-udi"/>
-                            <constraint firstItem="QDT-W9-lPo" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="8" id="MmK-aQ-kkb"/>
-                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="top" secondItem="pio-Uf-FMe" secondAttribute="bottom" constant="9" id="Xbv-kN-lhw"/>
-                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="leading" secondItem="2Nc-LQ-eiG" secondAttribute="trailing" constant="7" id="Xg4-6v-XnN"/>
-                            <constraint firstItem="QDT-W9-lPo" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="8" id="XpC-4O-y8I"/>
-                            <constraint firstItem="QDT-W9-lPo" firstAttribute="width" secondItem="pio-Uf-FMe" secondAttribute="width" multiplier="1.51" id="bgk-65-k0W"/>
-                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="top" secondItem="5aR-bm-IG9" secondAttribute="bottom" constant="-4" id="dsa-Py-pEk"/>
-                            <constraint firstItem="pio-Uf-FMe" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="8" id="gEH-W2-Ylt"/>
-                            <constraint firstItem="5aR-bm-IG9" firstAttribute="top" secondItem="QDT-W9-lPo" secondAttribute="bottom" constant="9" id="hOU-xJ-5Xi"/>
-                            <constraint firstItem="5aR-bm-IG9" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="8" id="mQm-K3-R3D"/>
-                            <constraint firstAttribute="trailing" secondItem="pio-Uf-FMe" secondAttribute="trailing" constant="16" id="pLR-d0-BjN"/>
-                            <constraint firstItem="pio-Uf-FMe" firstAttribute="leading" secondItem="QDT-W9-lPo" secondAttribute="trailing" constant="9" id="piS-Rj-Dor"/>
-                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="8" id="sra-2e-6Ul"/>
-                        </constraints>
-                    </view>
                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="492-yl-mLE" userLabel="RunningView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                         <subviews>
@@ -80,10 +30,61 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="480" translatesAutoresizingMaskIntoConstraints="NO" id="XSm-aa-0qH">
+                            <slider opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="480" translatesAutoresizingMaskIntoConstraints="NO" id="XSm-aa-0qH">
                                 <rect key="frame" x="82" y="38" width="224" height="31"/>
                             </slider>
                         </subviews>
+                    </view>
+                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g22-gz-cXq" userLabel="GymView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Satz" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDT-W9-lPo">
+                                <rect key="frame" x="16" y="8" width="168" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99999.99 KG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pio-Uf-FMe">
+                                <rect key="frame" x="193" y="8" width="111" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WDH: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aR-bm-IG9">
+                                <rect key="frame" x="16" y="38" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziel: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nc-LQ-eiG">
+                                <rect key="frame" x="16" y="55" width="69" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="l0t-3Z-GsN">
+                                <rect key="frame" x="102" y="38" width="204" height="31"/>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="ACA-wD-Cpj"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="l0t-3Z-GsN" secondAttribute="trailing" constant="16" id="8u0-XS-n6p"/>
+                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="leading" secondItem="5aR-bm-IG9" secondAttribute="trailing" constant="19" id="HRK-ca-PCJ"/>
+                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="width" secondItem="5aR-bm-IG9" secondAttribute="width" id="Kbv-kf-udi"/>
+                            <constraint firstItem="QDT-W9-lPo" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="16" id="MmK-aQ-kkb"/>
+                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="top" secondItem="pio-Uf-FMe" secondAttribute="bottom" constant="9" id="Xbv-kN-lhw"/>
+                            <constraint firstItem="QDT-W9-lPo" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="8" id="XpC-4O-y8I"/>
+                            <constraint firstItem="QDT-W9-lPo" firstAttribute="width" secondItem="pio-Uf-FMe" secondAttribute="width" multiplier="1.51" id="bgk-65-k0W"/>
+                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="top" secondItem="5aR-bm-IG9" secondAttribute="bottom" constant="-4" id="dsa-Py-pEk"/>
+                            <constraint firstItem="pio-Uf-FMe" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="8" id="gEH-W2-Ylt"/>
+                            <constraint firstItem="5aR-bm-IG9" firstAttribute="top" secondItem="QDT-W9-lPo" secondAttribute="bottom" constant="9" id="hOU-xJ-5Xi"/>
+                            <constraint firstItem="5aR-bm-IG9" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="16" id="mQm-K3-R3D"/>
+                            <constraint firstAttribute="trailing" secondItem="pio-Uf-FMe" secondAttribute="trailing" constant="16" id="pLR-d0-BjN"/>
+                            <constraint firstItem="pio-Uf-FMe" firstAttribute="leading" secondItem="QDT-W9-lPo" secondAttribute="trailing" constant="9" id="piS-Rj-Dor"/>
+                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="16" id="sra-2e-6Ul"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -93,6 +94,13 @@
                     <constraint firstAttribute="bottomMargin" secondItem="g22-gz-cXq" secondAttribute="bottom" constant="-9" id="nUR-yZ-TN8"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="repLabel" destination="5aR-bm-IG9" id="aCV-v7-jVw"/>
+                <outlet property="repSlider" destination="l0t-3Z-GsN" id="JbE-te-Nbt"/>
+                <outlet property="setLabel" destination="QDT-W9-lPo" id="m4E-cF-CQJ"/>
+                <outlet property="targetLabel" destination="2Nc-LQ-eiG" id="0pk-cI-Dh5"/>
+                <outlet property="weightLabel" destination="pio-Uf-FMe" id="0sj-jR-9xJ"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

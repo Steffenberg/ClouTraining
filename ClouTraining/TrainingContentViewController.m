@@ -31,7 +31,7 @@
     _exercise = e;
     if(_exercise){
         _titleLabel.text = e.name;
-        
+        [_table reloadData];
         complete(YES);
     }else{
         complete(NO);
@@ -40,7 +40,11 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _exercise.sets.integerValue;
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 80;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -50,6 +54,12 @@
     static NSString *CellIdentifier = @"TrainingContentTableViewCell";
     TrainingContentTableViewCell *cell = (TrainingContentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    cell.setLabel.text = [NSString stringWithFormat:@"Satz: %zd", row];
+    cell.repLabel.text = [NSString stringWithFormat:@"WDH: %.0f",cell.repSlider.value];
+    //CGFloat weight = _exercise.weight.integerValue/1000.0f;
+    //cell.weightLabel.text = [NSString stringWithFormat:@"%.2f KG", weight];
     
     
     
