@@ -404,12 +404,41 @@
                                     <constraint firstAttribute="bottom" secondItem="l9m-HZ-ltl" secondAttribute="bottom" constant="10" id="usk-Ns-Yue"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09z-Zd-03w" userLabel="Settings">
-                                <rect key="frame" x="20" y="471" width="560" height="109"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-t9-LAP" userLabel="Tipp erstellen">
                                 <rect key="frame" x="20" y="342" width="560" height="109"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-9J-EzD">
+                                        <rect key="frame" x="10" y="10" width="540" height="89"/>
+                                        <state key="normal" title="Tipp erstellen">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showCreateTraining:" destination="A0f-7g-qOZ" eventType="touchUpInside" id="3yb-nT-RR3"/>
+                                            <segue destination="vav-8v-gdk" kind="show" id="Ug1-w0-Gzb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="top" secondItem="zdT-t9-LAP" secondAttribute="top" constant="10" id="PQW-4E-IWh"/>
+                                    <constraint firstAttribute="trailing" secondItem="LbI-9J-EzD" secondAttribute="trailing" constant="10" id="RUd-js-YRn"/>
+                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="leading" secondItem="zdT-t9-LAP" secondAttribute="leading" constant="10" id="qYd-7H-Nqs"/>
+                                    <constraint firstAttribute="bottom" secondItem="LbI-9J-EzD" secondAttribute="bottom" constant="10" id="wft-xX-Agh"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09z-Zd-03w" userLabel="Settings">
+                                <rect key="frame" x="20" y="471" width="560" height="109"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-0E-kih">
+                                        <rect key="frame" x="10" y="10" width="540" height="89"/>
+                                        <state key="normal" title="Trainings verwalten">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showCreateTraining:" destination="A0f-7g-qOZ" eventType="touchUpInside" id="Tsa-Em-shh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -506,6 +535,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OLX-La-Btz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="815" y="129"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="nRQ-t0-wBe">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="vav-8v-gdk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0H3-8O-wPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="839"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GHj-TM-wVO">
