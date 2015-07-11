@@ -960,6 +960,10 @@
 		F9FCCF1B1B4FDAB900E72CFB /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1A1B4FDAB900E72CFB /* Set.m */; };
 		F9FCCF1E1B4FDAB900E72CFB /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1D1B4FDAB900E72CFB /* Media.m */; };
 		F9FCCF211B4FDAB900E72CFB /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF201B4FDAB900E72CFB /* Training.m */; };
+		F9FCCF241B51937B00E72CFB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */; };
+		F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */; };
+		F9FCCF2A1B51956F00E72CFB /* ChooseExerciseCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */; };
+		F9FCCF2D1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1984,6 +1988,13 @@
 		F9FCCF1D1B4FDAB900E72CFB /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		F9FCCF1F1B4FDAB900E72CFB /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
 		F9FCCF201B4FDAB900E72CFB /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
+		F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureVideoViewController.h; sourceTree = "<group>"; };
+		F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureVideoViewController.m; sourceTree = "<group>"; };
+		F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseExerciseCaptureViewController.h; sourceTree = "<group>"; };
+		F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseExerciseCaptureViewController.m; sourceTree = "<group>"; };
+		F9FCCF2B1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseForeignExerciseCaptureViewController.h; sourceTree = "<group>"; };
+		F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseForeignExerciseCaptureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1991,6 +2002,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9FCCF241B51937B00E72CFB /* MobileCoreServices.framework in Frameworks */,
 				F9EFFA831B4A5EB500E87DC6 /* libobjc.dylib in Frameworks */,
 				F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */,
 			);
@@ -2009,6 +2021,7 @@
 		072D879B1ADE51CF001F4370 = {
 			isa = PBXGroup;
 			children = (
+				F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */,
 				F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */,
 				F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */,
 				072D87A61ADE51CF001F4370 /* ClouTraining */,
@@ -2065,6 +2078,7 @@
 				072D87DC1ADE547D001F4370 /* TrainingViewController */,
 				F96B08631B4FAEE2001BDEA1 /* DataManagementViewControllers */,
 				F96B08531B4FA73E001BDEA1 /* DataCreation */,
+				F9FCCF221B518E2400E72CFB /* CaptrueVideo */,
 				F95FF5671B468E3F00555327 /* Settings */,
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
@@ -3191,6 +3205,19 @@
 			name = DataModels;
 			sourceTree = "<group>";
 		};
+		F9FCCF221B518E2400E72CFB /* CaptrueVideo */ = {
+			isa = PBXGroup;
+			children = (
+				F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */,
+				F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */,
+				F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */,
+				F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */,
+				F9FCCF2B1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.h */,
+				F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */,
+			);
+			name = CaptrueVideo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4209,6 +4236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
+				F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
 				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
 				F96B08591B4FA953001BDEA1 /* CreateExerciseViewController.m in Sources */,
@@ -4226,6 +4254,7 @@
 				F9FCCF0E1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */,
+				F9FCCF2D1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m in Sources */,
 				F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
@@ -4239,6 +4268,7 @@
 				F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */,
 				072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */,
 				F9FCCF121B4FDAB700E72CFB /* TrainingProtocol.m in Sources */,
+				F9FCCF2A1B51956F00E72CFB /* ChooseExerciseCaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

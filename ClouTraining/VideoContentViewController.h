@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface VideoContentViewController : UIViewController
+
+@property (strong) UIImagePickerController *picker;
 
 @end

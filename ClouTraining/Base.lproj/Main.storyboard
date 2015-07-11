@@ -126,10 +126,28 @@
             </objects>
             <point key="canvasLocation" x="3087" y="-843"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="XQE-cq-tmz">
+            <objects>
+                <viewController id="Dzn-v8-bho" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RaT-4u-sVU"/>
+                        <viewControllerLayoutGuide type="bottom" id="00s-ay-7d4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GFs-my-PVs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GZD-jC-AZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3101" y="-1896"/>
+        </scene>
         <!--Videos-->
         <scene sceneID="4Ir-th-ya9">
             <objects>
-                <viewController id="ErO-CA-DZc" sceneMemberID="viewController">
+                <viewController id="ErO-CA-DZc" customClass="VideoContentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XIt-6T-0eD"/>
                         <viewControllerLayoutGuide type="bottom" id="6UH-7U-J5P"/>
@@ -137,7 +155,33 @@
                     <view key="view" contentMode="scaleToFill" id="44C-GJ-CnB">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film9" translatesAutoresizingMaskIntoConstraints="NO" id="xR2-nf-05E">
+                                <rect key="frame" x="193" y="8" width="175" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xR2-nf-05E" secondAttribute="height" multiplier="1:1" id="9ea-c5-xHn"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hco-xc-ogN">
+                                <rect key="frame" x="193" y="8" width="175" height="175"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadCapture:" destination="ErO-CA-DZc" eventType="touchUpInside" id="RMk-Ea-ypW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6UH-7U-J5P" firstAttribute="top" secondItem="xR2-nf-05E" secondAttribute="bottom" constant="8" id="Dmv-8k-5ND"/>
+                            <constraint firstItem="xR2-nf-05E" firstAttribute="top" secondItem="XIt-6T-0eD" secondAttribute="bottom" constant="8" id="FN8-Rv-qgG"/>
+                            <constraint firstItem="Hco-xc-ogN" firstAttribute="bottom" secondItem="xR2-nf-05E" secondAttribute="bottom" id="HSe-oU-JiC"/>
+                            <constraint firstItem="Hco-xc-ogN" firstAttribute="trailing" secondItem="xR2-nf-05E" secondAttribute="trailing" id="Hms-RL-hO5"/>
+                            <constraint firstItem="Hco-xc-ogN" firstAttribute="leading" secondItem="xR2-nf-05E" secondAttribute="leading" id="Ofg-0D-GKh"/>
+                            <constraint firstItem="Hco-xc-ogN" firstAttribute="top" secondItem="xR2-nf-05E" secondAttribute="top" id="eZ2-BF-xgR"/>
+                            <constraint firstAttribute="centerX" secondItem="xR2-nf-05E" secondAttribute="centerX" constant="-0.5" id="yW8-OP-DhQ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Videos" image="film9" id="1w9-to-n84"/>
                 </viewController>
@@ -393,7 +437,6 @@
                     <connections>
                         <segue destination="KzW-zw-bhN" kind="show" identifier="ShowManageTrainings" id="9ll-ef-h0V"/>
                         <segue destination="RKB-Qj-7wK" kind="show" identifier="ShowSettings" id="Dp2-4s-axP"/>
-                        <segue destination="WZY-K0-PSW" kind="show" id="iO7-vc-7be"/>
                         <segue destination="7zi-tz-1V2" kind="show" identifier="ShowTrainingChooser" id="5UM-zf-7vn"/>
                     </connections>
                 </viewController>
@@ -730,6 +773,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Jw8-pp-2fC" id="jhx-aM-EED"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1St-aH-Nxm">
                                         <rect key="frame" x="111" y="49" width="481" height="30"/>
@@ -738,6 +784,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Jw8-pp-2fC" id="PZM-FO-bhy"/>
+                                        </connections>
                                     </textField>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l5D-by-bPi">
                                         <rect key="frame" x="128" y="88" width="51" height="31"/>
@@ -830,25 +879,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k9R-9v-HTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3075" y="861"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1CN-NI-3IO">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="WZY-K0-PSW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eMJ-lV-BvS"/>
-                        <viewControllerLayoutGuide type="bottom" id="Csg-35-AFc"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NAs-l3-fuk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="43j-Jl-pCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="815" y="938"/>
         </scene>
     </scenes>
     <resources>

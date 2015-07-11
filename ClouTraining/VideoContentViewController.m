@@ -18,6 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+- (IBAction)loadCapture:(id)sender {
+    if(!_picker){
+        _picker = [[UIImagePickerController alloc]init];
+        _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _picker.videoMaximumDuration = 120;
+        _picker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
+        _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
+        _picker.videoQuality = UIImagePickerControllerQualityTypeIFrame1280x720;
+        
+        [self presentViewController:_picker animated:YES completion:^(void){
+            
+        }];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

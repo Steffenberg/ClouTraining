@@ -15,6 +15,7 @@
 
 @dynamic duration;
 @dynamic repititions;
+@dynamic weight;
 @dynamic protocol;
 @dynamic set;
 

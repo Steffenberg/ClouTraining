@@ -44,4 +44,7 @@ typedef void (^InitCallbackBlock)(void);
 -(TrainingProtocol*)createProtocolForTraining:(Training*)training;
 -(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;
 -(NSArray*)getRecentProtocols;
+
+-(Entry*)createEntry:(NSDictionary*)data forProtocol:(TrainingProtocol*)protocol andSet:(Set*)set;
+-(void)updateEntry:(Entry *)e withData:(NSDictionary*)data;
 @end

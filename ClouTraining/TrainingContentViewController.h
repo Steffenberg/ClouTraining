@@ -11,10 +11,12 @@
 typedef void (^SetupComplete)(BOOL);
 
 @class Exercise;
+@class Set;
 
 @interface TrainingContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property Exercise *exercise;
+@property NSMutableArray *sets;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 

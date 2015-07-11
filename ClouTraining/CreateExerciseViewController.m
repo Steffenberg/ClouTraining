@@ -166,7 +166,7 @@
 {
     CGRect keyboardFrame = [n.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    _bottomConstraint.constant -= keyboardFrame.size.height;
+    _bottomConstraint.constant = 0;
     [self.view setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:[n.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue] animations:^{

@@ -323,7 +323,43 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
 }
 
+#pragma mark - Entry
 
+-(Entry*)createEntry:(NSDictionary*)data forProtocol:(TrainingProtocol*)protocol andSet:(Set*)set{
+    
+    __block Entry *entry;
+    [[self privateContext]performBlockAndWait:^{
+        
+        TrainingProtocol *tmp = (TrainingProtocol*)[[self privateContext]existingObjectWithID:protocol.objectID error:nil];
+        Set *tmpSet = (Set*)[[self privateContext]existingObjectWithID:set.objectID error:nil];
+        
+        entry = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:[self privateContext]];
+        entry.weight = [data objectForKey:@"weight"];
+        entry.duration = [data objectForKey:@"duration"];
+        entry.repititions = [data objectForKey:@"repititions"];
+        
+        entry.set = tmpSet;
+        entry.protocol = tmp;
+        
+        [set addEntriesObject:entry];
+        [tmp addEntriesObject:entry];
+        
+        [self save];
+        
+        
+    }];
+    
+    return entry;
+}
+
+-(void)updateEntry:(Entry *)e withData:(NSDictionary*)data{
+    Entry *entry = (Entry*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    entry.weight = [data objectForKey:@"weight"];
+    entry.duration = [data objectForKey:@"duration"];
+    entry.repititions = [data objectForKey:@"repititions"];
+    
+    [self save];
+}
 
 
 #pragma mark - Media

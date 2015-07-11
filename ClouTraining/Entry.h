@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSNumber * repititions;
+@property (nonatomic, retain) NSNumber * weight;
 @property (nonatomic, retain) TrainingProtocol *protocol;
 @property (nonatomic, retain) Set *set;
 

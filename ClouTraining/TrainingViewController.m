@@ -59,7 +59,10 @@
     [super viewDidAppear:animated];
     
     [_gravityCircleView setupView:_exercises];
-    [[DataController sharedInstance]updateTraining:_activeTraining withData:nil];
+    [[DataController sharedInstance]updateTraining:_activeTraining withData:@{@"name":_activeTraining.name,
+                                                                              @"describe":_activeTraining.describe,
+                                                                              @"publicate":_activeTraining.publicate
+                                                                              }];
     [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
                                                                               @"duration":[NSNumber numberWithInteger:0]}];
     [_gravityCircleView setNeedsDisplay];
