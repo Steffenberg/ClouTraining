@@ -78,6 +78,8 @@
              if (exportSession.status == AVAssetExportSessionStatusCompleted)
              {
                  NSLog(@"completed");
+                 //WICHTIG!!! QUELLVIEDEO LÖSCHEN!!!
+                 
                  _videoData = [NSData dataWithContentsOfURL:fileURL];
                  
                  NSLog(@"Filesize - before: %f \nafter: %f", videoLargeData.length/1000.0f, _videoData.length/1000.0f);
@@ -118,18 +120,19 @@
 
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+     [_picker dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"Capture Canceled");
 }
 
 - (IBAction)createImage:(id)sender {
-    /*_picker = [[UIImagePickerController alloc]init];
+    _picker = [[UIImagePickerController alloc]init];
     _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
     _picker.videoQuality = UIImagePickerControllerQualityTypeMedium;
     _picker.delegate = self;
     [self presentViewController:_picker animated:YES completion:^(void){
         
-    }];*/
+    }];
     
     /*if(!_imagePicker){
         _imagePicker = [[ELCImagePickerController alloc] initImagePicker];
