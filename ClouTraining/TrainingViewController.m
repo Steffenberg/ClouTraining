@@ -35,9 +35,12 @@
     
     if(!_activeProtocol){
         _activeProtocol = [[DataController sharedInstance]createProtocolForTraining:_activeTraining];
+        _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
+    }else{
+        
     }
     
-    _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
+    
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
     
@@ -59,12 +62,11 @@
     [super viewDidAppear:animated];
     
     [_gravityCircleView setupView:_exercises];
-    [[DataController sharedInstance]updateTraining:_activeTraining withData:@{@"name":_activeTraining.name,
-                                                                              @"describe":_activeTraining.describe,
-                                                                              @"publicate":_activeTraining.publicate
-                                                                              }];
-    [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
-                                                                              @"duration":[NSNumber numberWithInteger:0]}];
+    if(_activeProtocol){
+        [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
+                                                                                  @"duration":[NSNumber numberWithInteger:0]}];
+    }
+    
     [_gravityCircleView setNeedsDisplay];
 }
 

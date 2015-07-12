@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class GravityCircleView, ContentGravityView, ExerciseCircleView, Training, Exercise;
+@class GravityCircleView, ContentGravityView, ExerciseCircleView, Training, Exercise, ExerciseProtocol;
 
 @interface TrainingViewController : UIViewController<UIGestureRecognizerDelegate>
 

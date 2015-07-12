@@ -10,4 +10,5 @@
 
 @interface LoadExercisesViewController : UIViewController
 
+@property Training *training;
 @end

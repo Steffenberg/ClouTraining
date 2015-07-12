@@ -1,23 +1,20 @@
 //
-//  Training.m
+//  ExerciseProtocol.m
 //  ClouTraining
 //
 //  Created by Steffen Gruschka on 12.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
-#import "Training.h"
+#import "ExerciseProtocol.h"
 #import "Exercise.h"
 #import "TrainingProtocol.h"
 
 
-@implementation Training
+@implementation ExerciseProtocol
 
-@dynamic describe;
-@dynamic name;
-@dynamic own;
-@dynamic trainingid;
-@dynamic protocols;
-@dynamic exercises;
+@dynamic setEntries;
+@dynamic exercise;
+@dynamic protocol;
 
 @end

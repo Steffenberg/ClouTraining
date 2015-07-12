@@ -20,6 +20,7 @@
 @property Training *training;
 @property NSArray *exercises;
 @property NSMutableArray *addedExercises;
+@property NSMutableArray *chosenExercises;
 
 - (IBAction)trainingSwitchChanged:(id)sender;
 - (IBAction)onlineSwitchChanged:(id)sender;

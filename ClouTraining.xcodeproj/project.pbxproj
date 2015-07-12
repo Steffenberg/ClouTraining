@@ -930,6 +930,18 @@
 		07F737C51B4E7515005ECE10 /* ArnieBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07F737C41B4E7515005ECE10 /* ArnieBG.jpg */; };
 		F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */; };
 		F909D68B1B4FB99C0041792E /* CreateTrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */; };
+		F90F7A281B52768300A32044 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A271B52768300A32044 /* Exercise.m */; };
+		F90F7A2B1B52768300A32044 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A2A1B52768300A32044 /* Training.m */; };
+		F90F7A2E1B52768400A32044 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A2D1B52768400A32044 /* Media.m */; };
+		F90F7A311B52768400A32044 /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A301B52768400A32044 /* TrainingProtocol.m */; };
+		F90F7A341B52768400A32044 /* ExerciseProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A331B52768400A32044 /* ExerciseProtocol.m */; };
+		F90F7A371B5276A400A32044 /* SetEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A361B5276A400A32044 /* SetEntry.m */; };
+		F90F7A3A1B528DB300A32044 /* CreateExerciseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A391B528DB300A32044 /* CreateExerciseTabBarController.m */; };
+		F90F7A3D1B52A80D00A32044 /* CreateTippsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A3C1B52A80D00A32044 /* CreateTippsViewController.m */; };
+		F90F7A3F1B52B2A400A32044 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90F7A3E1B52B2A400A32044 /* AVFoundation.framework */; };
+		F90F7A451B52BF9A00A32044 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90F7A441B52BF9A00A32044 /* CoreLocation.framework */; };
+		F90F7A471B52BFA100A32044 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F90F7A461B52BFA100A32044 /* AssetsLibrary.framework */; };
+		F949500B1B5269FD00DFAFDA /* ChooseExercisesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F949500A1B5269FD00DFAFDA /* ChooseExercisesViewController.m */; };
 		F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF56B1B468ECD00555327 /* MainMenuViewController.m */; };
 		F95FF56F1B46969900555327 /* ContentTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF56E1B46969900555327 /* ContentTabBarViewController.m */; };
 		F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F95FF5711B4696B100555327 /* TrainingContentViewController.m */; };
@@ -952,18 +964,9 @@
 		F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */; };
 		F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */; };
 		F9EFFAF41B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */; };
-		F9FCCF0E1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */; };
-		F9FCCF0F1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */; };
-		F9FCCF121B4FDAB700E72CFB /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */; };
-		F9FCCF151B4FDAB800E72CFB /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF141B4FDAB800E72CFB /* Entry.m */; };
-		F9FCCF181B4FDAB800E72CFB /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF171B4FDAB800E72CFB /* Exercise.m */; };
-		F9FCCF1B1B4FDAB900E72CFB /* Set.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1A1B4FDAB900E72CFB /* Set.m */; };
-		F9FCCF1E1B4FDAB900E72CFB /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF1D1B4FDAB900E72CFB /* Media.m */; };
-		F9FCCF211B4FDAB900E72CFB /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF201B4FDAB900E72CFB /* Training.m */; };
 		F9FCCF241B51937B00E72CFB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */; };
 		F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */; };
 		F9FCCF2A1B51956F00E72CFB /* ChooseExerciseCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */; };
-		F9FCCF2D1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1935,6 +1938,27 @@
 		F909D6871B4FB99C0041792E /* CreateTrainingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTrainingTableViewCell.h; sourceTree = "<group>"; };
 		F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTrainingTableViewCell.m; sourceTree = "<group>"; };
 		F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTrainingTableViewCell.xib; sourceTree = "<group>"; };
+		F90F7A261B52768300A32044 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		F90F7A271B52768300A32044 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		F90F7A291B52768300A32044 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
+		F90F7A2A1B52768300A32044 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
+		F90F7A2C1B52768400A32044 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		F90F7A2D1B52768400A32044 /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		F90F7A2F1B52768400A32044 /* TrainingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingProtocol.h; sourceTree = "<group>"; };
+		F90F7A301B52768400A32044 /* TrainingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingProtocol.m; sourceTree = "<group>"; };
+		F90F7A321B52768400A32044 /* ExerciseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseProtocol.h; sourceTree = "<group>"; };
+		F90F7A331B52768400A32044 /* ExerciseProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseProtocol.m; sourceTree = "<group>"; };
+		F90F7A351B5276A400A32044 /* SetEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetEntry.h; sourceTree = "<group>"; };
+		F90F7A361B5276A400A32044 /* SetEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetEntry.m; sourceTree = "<group>"; };
+		F90F7A381B528DB300A32044 /* CreateExerciseTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateExerciseTabBarController.h; sourceTree = "<group>"; };
+		F90F7A391B528DB300A32044 /* CreateExerciseTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateExerciseTabBarController.m; sourceTree = "<group>"; };
+		F90F7A3B1B52A80D00A32044 /* CreateTippsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTippsViewController.h; sourceTree = "<group>"; };
+		F90F7A3C1B52A80D00A32044 /* CreateTippsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTippsViewController.m; sourceTree = "<group>"; };
+		F90F7A3E1B52B2A400A32044 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F90F7A441B52BF9A00A32044 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F90F7A461B52BFA100A32044 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F94950091B5269FD00DFAFDA /* ChooseExercisesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseExercisesViewController.h; sourceTree = "<group>"; };
+		F949500A1B5269FD00DFAFDA /* ChooseExercisesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseExercisesViewController.m; sourceTree = "<group>"; };
 		F95FF56A1B468ECD00555327 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		F95FF56B1B468ECD00555327 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		F95FF56D1B46969900555327 /* ContentTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTabBarViewController.h; sourceTree = "<group>"; };
@@ -1973,28 +1997,11 @@
 		F9EFFAF01B4AF72700E87DC6 /* TrainingSelectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingSelectionTableViewCell.h; sourceTree = "<group>"; };
 		F9EFFAF11B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingSelectionTableViewCell.m; sourceTree = "<group>"; };
 		F9EFFAF21B4AF72700E87DC6 /* TrainingSelectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		F9FCCF0B1B4FD0B000E72CFB /* CreateExerciseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateExerciseTableViewCell.h; sourceTree = "<group>"; };
-		F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateExerciseTableViewCell.m; sourceTree = "<group>"; };
-		F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateExerciseTableViewCell.xib; sourceTree = "<group>"; };
-		F9FCCF101B4FDAB700E72CFB /* TrainingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingProtocol.h; sourceTree = "<group>"; };
-		F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingProtocol.m; sourceTree = "<group>"; };
-		F9FCCF131B4FDAB800E72CFB /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
-		F9FCCF141B4FDAB800E72CFB /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
-		F9FCCF161B4FDAB800E72CFB /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		F9FCCF171B4FDAB800E72CFB /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
-		F9FCCF191B4FDAB900E72CFB /* Set.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Set.h; sourceTree = "<group>"; };
-		F9FCCF1A1B4FDAB900E72CFB /* Set.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Set.m; sourceTree = "<group>"; };
-		F9FCCF1C1B4FDAB900E72CFB /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
-		F9FCCF1D1B4FDAB900E72CFB /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
-		F9FCCF1F1B4FDAB900E72CFB /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
-		F9FCCF201B4FDAB900E72CFB /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 		F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureVideoViewController.h; sourceTree = "<group>"; };
 		F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureVideoViewController.m; sourceTree = "<group>"; };
 		F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseExerciseCaptureViewController.h; sourceTree = "<group>"; };
 		F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseExerciseCaptureViewController.m; sourceTree = "<group>"; };
-		F9FCCF2B1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseForeignExerciseCaptureViewController.h; sourceTree = "<group>"; };
-		F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseForeignExerciseCaptureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2002,6 +2009,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90F7A471B52BFA100A32044 /* AssetsLibrary.framework in Frameworks */,
+				F90F7A451B52BF9A00A32044 /* CoreLocation.framework in Frameworks */,
+				F90F7A3F1B52B2A400A32044 /* AVFoundation.framework in Frameworks */,
 				F9FCCF241B51937B00E72CFB /* MobileCoreServices.framework in Frameworks */,
 				F9EFFA831B4A5EB500E87DC6 /* libobjc.dylib in Frameworks */,
 				F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */,
@@ -2021,6 +2031,9 @@
 		072D879B1ADE51CF001F4370 = {
 			isa = PBXGroup;
 			children = (
+				F90F7A461B52BFA100A32044 /* AssetsLibrary.framework */,
+				F90F7A441B52BF9A00A32044 /* CoreLocation.framework */,
+				F90F7A3E1B52B2A400A32044 /* AVFoundation.framework */,
 				F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */,
 				F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */,
 				F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */,
@@ -2080,6 +2093,7 @@
 				F96B08531B4FA73E001BDEA1 /* DataCreation */,
 				F9FCCF221B518E2400E72CFB /* CaptrueVideo */,
 				F95FF5671B468E3F00555327 /* Settings */,
+				F90F7A411B52BF6900A32044 /* Support */,
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
 				072D87A71ADE51CF001F4370 /* SupportingFiles */,
@@ -3093,11 +3107,15 @@
 				F909D6871B4FB99C0041792E /* CreateTrainingTableViewCell.h */,
 				F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */,
 				F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */,
-				F9FCCF0B1B4FD0B000E72CFB /* CreateExerciseTableViewCell.h */,
-				F9FCCF0C1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m */,
-				F9FCCF0D1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		F90F7A411B52BF6900A32044 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Support;
 			sourceTree = "<group>";
 		};
 		F95FF5671B468E3F00555327 /* Settings */ = {
@@ -3133,8 +3151,12 @@
 			children = (
 				F96B08541B4FA859001BDEA1 /* CreateTrainingViewController.h */,
 				F96B08551B4FA859001BDEA1 /* CreateTrainingViewController.m */,
+				F90F7A381B528DB300A32044 /* CreateExerciseTabBarController.h */,
+				F90F7A391B528DB300A32044 /* CreateExerciseTabBarController.m */,
 				F96B08571B4FA953001BDEA1 /* CreateExerciseViewController.h */,
 				F96B08581B4FA953001BDEA1 /* CreateExerciseViewController.m */,
+				F94950091B5269FD00DFAFDA /* ChooseExercisesViewController.h */,
+				F949500A1B5269FD00DFAFDA /* ChooseExercisesViewController.m */,
 				F96B085D1B4FA9C0001BDEA1 /* LoadExercisesViewController.h */,
 				F96B085E1B4FA9C0001BDEA1 /* LoadExercisesViewController.m */,
 				F909D6861B4FB9840041792E /* Cells */,
@@ -3189,18 +3211,18 @@
 		F9EFFA931B4A6A7700E87DC6 /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				F9FCCF1F1B4FDAB900E72CFB /* Training.h */,
-				F9FCCF201B4FDAB900E72CFB /* Training.m */,
-				F9FCCF1C1B4FDAB900E72CFB /* Media.h */,
-				F9FCCF1D1B4FDAB900E72CFB /* Media.m */,
-				F9FCCF191B4FDAB900E72CFB /* Set.h */,
-				F9FCCF1A1B4FDAB900E72CFB /* Set.m */,
-				F9FCCF161B4FDAB800E72CFB /* Exercise.h */,
-				F9FCCF171B4FDAB800E72CFB /* Exercise.m */,
-				F9FCCF131B4FDAB800E72CFB /* Entry.h */,
-				F9FCCF141B4FDAB800E72CFB /* Entry.m */,
-				F9FCCF101B4FDAB700E72CFB /* TrainingProtocol.h */,
-				F9FCCF111B4FDAB700E72CFB /* TrainingProtocol.m */,
+				F90F7A321B52768400A32044 /* ExerciseProtocol.h */,
+				F90F7A331B52768400A32044 /* ExerciseProtocol.m */,
+				F90F7A2F1B52768400A32044 /* TrainingProtocol.h */,
+				F90F7A301B52768400A32044 /* TrainingProtocol.m */,
+				F90F7A2C1B52768400A32044 /* Media.h */,
+				F90F7A2D1B52768400A32044 /* Media.m */,
+				F90F7A291B52768300A32044 /* Training.h */,
+				F90F7A2A1B52768300A32044 /* Training.m */,
+				F90F7A261B52768300A32044 /* Exercise.h */,
+				F90F7A271B52768300A32044 /* Exercise.m */,
+				F90F7A351B5276A400A32044 /* SetEntry.h */,
+				F90F7A361B5276A400A32044 /* SetEntry.m */,
 			);
 			name = DataModels;
 			sourceTree = "<group>";
@@ -3212,8 +3234,8 @@
 				F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */,
 				F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */,
 				F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */,
-				F9FCCF2B1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.h */,
-				F9FCCF2C1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m */,
+				F90F7A3B1B52A80D00A32044 /* CreateTippsViewController.h */,
+				F90F7A3C1B52A80D00A32044 /* CreateTippsViewController.m */,
 			);
 			name = CaptrueVideo;
 			sourceTree = "<group>";
@@ -3503,7 +3525,6 @@
 				07F732DE1B4E5D5A005ECE10 /* thin3.png in Resources */,
 				07F737891B4E6F93005ECE10 /* wordpress2@2x.png in Resources */,
 				07F735211B4E5D5A005ECE10 /* stop5@3x.png in Resources */,
-				F9FCCF0F1B4FD0B000E72CFB /* CreateExerciseTableViewCell.xib in Resources */,
 				07F732951B4E5D5A005ECE10 /* question3.png in Resources */,
 				07F7322B1B4E5D5A005ECE10 /* error5.png in Resources */,
 				07F736B71B4E6F93005ECE10 /* double7@2x.png in Resources */,
@@ -4236,38 +4257,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
+				F90F7A281B52768300A32044 /* Exercise.m in Sources */,
+				F90F7A3A1B528DB300A32044 /* CreateExerciseTabBarController.m in Sources */,
+				F90F7A2E1B52768400A32044 /* Media.m in Sources */,
 				F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
 				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
 				F96B08591B4FA953001BDEA1 /* CreateExerciseViewController.m in Sources */,
+				F90F7A371B5276A400A32044 /* SetEntry.m in Sources */,
 				F95FF56F1B46969900555327 /* ContentTabBarViewController.m in Sources */,
-				F9FCCF181B4FDAB800E72CFB /* Exercise.m in Sources */,
-				F9FCCF1E1B4FDAB900E72CFB /* Media.m in Sources */,
 				072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */,
 				072D87AD1ADE51CF001F4370 /* AppDelegate.m in Sources */,
+				F90F7A311B52768400A32044 /* TrainingProtocol.m in Sources */,
 				F95FF57E1B469C1500555327 /* TrainingChooserViewController.m in Sources */,
+				F90F7A3D1B52A80D00A32044 /* CreateTippsViewController.m in Sources */,
 				F96B08561B4FA859001BDEA1 /* CreateTrainingViewController.m in Sources */,
 				F9EFFA891B4A60A900E87DC6 /* DataController.m in Sources */,
 				F96B085F1B4FA9C0001BDEA1 /* LoadExercisesViewController.m in Sources */,
 				F95FF57B1B4696E900555327 /* TippsContentViewController.m in Sources */,
-				F9FCCF151B4FDAB800E72CFB /* Entry.m in Sources */,
-				F9FCCF0E1B4FD0B000E72CFB /* CreateExerciseTableViewCell.m in Sources */,
 				072D87D91ADE546A001F4370 /* ContentGravityView.m in Sources */,
 				F9EFFAF31B4AF72700E87DC6 /* TrainingSelectionTableViewCell.m in Sources */,
-				F9FCCF2D1B51959A00E72CFB /* ChooseForeignExerciseCaptureViewController.m in Sources */,
 				F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */,
+				F949500B1B5269FD00DFAFDA /* ChooseExercisesViewController.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
+				F90F7A341B52768400A32044 /* ExerciseProtocol.m in Sources */,
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
 				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,
-				F9FCCF1B1B4FDAB900E72CFB /* Set.m in Sources */,
 				F95FF5781B4696D800555327 /* ImageContentViewController.m in Sources */,
-				F9FCCF211B4FDAB900E72CFB /* Training.m in Sources */,
+				F90F7A2B1B52768300A32044 /* Training.m in Sources */,
 				F96B08621B4FAE2D001BDEA1 /* ManageTrainingsViewController.m in Sources */,
 				F96B086C1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m in Sources */,
 				F9EFFAB71B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld in Sources */,
 				072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */,
-				F9FCCF121B4FDAB700E72CFB /* TrainingProtocol.m in Sources */,
 				F9FCCF2A1B51956F00E72CFB /* ChooseExerciseCaptureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

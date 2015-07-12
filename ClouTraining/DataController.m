@@ -13,8 +13,7 @@
 #import "Exercise.h"
 #import "Media.h"
 #import "TrainingProtocol.h"
-#import "Entry.h"
-#import "Set.h"
+#import "SetEntry.h"
 
 @interface DataController()
 
@@ -117,8 +116,6 @@
             [t setName:[data objectForKey:@"name"]];
             [t setDescribe:[data objectForKey:@"describe"]];
             [t setOwn:[data objectForKey:@"own"]];
-            [t setPublicate:[data objectForKey:@"publicate"]];
-            
             
             [self save];
             
@@ -135,10 +132,8 @@
 
 -(void)updateTraining:(Training *)t withData:(NSDictionary*)data{
     Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
-    [training setLastUsed:[NSDate date]];
     [training setName:[data objectForKey:@"name"]];
     [training setDescribe:[data objectForKey:@"describe"]];
-     [training setPublicate:[data objectForKey:@"publicate"]];
     [self save];
 }
 
@@ -152,15 +147,6 @@
     return NO;
 }
 
--(void)addExercise:(Exercise*)e toTraining:(Training*)t{
-        Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
-    
-        [training addExerciseObject:e];
-        [e setTraining:training];
-        [self save];
-    
-}
-
 -(NSArray*)getOwnTrainings{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES predicateWithFormat:@"own = 1"];
 }
@@ -169,51 +155,59 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES predicateWithFormat:@"own = 0"];
 }
 
--(NSArray*)getRecentTrainings{
-    return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES predicateWithFormat:@"lastUsed>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
-}
-
 -(NSArray*)getAllTrainings{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Training" sortByKey:@"name" ascending:YES];
+}
+
+#pragma mark - Exercises <-> Training
+
+-(void)addExercise:(Exercise *)e toTraining:(Training *)t{
+    Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
+    
+    [exercise addTrainingsObject:training];
+    [training addExercisesObject:e];
+    
+    [self save];
+}
+
+-(void)removeExercise:(Exercise*)e fromTraining:(Training*)t{
+    Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    Training *training = (Training*)[[self managedObjectContext]existingObjectWithID:t.objectID error:nil];
+    
+    [exercise removeTrainingsObject:training];
+    [training removeExercisesObject:exercise];
+    
+    [self save];
 }
 
 #pragma mark - Exercises
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t{
     
-    NSString *name = [data objectForKey:@"name"];
-    
-    if([[self privateContext]fetchObjectsForEntityName:@"Exercise" predicateWithFormat:@"name = %@",name].count <1){
-        
-        Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
-        
-        [[self privateContext]performBlock:^{
+        [[self privateContext]performBlockAndWait:^{
+            
+             Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
             
             Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
-            e.name = name;
+            e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
-            e.distance = [data objectForKey:@"distance"];
-            e.duration = [data objectForKey:@"duration"];
             e.shared = [data objectForKey:@"shared"];
             
-            [e setTraining:training];
-            [training addExerciseObject:e];
-            
-            
+            [e addTrainingsObject:training];
+            [training addExercisesObject:e];
             [self save];
             
         }];
         
-    }
+    
     
     
     
 }
+
+
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t{
-    
-    NSString *name = [data objectForKey:@"name"];
-    
-    
     
     __block Exercise *e;
         [[self privateContext]performBlockAndWait:^{
@@ -221,71 +215,53 @@
             Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
             
             e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
-            e.name = name;
+            e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
-            e.distance = [data objectForKey:@"distance"];
-            e.duration = [data objectForKey:@"duration"];
             e.shared = [data objectForKey:@"shared"];
             
-            
-            [e setTraining:training];
-            [training addExerciseObject:e];
+            [training addExercisesObject:e];
+            [e addTrainingsObject:training];
             
             [self save];
-            
-            
             
         }];
         
     
     return e;
-    
-    
-    
 }
+
 
 -(NSArray*)getExercisesForTraining:(Training*)t{
-    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"training=%@",t];
+    Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
+    return [training.exercises sortedArrayUsingDescriptors:nil];
 }
 
-#pragma mark - Sets
+-(NSArray*)getAllExercises{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES];
+}
 
--(void)createSets:(NSArray *)sets forExercise:(Exercise*)e{
-    
-        [[self privateContext]performBlock:^{
-            Exercise *exercise = (Exercise*)[[self privateContext]existingObjectWithID:e.objectID error:nil];
-            
-            for(NSDictionary *data in sets){
-                Set *s = [NSEntityDescription insertNewObjectForEntityForName:@"Set" inManagedObjectContext:[self privateContext]];
-                [s setNumber:[data objectForKey:@"number"]];
-                [s setRepititions:[data objectForKey:@"repititions"]];
-                [s setWeight:[data objectForKey:@"weight"]];
-                
-                [s setExercise:exercise];
-                [exercise addSetsObject:s];
+-(NSArray*)getAllSharedExercises{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"shared = 1"];
+}
+
+-(NSArray*)getAllExercisesNotInTraining:(Training*)t{
+    NSArray *exercises = [self getAllExercises];
+    NSMutableArray *result = [NSMutableArray array];
+    for (Exercise *e in exercises){
+        BOOL found = NO;
+        for(Training *tmp in e.trainings){
+            if(tmp.objectID == t.objectID){
+                found = YES;
+                break;
             }
-            
-            
-            
-            [self save];
-            
-        }];
-    
-}
-
--(BOOL)deleteSet:(Set*)s{
-    Set *set = (Set*)[[self managedObjectContext]existingObjectWithID:s.objectID error:nil];
-    if(set){
-        [[self managedObjectContext]deleteObject:set];
-        [self save];
-        return YES;
+        }
+        if(!found){
+            [result addObject:e];
+        }
     }
-    return NO;
+    return result;
 }
 
--(NSArray*)getSetsForExercise:(Exercise*)e{
-    return [[self managedObjectContext] fetchObjectsForEntityName:@"Set" sortByKey:@"number"ascending:YES predicateWithFormat:@"exercise=%@",e];
-}
 
 #pragma mark - TrainingProtocol
 
@@ -300,7 +276,8 @@
         protocol.date = [NSDate date];
         protocol.comment = @"";
         protocol.duration = [NSNumber numberWithInteger:0];
-        protocol.training = tmp;
+        
+        [protocol setTraining:tmp];
         [tmp addProtocolsObject:protocol];
         
         [self save];
@@ -323,43 +300,6 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
 }
 
-#pragma mark - Entry
-
--(Entry*)createEntry:(NSDictionary*)data forProtocol:(TrainingProtocol*)protocol andSet:(Set*)set{
-    
-    __block Entry *entry;
-    [[self privateContext]performBlockAndWait:^{
-        
-        TrainingProtocol *tmp = (TrainingProtocol*)[[self privateContext]existingObjectWithID:protocol.objectID error:nil];
-        Set *tmpSet = (Set*)[[self privateContext]existingObjectWithID:set.objectID error:nil];
-        
-        entry = [NSEntityDescription insertNewObjectForEntityForName:@"Entry" inManagedObjectContext:[self privateContext]];
-        entry.weight = [data objectForKey:@"weight"];
-        entry.duration = [data objectForKey:@"duration"];
-        entry.repititions = [data objectForKey:@"repititions"];
-        
-        entry.set = tmpSet;
-        entry.protocol = tmp;
-        
-        [set addEntriesObject:entry];
-        [tmp addEntriesObject:entry];
-        
-        [self save];
-        
-        
-    }];
-    
-    return entry;
-}
-
--(void)updateEntry:(Entry *)e withData:(NSDictionary*)data{
-    Entry *entry = (Entry*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
-    entry.weight = [data objectForKey:@"weight"];
-    entry.duration = [data objectForKey:@"duration"];
-    entry.repititions = [data objectForKey:@"repititions"];
-    
-    [self save];
-}
 
 
 #pragma mark - Media

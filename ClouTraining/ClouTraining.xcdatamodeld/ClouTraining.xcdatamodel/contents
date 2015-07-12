@@ -1,61 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Entry" representedClassName="Entry" syncable="YES">
-        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="repititions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="protocol" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainingProtocol" inverseName="entries" inverseEntity="TrainingProtocol" syncable="YES"/>
-        <relationship name="set" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Set" inverseName="entries" inverseEntity="Set" syncable="YES"/>
-    </entity>
     <entity name="Exercise" representedClassName="Exercise" syncable="YES">
         <attribute name="describe" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="distance" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="exerciseid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shared" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="medias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media" inverseName="exercise" inverseEntity="Media" syncable="YES"/>
-        <relationship name="sets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Set" inverseName="exercise" inverseEntity="Set" syncable="YES"/>
-        <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="exercise" inverseEntity="Training" syncable="YES"/>
+        <relationship name="protocols" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseProtocol" inverseName="exercise" inverseEntity="ExerciseProtocol" syncable="YES"/>
+        <relationship name="trainings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Training" inverseName="exercises" inverseEntity="Training" syncable="YES"/>
+    </entity>
+    <entity name="ExerciseProtocol" representedClassName="ExerciseProtocol" syncable="YES">
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="protocols" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="protocol" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrainingProtocol" inverseName="exerciseProtocols" inverseEntity="TrainingProtocol" syncable="YES"/>
+        <relationship name="setEntries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SetEntry" inverseName="exerciseProtocol" inverseEntity="SetEntry" syncable="YES"/>
     </entity>
     <entity name="Media" representedClassName="Media" syncable="YES">
-        <attribute name="localUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mediaid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="onlineUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="medias" inverseEntity="Exercise" syncable="YES"/>
     </entity>
-    <entity name="Set" representedClassName="Set" syncable="YES">
-        <attribute name="number" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="SetEntry" representedClassName="SetEntry" syncable="YES">
         <attribute name="repititions" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Entry" inverseName="set" inverseEntity="Entry" syncable="YES"/>
-        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="sets" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="exerciseProtocol" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExerciseProtocol" inverseName="setEntries" inverseEntity="ExerciseProtocol" syncable="YES"/>
     </entity>
     <entity name="Training" representedClassName="Training" syncable="YES">
         <attribute name="describe" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="own" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="publicate" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="trainingid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="training" inverseEntity="Exercise" syncable="YES"/>
+        <relationship name="exercises" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="trainings" inverseEntity="Exercise" syncable="YES"/>
         <relationship name="protocols" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TrainingProtocol" inverseName="training" inverseEntity="TrainingProtocol" syncable="YES"/>
     </entity>
     <entity name="TrainingProtocol" representedClassName="TrainingProtocol" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="protocol" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SetEntry" syncable="YES"/>
+        <relationship name="exerciseProtocols" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseProtocol" inverseName="protocol" inverseEntity="ExerciseProtocol" syncable="YES"/>
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="protocols" inverseEntity="Training" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Entry" positionX="-65" positionY="422" width="128" height="118"/>
-        <element name="Exercise" positionX="-65" positionY="27" width="128" height="178"/>
-        <element name="Media" positionX="169" positionY="18" width="128" height="133"/>
-        <element name="Set" positionX="-63" positionY="243" width="128" height="118"/>
-        <element name="Training" positionX="-281" positionY="9" width="128" height="163"/>
-        <element name="TrainingProtocol" positionX="-270" positionY="414" width="128" height="118"/>
+        <element name="SetEntry" positionX="-92" positionY="99" width="128" height="88"/>
+        <element name="Exercise" positionX="-342" positionY="-211" width="128" height="148"/>
+        <element name="Media" positionX="-108" positionY="-189" width="128" height="118"/>
+        <element name="Training" positionX="-560" positionY="86" width="128" height="133"/>
+        <element name="TrainingProtocol" positionX="-288" positionY="233" width="128" height="133"/>
+        <element name="ExerciseProtocol" positionX="-290" positionY="101" width="128" height="88"/>
     </elements>
 </model>

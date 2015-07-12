@@ -7,6 +7,9 @@
 //
 
 #import "ChooseExerciseCaptureViewController.h"
+#import "CreateTippsViewController.h"
+#import "CreateTrainingTableViewCell.h"
+#import "Exercise.h"
 
 @interface ChooseExerciseCaptureViewController ()
 
@@ -16,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _exercises = [[DataController sharedInstance]getAllSharedExercises];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +27,68 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
+#pragma mark - tableView
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44.0f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 17.0f;
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    return @"Übungen";
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return _exercises.count;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return 1;
+}
+
+
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    static NSString *CellIdentifier = @"CreateTrainingTableViewCell";
+    CreateTrainingTableViewCell *cell = (CreateTrainingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(!cell){
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"CreateTrainingTableViewCell" owner:self options:nil]objectAtIndex:0];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+   cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
+        
+
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _chosenExercise = [_exercises objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"ShowCaptureForExercise" sender:self];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"ShowCaptureForExercise"]){
+        CreateTippsViewController *ctvc = (CreateTippsViewController*)segue.destinationViewController;
+        ctvc.exercise = _chosenExercise;
+    }
 }
-*/
+
 
 @end

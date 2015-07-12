@@ -2,7 +2,7 @@
 //  Media.m
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 10.07.15.
+//  Created by Steffen Gruschka on 12.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
@@ -12,7 +12,6 @@
 
 @implementation Media
 
-@dynamic localUrl;
 @dynamic mediaid;
 @dynamic onlineUrl;
 @dynamic text;

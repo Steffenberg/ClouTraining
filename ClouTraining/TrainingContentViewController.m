@@ -10,9 +10,7 @@
 #import "TrainingContentTableViewCell.h"
 #import "Training.h"
 #import "TrainingProtocol.h"
-#import "Entry.h"
 #import "Exercise.h"
-#import "Set.h"
 
 @interface TrainingContentViewController ()
 
@@ -34,14 +32,6 @@
 -(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete{
     _exercise = e;
     
-    /*for(Set *s in e.sets){
-        BOOL found = NO;
-        for(Entry *entry in s.entries){
-            if([entry.protocol.training isEqual:e.training]){
-                
-            }
-        }
-    }*/
     if(_exercise){
         _titleLabel.text = e.name;
         [_table reloadData];

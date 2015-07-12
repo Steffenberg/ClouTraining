@@ -8,6 +8,7 @@
 
 #import "CreateTrainingViewController.h"
 #import "CreateTrainingTableViewCell.h"
+#import "CreateExerciseTabBarController.h"
 #import "Exercise.h"
 #import "Training.h"
 
@@ -21,11 +22,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [_table registerNib:[UINib nibWithNibName:@"CreateTrainingTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CreateTrainingTableViewCell"];
+
     _exercises = [NSMutableArray array];
     _addedExercises = [NSMutableArray array];
+    _chosenExercises = [NSMutableArray array];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(exerciseAdded:) name:@"ExerciseAdded" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(exercisesChosen:) name:@"ExercisesChosen" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -35,14 +38,26 @@
         _nameField.text = _training.name;
         _descField.text = _training.describe;
         _trainingSwitch.on = YES;
-        _onlineSwitch.on = _training.publicate.boolValue;
     }
     [_table reloadData];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [_nameField resignFirstResponder];
+    [_descField resignFirstResponder];
 }
 
 -(void)exerciseAdded:(NSNotification*)note{
     NSDictionary *e = (NSDictionary*)note.object;
     [_addedExercises addObject:e];
+}
+
+-(void)exercisesChosen:(NSNotification*)note{
+    if(!_training){
+        [_chosenExercises addObjectsFromArray:(NSArray*)note.object];
+    }
+    
 }
 
 #pragma mark - saving
@@ -59,12 +74,10 @@
         _training.name = _nameField.text;
         _training.describe = _descField.text;
         for(NSDictionary *d in _addedExercises){
-            Exercise *e = [[DataController sharedInstance]createReturnExerciseWithData:d forTraining:_training];
-            if(e){
-                NSArray *sets = [d objectForKey:@"sets"];
-                [[DataController sharedInstance]createSets:sets forExercise:e];
-            }
+            [[DataController sharedInstance]createExerciseWithData:d forTraining:_training];
+            
         }
+        
     }
 }
 
@@ -76,12 +89,11 @@
                                                                          }];
     if(_training){
         for(NSDictionary *d in _addedExercises){
-            Exercise *e = [[DataController sharedInstance]createReturnExerciseWithData:d forTraining:_training];
-            if(e){
-                NSArray *sets = [d objectForKey:@"sets"];
-                [[DataController sharedInstance]createSets:sets forExercise:e];
-                
-            }
+            [[DataController sharedInstance]createExerciseWithData:d forTraining:_training];
+            
+        }
+        for(Exercise *e in _chosenExercises){
+            [[DataController sharedInstance]addExercise:e toTraining:_training];
         }
     }
 }
@@ -106,8 +118,15 @@
         if(section == 1){
             return @"Alte Übungen";
         }
+    }else{
+        if(section == 0){
+            return @"Erstellte Übungen";
+        }
+        if(section == 1){
+            return @"Bestehende Übungen";
+        }
     }
-    return @"Übungen";
+    return @"";
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -119,15 +138,19 @@
         if(section == 1){
             return _exercises.count;
         }
+    }else{
+        if(section == 0){
+            return _addedExercises.count;
+        }
+        if(section == 1){
+            return _chosenExercises.count;
+        }
     }
-    return _addedExercises.count;
+    return 0;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if(_training){
-        return 2;
-    }
-    return 1;
+    return 2;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -148,10 +171,16 @@
         }
         if(section == 1){
             cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
-            NSLog(@"Name:%@ - Sets:%zd",[(Exercise*)[_exercises objectAtIndex:row]name],[(Exercise*)[_exercises objectAtIndex:row]sets].count);
+            
         }
     }else{
-        cell.titleLabel.text = [(NSDictionary*)[_addedExercises objectAtIndex:row]objectForKey:@"name"];
+        if(section == 0){
+            cell.titleLabel.text = [(NSDictionary*)[_addedExercises objectAtIndex:row]objectForKey:@"name"];
+        }
+        if(section == 1){
+            cell.titleLabel.text = [(Exercise*)[_chosenExercises objectAtIndex:row]name];
+        }
+        
     }
     
     
@@ -178,21 +207,26 @@
     }
 }
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+     if([segue.identifier isEqualToString:@"ShowEditExercises"]){
+         CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)segue.destinationViewController;
+         tabControl.training = _training;
+         for(UIViewController *ctrl in tabControl.viewControllers){
+             if([ctrl respondsToSelector:@selector(setTraining:)]){
+                 [ctrl performSelector:@selector(setTraining:) withObject:_training];
+             }
+         }
+     }
  }
- */
+ 
 
 - (IBAction)trainingSwitchChanged:(id)sender {
     
 }
 
-- (IBAction)onlineSwitchChanged:(id)sender {
-    if(_training)_training.publicate = [NSNumber numberWithBool:_onlineSwitch.on];
-}
+
 @end
