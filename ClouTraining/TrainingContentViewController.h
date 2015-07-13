@@ -10,16 +10,18 @@
 
 typedef void (^SetupComplete)(BOOL);
 
-@class Exercise;
-@class Set;
+@class Exercise, Training, TrainingProtocol, ExerciseProtocol;
+
 
 @interface TrainingContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property Training *training;
 @property Exercise *exercise;
-@property NSMutableArray *sets;
+@property ExerciseProtocol *exProtocol;
+@property NSArray *exerciseLogs;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
--(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete;
+-(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t completition:(SetupComplete)setupComplete;
 
 @end

@@ -11,7 +11,7 @@
 
 typedef void (^InitCallbackBlock)(void);
 
-@class Training, Exercise, Media, Set, Entry,TrainingProtocol;
+@class Training, Exercise, Media, ExerciseProtocol, SetEntry,TrainingProtocol;
 
 @interface DataController : NSObject
 
@@ -44,6 +44,9 @@ typedef void (^InitCallbackBlock)(void);
 -(TrainingProtocol*)createProtocolForTraining:(Training*)training;
 -(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;
 -(NSArray*)getRecentProtocols;
+
+-(ExerciseProtocol*)createExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e;
+-(ExerciseProtocol*)getExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e;
 
 
 @end

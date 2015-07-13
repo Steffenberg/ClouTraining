@@ -2057,31 +2057,10 @@
 			children = (
 				07F737C41B4E7515005ECE10 /* ArnieBG.jpg */,
 				07F72E591B4E5D41005ECE10 /* Icons */,
-				072D87AB1ADE51CF001F4370 /* AppDelegate.h */,
 				07B733421B4D42D000D31399 /* DataManager.h */,
 				07B733431B4D42D000D31399 /* DataManager.m */,
-				07B733161B4D42B500D31399 /* become_trainerIOS.php */,
-				07B733171B4D42B500D31399 /* closeLivetraining.php */,
-				07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */,
-				07B733191B4D42B500D31399 /* coachyy_sendSession.php */,
-				07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */,
-				07B7331B1B4D42B600D31399 /* coachyy_sendTraining.php */,
-				07B7331C1B4D42B600D31399 /* create_user.php */,
-				07B7331D1B4D42B600D31399 /* find_trainer.php */,
-				07B7331E1B4D42B600D31399 /* function_sql.php */,
-				07B7331F1B4D42B600D31399 /* get_pulses_old.php */,
-				07B733201B4D42B600D31399 /* get_pulses.php */,
-				07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */,
-				07B733221B4D42B600D31399 /* getCustomPlans.php */,
-				07B733231B4D42B600D31399 /* getTrainerAboDate.php */,
-				07B733241B4D42B600D31399 /* login.php */,
-				07B733251B4D42B600D31399 /* select_liveTrainers.php */,
-				07B733261B4D42B600D31399 /* send_live_pulszoneEXT.php */,
-				07B733271B4D42B600D31399 /* sendTrainingData.php */,
-				07B733281B4D42B600D31399 /* setAnonymus.php */,
-				07B733291B4D42B600D31399 /* setConnectAboDateIOS.php */,
-				07B7332A1B4D42B600D31399 /* setShareTrainings.php */,
-				07B7332B1B4D42B600D31399 /* setTrainerAboDate.php */,
+				07428BA21B53913100555BE7 /* Scripts */,
+				072D87AB1ADE51CF001F4370 /* AppDelegate.h */,
 				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				072D87B41ADE51CF001F4370 /* Main.storyboard */,
 				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
@@ -2143,6 +2122,35 @@
 				079BE3E81AE6845500B981B2 /* ContentView */,
 			);
 			name = TrainingViewController;
+			sourceTree = "<group>";
+		};
+		07428BA21B53913100555BE7 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				07B733161B4D42B500D31399 /* become_trainerIOS.php */,
+				07B733171B4D42B500D31399 /* closeLivetraining.php */,
+				07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */,
+				07B733191B4D42B500D31399 /* coachyy_sendSession.php */,
+				07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */,
+				07B7331B1B4D42B600D31399 /* coachyy_sendTraining.php */,
+				07B7331C1B4D42B600D31399 /* create_user.php */,
+				07B7331D1B4D42B600D31399 /* find_trainer.php */,
+				07B7331E1B4D42B600D31399 /* function_sql.php */,
+				07B7331F1B4D42B600D31399 /* get_pulses_old.php */,
+				07B733201B4D42B600D31399 /* get_pulses.php */,
+				07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */,
+				07B733221B4D42B600D31399 /* getCustomPlans.php */,
+				07B733231B4D42B600D31399 /* getTrainerAboDate.php */,
+				07B733241B4D42B600D31399 /* login.php */,
+				07B733251B4D42B600D31399 /* select_liveTrainers.php */,
+				07B733261B4D42B600D31399 /* send_live_pulszoneEXT.php */,
+				07B733271B4D42B600D31399 /* sendTrainingData.php */,
+				07B733281B4D42B600D31399 /* setAnonymus.php */,
+				07B733291B4D42B600D31399 /* setConnectAboDateIOS.php */,
+				07B7332A1B4D42B600D31399 /* setShareTrainings.php */,
+				07B7332B1B4D42B600D31399 /* setTrainerAboDate.php */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 		079BE3E81AE6845500B981B2 /* ContentView */ = {

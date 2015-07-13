@@ -13,6 +13,7 @@
 #import "ContentTabBarViewController.h"
 #import "Training.h"
 #import "Exercise.h"
+#import "TrainingProtocol.h"
 
 @interface TrainingViewController ()
 
@@ -37,8 +38,10 @@
         _activeProtocol = [[DataController sharedInstance]createProtocolForTraining:_activeTraining];
         _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
     }else{
-        
+        _activeTraining = _activeProtocol.training;
+        _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
     }
+    
     
     
     
@@ -124,7 +127,7 @@
     _currentOpenCircle.contentSuperview = _contentTabSuperview;
     
     ContentTabBarViewController *ctbvc = (ContentTabBarViewController*)[self.childViewControllers lastObject];
-    [ctbvc reloadToExercise:_currentOpenCircle.exercise hide:!_contentTabSuperview.hidden completition:^(BOOL complete){
+    [ctbvc reloadToExercise:_currentOpenCircle.exercise ofTraining:_activeTraining hide:!_contentTabSuperview.hidden completition:^(BOOL complete){
         _contentTabSuperview.hidden = !_contentTabSuperview.hidden;
     }];
     

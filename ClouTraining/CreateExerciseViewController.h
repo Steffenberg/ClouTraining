@@ -11,6 +11,7 @@
 @interface CreateExerciseViewController : UIViewController<UITabBarDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *descField;
+@property (weak, nonatomic) IBOutlet UITextField *maxWeightField;
 @property (weak, nonatomic) IBOutlet UISwitch *onlineSwitch;
 
 @property Exercise *exercise;

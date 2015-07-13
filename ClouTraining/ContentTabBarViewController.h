@@ -14,8 +14,9 @@ typedef void (^SetupComplete)(BOOL);
 
 @interface ContentTabBarViewController : UITabBarController
 
+@property Training *training;
 @property Exercise *exercise;
 
--(void)reloadToExercise:(Exercise*)e hide:(BOOL)hide completition:(SetupComplete)setupComplete;
+-(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t hide:(BOOL)hide completition:(SetupComplete)setupComplete;
 
 @end

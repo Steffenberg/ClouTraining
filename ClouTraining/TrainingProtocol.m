@@ -16,7 +16,6 @@
 @dynamic comment;
 @dynamic date;
 @dynamic duration;
-@dynamic entries;
 @dynamic training;
 @dynamic exerciseProtocols;
 

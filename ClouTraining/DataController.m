@@ -14,6 +14,7 @@
 #import "Media.h"
 #import "TrainingProtocol.h"
 #import "SetEntry.h"
+#import "ExerciseProtocol.h"
 
 @interface DataController()
 
@@ -193,6 +194,7 @@
             e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
+            e.maxWeight = [data objectForKey:@"maxWeight"];
             
             [e addTrainingsObject:training];
             [training addExercisesObject:e];
@@ -218,6 +220,7 @@
             e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
+            e.maxWeight = [data objectForKey:@"maxWeight"];
             
             [training addExercisesObject:e];
             [e addTrainingsObject:training];
@@ -300,6 +303,38 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
 }
 
+#pragma mark - ExerciseProtocol
+
+-(ExerciseProtocol*)createExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e{
+    
+    __block ExerciseProtocol *protocol;
+    [[self privateContext]performBlockAndWait:^{
+        
+        TrainingProtocol *tmpTP = (TrainingProtocol*)[[self managedObjectContext]existingObjectWithID:tp.objectID error:nil];
+        Exercise *tmpE = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+        
+        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"TrainingProtocol" inManagedObjectContext:[self privateContext]];
+        
+        [protocol setProtocol:tmpTP];
+        [tmpTP addExerciseProtocolsObject:protocol];
+        
+        [protocol setExercise:tmpE];
+        [tmpE addProtocolsObject:protocol];
+        
+        [self save];
+        
+        
+    }];
+    
+    return protocol;
+}
+
+-(ExerciseProtocol*)getExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e{
+    TrainingProtocol *tmpTP = (TrainingProtocol*)[[self managedObjectContext]existingObjectWithID:tp.objectID error:nil];
+    Exercise *tmpE = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    
+    return [[[self managedObjectContext] fetchObjectsForEntityName:@"ExerciseProtocol" sortByKey:@"exercise.name" ascending:YES predicateWithFormat:@"protocol=%@ AND exercise=%@",tmpTP, tmpE]lastObject];
+}
 
 
 #pragma mark - Media

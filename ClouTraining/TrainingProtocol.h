@@ -16,7 +16,6 @@
 @property (nonatomic, retain) NSString * comment;
 @property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSNumber * duration;
-@property (nonatomic, retain) NSSet *entries;
 @property (nonatomic, retain) Training *training;
 @property (nonatomic, retain) NSSet *exerciseProtocols;
 @end

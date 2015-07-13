@@ -18,6 +18,7 @@
 @dynamic exerciseid;
 @dynamic name;
 @dynamic shared;
+@dynamic maxWeight;
 @dynamic medias;
 @dynamic trainings;
 @dynamic protocols;

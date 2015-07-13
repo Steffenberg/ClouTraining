@@ -29,10 +29,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)reloadToExercise:(Exercise*)e completition:(SetupComplete)complete{
+-(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t completition:(SetupComplete)complete{
     _exercise = e;
+    _training = t;
     
-    if(_exercise){
+    if(_exercise && _training){
+        _exerciseLogs = [NSArray array];
         _titleLabel.text = e.name;
         [_table reloadData];
         complete(YES);
@@ -40,6 +42,18 @@
         complete(NO);
     }
 
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 17.0f;
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return [NSString stringWithFormat:@"Satz: %zd", section+1];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -59,8 +73,9 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.setLabel.text = [NSString stringWithFormat:@"Satz: %zd", row];
+    cell.weightLabel.text = [NSString stringWithFormat:@"%.02f KG", cell.weightSlider.value];
     cell.repLabel.text = [NSString stringWithFormat:@"WDH: %.0f",cell.repSlider.value];
+    cell.weightSlider.maximumValue = _exercise.maxWeight.floatValue;
     //CGFloat weight = _exercise.weight.integerValue/1000.0f;
     //cell.weightLabel.text = [NSString stringWithFormat:@"%.2f KG", weight];
     

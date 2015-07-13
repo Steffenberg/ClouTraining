@@ -43,7 +43,8 @@
         
         NSDictionary *data = @{@"name":_nameField.text,
                                @"describe":_descField.text,
-                               @"shared":[NSNumber numberWithBool:_onlineSwitch.on]};
+                               @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
+                               @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]]};
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
         
         [self.tabBarController.navigationController popViewControllerAnimated:YES];
@@ -52,6 +53,7 @@
     
 
 }
+
 
 #pragma mark - textField/View
 

@@ -23,11 +23,12 @@
     
 }
 
--(void)reloadToExercise:(Exercise*)e hide:(BOOL)hide completition:(SetupComplete)setupComplete{
+-(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t hide:(BOOL)hide completition:(SetupComplete)setupComplete{
     if(!hide){
         _exercise = e;
+        _training = t;
         TrainingContentViewController *tcvc = [self.viewControllers objectAtIndex:0];
-        [tcvc reloadToExercise:e completition:^(BOOL complete){
+        [tcvc reloadToExercise:e ofTraining:(Training*)t completition:^(BOOL complete){
             if(complete){
                 setupComplete(YES);
             }else{

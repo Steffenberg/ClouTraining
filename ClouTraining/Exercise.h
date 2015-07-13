@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * exerciseid;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * shared;
+@property (nonatomic, retain) NSNumber * maxWeight;
 @property (nonatomic, retain) NSSet *medias;
 @property (nonatomic, retain) NSSet *trainings;
 @property (nonatomic, retain) NSSet *protocols;
