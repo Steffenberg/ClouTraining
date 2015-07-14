@@ -2,7 +2,7 @@
 //  Exercise.m
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 12.07.15.
+//  Created by Steffen Gruschka on 14.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
@@ -16,11 +16,12 @@
 
 @dynamic describe;
 @dynamic exerciseid;
+@dynamic maxWeight;
 @dynamic name;
 @dynamic shared;
-@dynamic maxWeight;
+@dynamic date;
 @dynamic medias;
-@dynamic trainings;
 @dynamic protocols;
+@dynamic trainings;
 
 @end

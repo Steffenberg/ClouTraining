@@ -78,11 +78,15 @@
              if (exportSession.status == AVAssetExportSessionStatusCompleted)
              {
                  NSLog(@"completed");
-                 //WICHTIG!!! QUELLVIEDEO LÖSCHEN!!!
+                 
                  
                  _videoData = [NSData dataWithContentsOfURL:fileURL];
                  
                  NSLog(@"Filesize - before: %f \nafter: %f", videoLargeData.length/1000.0f, _videoData.length/1000.0f);
+                 
+                 //WICHTIG!!! QUELLVIEDEOS LÖSCHEN!!!
+                 [[NSFileManager defaultManager] removeItemAtPath:[videoURL path] error:nil];
+                 [[NSFileManager defaultManager] removeItemAtPath:[fileURL path] error:nil];
              }
              else
              {

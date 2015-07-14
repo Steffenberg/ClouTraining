@@ -2,7 +2,7 @@
 //  Exercise.h
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 12.07.15.
+//  Created by Steffen Gruschka on 14.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
@@ -15,12 +15,13 @@
 
 @property (nonatomic, retain) NSString * describe;
 @property (nonatomic, retain) NSNumber * exerciseid;
+@property (nonatomic, retain) NSNumber * maxWeight;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * shared;
-@property (nonatomic, retain) NSNumber * maxWeight;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSSet *medias;
-@property (nonatomic, retain) NSSet *trainings;
 @property (nonatomic, retain) NSSet *protocols;
+@property (nonatomic, retain) NSSet *trainings;
 @end
 
 @interface Exercise (CoreDataGeneratedAccessors)
@@ -30,19 +31,14 @@
 - (void)addMedias:(NSSet *)values;
 - (void)removeMedias:(NSSet *)values;
 
-- (void)addTrainingsObject:(Training *)value;
-- (void)removeTrainingsObject:(Training *)value;
-- (void)addTrainings:(NSSet *)values;
-- (void)removeTrainings:(NSSet *)values;
-
-- (void)addSetsObject:(NSManagedObject *)value;
-- (void)removeSetsObject:(NSManagedObject *)value;
-- (void)addSets:(NSSet *)values;
-- (void)removeSets:(NSSet *)values;
-
 - (void)addProtocolsObject:(ExerciseProtocol *)value;
 - (void)removeProtocolsObject:(ExerciseProtocol *)value;
 - (void)addProtocols:(NSSet *)values;
 - (void)removeProtocols:(NSSet *)values;
+
+- (void)addTrainingsObject:(Training *)value;
+- (void)removeTrainingsObject:(Training *)value;
+- (void)addTrainings:(NSSet *)values;
+- (void)removeTrainings:(NSSet *)values;
 
 @end

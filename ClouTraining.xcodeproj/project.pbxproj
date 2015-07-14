@@ -930,7 +930,6 @@
 		07F737C51B4E7515005ECE10 /* ArnieBG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07F737C41B4E7515005ECE10 /* ArnieBG.jpg */; };
 		F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */; };
 		F909D68B1B4FB99C0041792E /* CreateTrainingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */; };
-		F90F7A281B52768300A32044 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A271B52768300A32044 /* Exercise.m */; };
 		F90F7A2B1B52768300A32044 /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A2A1B52768300A32044 /* Training.m */; };
 		F90F7A2E1B52768400A32044 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A2D1B52768400A32044 /* Media.m */; };
 		F90F7A311B52768400A32044 /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F90F7A301B52768400A32044 /* TrainingProtocol.m */; };
@@ -955,6 +954,9 @@
 		F96B08621B4FAE2D001BDEA1 /* ManageTrainingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B08611B4FAE2D001BDEA1 /* ManageTrainingsViewController.m */; };
 		F96B086C1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F96B086A1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m */; };
 		F96B086D1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */; };
+		F9C0ADF81B55820400ACD494 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0ADF71B55820400ACD494 /* Communicator.m */; };
+		F9C0ADFB1B55826500ACD494 /* DataConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0ADFA1B55826500ACD494 /* DataConverter.m */; };
+		F9C0AE011B5583B700ACD494 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0AE001B5583B700ACD494 /* Exercise.m */; };
 		F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */; };
 		F9D5F3951B4EAB6400097B84 /* TrainingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */; };
 		F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */; };
@@ -1006,7 +1008,7 @@
 		07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_deleteTraining.php; sourceTree = "<group>"; };
 		07B733191B4D42B500D31399 /* coachyy_sendSession.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendSession.php; sourceTree = "<group>"; };
 		07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendTraining_old.php; sourceTree = "<group>"; };
-		07B7331B1B4D42B600D31399 /* coachyy_sendTraining.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendTraining.php; sourceTree = "<group>"; };
+		07B7331B1B4D42B600D31399 /* CTSendExercise.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = CTSendExercise.php; sourceTree = "<group>"; };
 		07B7331C1B4D42B600D31399 /* create_user.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = create_user.php; sourceTree = "<group>"; };
 		07B7331D1B4D42B600D31399 /* find_trainer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = find_trainer.php; sourceTree = "<group>"; };
 		07B7331E1B4D42B600D31399 /* function_sql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = function_sql.php; sourceTree = "<group>"; };
@@ -1938,8 +1940,6 @@
 		F909D6871B4FB99C0041792E /* CreateTrainingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateTrainingTableViewCell.h; sourceTree = "<group>"; };
 		F909D6881B4FB99C0041792E /* CreateTrainingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateTrainingTableViewCell.m; sourceTree = "<group>"; };
 		F909D6891B4FB99C0041792E /* CreateTrainingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateTrainingTableViewCell.xib; sourceTree = "<group>"; };
-		F90F7A261B52768300A32044 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		F90F7A271B52768300A32044 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		F90F7A291B52768300A32044 /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
 		F90F7A2A1B52768300A32044 /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 		F90F7A2C1B52768400A32044 /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
@@ -1984,6 +1984,12 @@
 		F96B08691B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManageTrainingsTableViewCell.h; sourceTree = "<group>"; };
 		F96B086A1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManageTrainingsTableViewCell.m; sourceTree = "<group>"; };
 		F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManageTrainingsTableViewCell.xib; sourceTree = "<group>"; };
+		F9C0ADF61B55820400ACD494 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
+		F9C0ADF71B55820400ACD494 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
+		F9C0ADF91B55826500ACD494 /* DataConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConverter.h; sourceTree = "<group>"; };
+		F9C0ADFA1B55826500ACD494 /* DataConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConverter.m; sourceTree = "<group>"; };
+		F9C0ADFF1B5583B700ACD494 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		F9C0AE001B5583B700ACD494 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingContentTableViewCell.h; sourceTree = "<group>"; };
 		F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingContentTableViewCell.m; sourceTree = "<group>"; };
 		F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -2064,6 +2070,9 @@
 				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				072D87B41ADE51CF001F4370 /* Main.storyboard */,
 				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
+				F9C0ADFF1B5583B700ACD494 /* Exercise.h */,
+				F9C0AE001B5583B700ACD494 /* Exercise.m */,
+				F9C0ADF51B5581E500ACD494 /* Communication */,
 				F9EFFA761B4A559100E87DC6 /* DataManagement */,
 				F95FF5691B468E6100555327 /* MainMenu */,
 				F95FF5681B468E4700555327 /* TrainingSelection */,
@@ -2127,15 +2136,14 @@
 		07428BA21B53913100555BE7 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				F9C0ADF41B55753400ACD494 /* Done */,
 				07B733161B4D42B500D31399 /* become_trainerIOS.php */,
 				07B733171B4D42B500D31399 /* closeLivetraining.php */,
 				07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */,
 				07B733191B4D42B500D31399 /* coachyy_sendSession.php */,
 				07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */,
-				07B7331B1B4D42B600D31399 /* coachyy_sendTraining.php */,
 				07B7331C1B4D42B600D31399 /* create_user.php */,
 				07B7331D1B4D42B600D31399 /* find_trainer.php */,
-				07B7331E1B4D42B600D31399 /* function_sql.php */,
 				07B7331F1B4D42B600D31399 /* get_pulses_old.php */,
 				07B733201B4D42B600D31399 /* get_pulses.php */,
 				07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */,
@@ -3192,6 +3200,26 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		F9C0ADF41B55753400ACD494 /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				07B7331B1B4D42B600D31399 /* CTSendExercise.php */,
+				07B7331E1B4D42B600D31399 /* function_sql.php */,
+			);
+			name = Done;
+			sourceTree = "<group>";
+		};
+		F9C0ADF51B5581E500ACD494 /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				F9C0ADF61B55820400ACD494 /* Communicator.h */,
+				F9C0ADF71B55820400ACD494 /* Communicator.m */,
+				F9C0ADF91B55826500ACD494 /* DataConverter.h */,
+				F9C0ADFA1B55826500ACD494 /* DataConverter.m */,
+			);
+			name = Communication;
+			sourceTree = "<group>";
+		};
 		F9D5F3901B4EAB4500097B84 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -3227,8 +3255,6 @@
 				F90F7A2D1B52768400A32044 /* Media.m */,
 				F90F7A291B52768300A32044 /* Training.h */,
 				F90F7A2A1B52768300A32044 /* Training.m */,
-				F90F7A261B52768300A32044 /* Exercise.h */,
-				F90F7A271B52768300A32044 /* Exercise.m */,
 				F90F7A351B5276A400A32044 /* SetEntry.h */,
 				F90F7A361B5276A400A32044 /* SetEntry.m */,
 			);
@@ -4264,12 +4290,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C0AE011B5583B700ACD494 /* Exercise.m in Sources */,
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
-				F90F7A281B52768300A32044 /* Exercise.m in Sources */,
 				F90F7A3A1B528DB300A32044 /* CreateExerciseTabBarController.m in Sources */,
 				F90F7A2E1B52768400A32044 /* Media.m in Sources */,
 				F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
+				F9C0ADF81B55820400ACD494 /* Communicator.m in Sources */,
 				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
 				F96B08591B4FA953001BDEA1 /* CreateExerciseViewController.m in Sources */,
 				F90F7A371B5276A400A32044 /* SetEntry.m in Sources */,
@@ -4289,6 +4316,7 @@
 				F949500B1B5269FD00DFAFDA /* ChooseExercisesViewController.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
 				072D87AA1ADE51CF001F4370 /* main.m in Sources */,
+				F9C0ADFB1B55826500ACD494 /* DataConverter.m in Sources */,
 				F90F7A341B52768400A32044 /* ExerciseProtocol.m in Sources */,
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
 				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,

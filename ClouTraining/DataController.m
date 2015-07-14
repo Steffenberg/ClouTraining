@@ -191,6 +191,7 @@
              Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
             
             Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+            e.exerciseid = [NSNumber numberWithInteger:0];
             e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
@@ -217,6 +218,7 @@
             Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
             
             e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+             e.exerciseid = [NSNumber numberWithInteger:0];
             e.name = [data objectForKey:@"name"];
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
@@ -233,6 +235,11 @@
     return e;
 }
 
+-(void)updateExercise:(Exercise *)e ID:(NSInteger)exerciseID{
+    Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    [exercise setExerciseid:[NSNumber numberWithInteger:exerciseID]];
+    [self save];
+}
 
 -(NSArray*)getExercisesForTraining:(Training*)t{
     Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];

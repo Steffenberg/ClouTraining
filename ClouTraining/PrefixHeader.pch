@@ -8,6 +8,7 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import "DataController.h"
+    #import "Communicator.h"
 #endif
 
 #ifndef ClouTraining_PrefixHeader_pch

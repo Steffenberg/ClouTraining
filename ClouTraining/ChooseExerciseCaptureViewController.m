@@ -76,6 +76,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [[Communicator sharedInstance]sendExerciseToServer:[_exercises objectAtIndex:indexPath.row]];
+    return;
     _chosenExercise = [_exercises objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"ShowCaptureForExercise" sender:self];
 }

@@ -2,7 +2,7 @@
 
 function DBCON_mysqli() {
  $HOST       = "127.0.0.1";
-  $DATABASE   = "coachyy";
+  $DATABASE   = "cloutraining";
   $USER       = "dbuser";
   $PASSWORD   = "5EQ%HMu85FT?%Tx";
   $mysqli = new mysqli($HOST, $USER, $PASSWORD, $DATABASE);
@@ -11,7 +11,7 @@ function DBCON_mysqli() {
         exit();
     }
 	$mysqli->query("SET NAMES utf8mb4");	
-return $mysqli;
+ return $mysqli;
 }
 
 function getUserID($mysqli) {

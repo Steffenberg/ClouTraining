@@ -36,6 +36,7 @@ typedef void (^InitCallbackBlock)(void);
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
+-(void)updateExercise:(Exercise *)e ID:(NSInteger)exerciseID;
 -(NSArray*)getExercisesForTraining:(Training*)t;
 -(NSArray*)getAllExercises;
 -(NSArray*)getAllSharedExercises;
