@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^MediaComplete)(BOOL);
+
 @interface Communicator : NSObject
 
 +(Communicator*)sharedInstance;
 
 -(BOOL)sendExerciseToServer:(Exercise*)e;
+-(void)reuqestMediaInfoFor:(Exercise*)e withData:(NSDictionary*)data andMedia:(NSData*)media;
 @end

@@ -12,6 +12,6 @@
 
 +(DataConverter*)sharedInstance;
 +(NSData*)createJSONForExercise:(Exercise*)e;
-
++(NSData*)createJSONForData:(NSDictionary*)data;
 
 @end

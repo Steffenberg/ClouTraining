@@ -42,4 +42,19 @@
     
 }
 
++(NSData*)createJSONForData:(NSDictionary*)data{
+    
+    NSString *jsonPrefix =@"data=";
+    NSMutableData * jsonData = [jsonPrefix dataUsingEncoding:NSUTF8StringEncoding].mutableCopy;
+    
+    [jsonData appendData:[NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil]];
+    NSString *check = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    
+    
+    
+    return jsonData;
+    
+}
+
 @end

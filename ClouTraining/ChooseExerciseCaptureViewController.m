@@ -11,6 +11,8 @@
 #import "CreateTrainingTableViewCell.h"
 #import "Exercise.h"
 
+
+
 @interface ChooseExerciseCaptureViewController ()
 
 @end
@@ -76,7 +78,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[Communicator sharedInstance]sendExerciseToServer:[_exercises objectAtIndex:indexPath.row]];
+    [[Communicator sharedInstance]reuqestMediaInfoFor:[_exercises objectAtIndex:indexPath.row] withData:nil andMedia:nil];
     return;
     _chosenExercise = [_exercises objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"ShowCaptureForExercise" sender:self];
