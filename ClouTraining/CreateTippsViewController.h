@@ -11,17 +11,18 @@
 #import <AVFoundation/AVFoundation.h>
 
 
-
 typedef void (^ExportCallback) (AVAssetExportSession*);
 
 
 
-@interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
 
 @property Exercise *exercise;
 @property UIImagePickerController *picker;
+@property UIActionSheet *sheet;
 
-@property (strong) NSData *videoData;
+
+@property (strong) NSData *uploadData;
 @property (strong) NSArray *images;
 
 - (IBAction)createVideo:(id)sender;

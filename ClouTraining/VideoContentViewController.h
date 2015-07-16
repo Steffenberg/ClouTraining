@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface VideoContentViewController : UIViewController
+@interface VideoContentViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (strong) UIImagePickerController *picker;
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property NSArray *videoData;
+@property (strong) MPMoviePlayerViewController *movieController;
 
 @end

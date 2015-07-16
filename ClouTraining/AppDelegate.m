@@ -37,42 +37,54 @@
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
                                                                              @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:250.00f]
+                                                                             @"maxWeight":[NSNumber numberWithFloat:250.00f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Kniebeugen",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:250.00f]
+                                                                             @"shared":[NSNumber numberWithBool:NO],
+                                                                             @"maxWeight":[NSNumber numberWithFloat:250.00f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Arnoldpress",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:60.00f]
+                                                                             @"shared":[NSNumber numberWithBool:NO],
+                                                                             @"maxWeight":[NSNumber numberWithFloat:60.00f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Klimmzüge Maschine",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:100.00f]
+                                                                             @"shared":[NSNumber numberWithBool:NO],
+                                                                             @"maxWeight":[NSNumber numberWithFloat:100.00f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Hyperextension",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:0.0f]
+                                                                             @"shared":[NSNumber numberWithBool:NO],
+                                                                             @"maxWeight":[NSNumber numberWithFloat:0.0f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     [[DataController sharedInstance]createExerciseWithData:@{@"name":@"Sit ups",
                                                                              @"describe":@"",
                                                                              @"distance":[NSNumber numberWithInteger:0],
                                                                              @"duration":[NSNumber numberWithInteger:0],
-                                                                             @"shared":[NSNumber numberWithBool:YES],
-                                                                             @"maxWeight":[NSNumber numberWithFloat:0.0f]
+                                                                             @"shared":[NSNumber numberWithBool:NO],
+                                                                             @"maxWeight":[NSNumber numberWithFloat:0.0f],
+                                                                             @"own":[NSNumber numberWithBool:YES],
+                                                                             @"date":[NSDate date]
                                                                              } forTraining:training];
                     
                     

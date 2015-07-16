@@ -3,8 +3,8 @@
 function DBCON_mysqli() {
  $HOST       = "127.0.0.1";
   $DATABASE   = "cloutraining";
-  $USER       = "dbuser";
-  $PASSWORD   = "5EQ%HMu85FT?%Tx";
+  $USER       = "CTAdmin";
+  $PASSWORD   = "Sandberg2k12.x666";
   $mysqli = new mysqli($HOST, $USER, $PASSWORD, $DATABASE);
      if (!$mysqli->set_charset("utf8")) {
         printf("Error loading character set utf8: %s\n", $mysqli->error);

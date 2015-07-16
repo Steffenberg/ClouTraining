@@ -69,7 +69,7 @@
     }else{
         [[DataController sharedInstance]updateTraining:_training withData:@{@"name":_nameField.text,
                                                                             @"describe":_descField.text,
-                                                                            @"publicate":[NSNumber numberWithBool:_onlineSwitch.on],
+                                                                            @"publicate":[NSNumber numberWithBool:_onlineSwitch.on]
                                                                             }];
         _training.name = _nameField.text;
         _training.describe = _descField.text;

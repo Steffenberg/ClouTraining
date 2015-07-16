@@ -64,11 +64,15 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    [_gravityCircleView setupView:_exercises];
-    if(_activeProtocol){
-        [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
-                                                                                  @"duration":[NSNumber numberWithInteger:0]}];
+    if(_gravityCircleView.mayReload){
+        [_gravityCircleView setupView:_exercises];
+        if(_activeProtocol){
+            [[DataController sharedInstance]updateProtocol:_activeProtocol withData:@{@"comment":@"Nix",
+                                                                                      @"duration":[NSNumber numberWithInteger:0]}];
+        }
     }
+    
+    
     
     [_gravityCircleView setNeedsDisplay];
 }

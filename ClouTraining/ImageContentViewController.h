@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageContentViewController : UIViewController
+@interface ImageContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
+@property NSArray *imageData;
 
 @end

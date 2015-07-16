@@ -25,7 +25,7 @@
 
 @property NSMutableArray *anchors;
 @property ContentGravityView *contentView;
-
+@property BOOL mayReload;
 
 -(id)initWithFrame:(CGRect)frame amountOfChildren:(CGFloat)childAmount;
 -(void)setupView:(NSArray*)exercises;

@@ -78,9 +78,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[Communicator sharedInstance]reuqestMediaInfoFor:[_exercises objectAtIndex:indexPath.row] withData:nil andMedia:nil];
-    return;
+    
+    /*NSURL *movieURL = [NSURL URLWithString:@"http://192.168.178.45/clouTraining/media/12/videos/12-54-16_07_15video.mp4"];
+    _movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+    [self presentMoviePlayerViewControllerAnimated:_movieController];
+    [_movieController.moviePlayer play];
+    
+    return;*/
+    
     _chosenExercise = [_exercises objectAtIndex:indexPath.row];
+    [[Communicator sharedInstance]sendExerciseToServer:_chosenExercise];
     [self performSegueWithIdentifier:@"ShowCaptureForExercise" sender:self];
 }
 

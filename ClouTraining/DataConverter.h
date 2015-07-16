@@ -13,5 +13,5 @@
 +(DataConverter*)sharedInstance;
 +(NSData*)createJSONForExercise:(Exercise*)e;
 +(NSData*)createJSONForData:(NSDictionary*)data;
-
++(NSDictionary*)convertOnlineExecise:(NSString*)data;
 @end

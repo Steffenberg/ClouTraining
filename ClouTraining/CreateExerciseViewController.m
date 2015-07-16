@@ -44,7 +44,10 @@
         NSDictionary *data = @{@"name":_nameField.text,
                                @"describe":_descField.text,
                                @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
-                               @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]]};
+                               @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
+                               @"own":[NSNumber numberWithBool:YES],
+                               @"date":[NSDate date]
+                               };
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
         
         [self.tabBarController.navigationController popViewControllerAnimated:YES];

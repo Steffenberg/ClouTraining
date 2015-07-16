@@ -14,6 +14,7 @@ typedef void (^MediaComplete)(BOOL);
 
 +(Communicator*)sharedInstance;
 
--(BOOL)sendExerciseToServer:(Exercise*)e;
--(void)reuqestMediaInfoFor:(Exercise*)e withData:(NSDictionary*)data andMedia:(NSData*)media;
+-(void)sendExerciseToServer:(Exercise*)e;
+-(void)reuqestMediaInfoWithData:(NSDictionary*)data andMedia:(NSData*)media;
+-(void)getMediaURLsForExercise:(Exercise*)e type:(NSInteger)type;
 @end

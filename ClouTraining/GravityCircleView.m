@@ -26,6 +26,13 @@
     return self;
 }
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.backgroundColor = [UIColor clearColor];
+    
+    _mayReload = YES;
+}
+
 -(void)setupView:(NSArray*)exercises{
     NSInteger childAmount = exercises.count;
     NSLog(@"Frame:%@", NSStringFromCGRect(self.frame));
@@ -37,6 +44,8 @@
     [self createChildren:exercises];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoveBegin:) name:@"ContentViewMoveBegin" object:nil];
+    
+    _mayReload = NO;
 }
 
 -(void)createChildren:(NSArray*)exercises{

@@ -956,9 +956,9 @@
 		F96B086D1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96B086B1B4FAF52001BDEA1 /* ManageTrainingsTableViewCell.xib */; };
 		F9C0ADF81B55820400ACD494 /* Communicator.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0ADF71B55820400ACD494 /* Communicator.m */; };
 		F9C0ADFB1B55826500ACD494 /* DataConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0ADFA1B55826500ACD494 /* DataConverter.m */; };
-		F9C0AE011B5583B700ACD494 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0AE001B5583B700ACD494 /* Exercise.m */; };
 		F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */; };
 		F9D5F3951B4EAB6400097B84 /* TrainingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */; };
+		F9EB3B111B57AA47004787A1 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EB3B101B57AA47004787A1 /* Exercise.m */; };
 		F9ECD7591B56B263008E80B2 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD7471B56B263008E80B2 /* AFHTTPRequestOperation.m */; };
 		F9ECD75A1B56B263008E80B2 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD7491B56B263008E80B2 /* AFHTTPRequestOperationManager.m */; };
 		F9ECD75B1B56B263008E80B2 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD74B1B56B263008E80B2 /* AFHTTPSessionManager.m */; };
@@ -1025,10 +1025,8 @@
 		07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_deleteTraining.php; sourceTree = "<group>"; };
 		07B733191B4D42B500D31399 /* coachyy_sendSession.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendSession.php; sourceTree = "<group>"; };
 		07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendTraining_old.php; sourceTree = "<group>"; };
-		07B7331B1B4D42B600D31399 /* CTSendExercise.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = CTSendExercise.php; sourceTree = "<group>"; };
 		07B7331C1B4D42B600D31399 /* create_user.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = create_user.php; sourceTree = "<group>"; };
 		07B7331D1B4D42B600D31399 /* find_trainer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = find_trainer.php; sourceTree = "<group>"; };
-		07B7331E1B4D42B600D31399 /* function_sql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = function_sql.php; sourceTree = "<group>"; };
 		07B7331F1B4D42B600D31399 /* get_pulses_old.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_pulses_old.php; sourceTree = "<group>"; };
 		07B733201B4D42B600D31399 /* get_pulses.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_pulses.php; sourceTree = "<group>"; };
 		07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = getConnectAboDateIOS.php; sourceTree = "<group>"; };
@@ -2005,11 +2003,11 @@
 		F9C0ADF71B55820400ACD494 /* Communicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Communicator.m; sourceTree = "<group>"; };
 		F9C0ADF91B55826500ACD494 /* DataConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConverter.h; sourceTree = "<group>"; };
 		F9C0ADFA1B55826500ACD494 /* DataConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConverter.m; sourceTree = "<group>"; };
-		F9C0ADFF1B5583B700ACD494 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
-		F9C0AE001B5583B700ACD494 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingContentTableViewCell.h; sourceTree = "<group>"; };
 		F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingContentTableViewCell.m; sourceTree = "<group>"; };
 		F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrainingContentTableViewCell.xib; sourceTree = "<group>"; };
+		F9EB3B0F1B57AA47004787A1 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		F9EB3B101B57AA47004787A1 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		F9ECD7461B56B263008E80B2 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		F9ECD7471B56B263008E80B2 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		F9ECD7481B56B263008E80B2 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -2123,8 +2121,8 @@
 				072D87AC1ADE51CF001F4370 /* AppDelegate.m */,
 				072D87B41ADE51CF001F4370 /* Main.storyboard */,
 				F9EFFAB51B4AA1A100E87DC6 /* ClouTraining.xcdatamodeld */,
-				F9C0ADFF1B5583B700ACD494 /* Exercise.h */,
-				F9C0AE001B5583B700ACD494 /* Exercise.m */,
+				F9EB3B0F1B57AA47004787A1 /* Exercise.h */,
+				F9EB3B101B57AA47004787A1 /* Exercise.m */,
 				F9C0ADF51B5581E500ACD494 /* Communication */,
 				F9EFFA761B4A559100E87DC6 /* DataManagement */,
 				F95FF5691B468E6100555327 /* MainMenu */,
@@ -3257,8 +3255,6 @@
 		F9C0ADF41B55753400ACD494 /* Done */ = {
 			isa = PBXGroup;
 			children = (
-				07B7331B1B4D42B600D31399 /* CTSendExercise.php */,
-				07B7331E1B4D42B600D31399 /* function_sql.php */,
 			);
 			name = Done;
 			sourceTree = "<group>";
@@ -4387,7 +4383,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9C0AE011B5583B700ACD494 /* Exercise.m in Sources */,
 				F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */,
 				F9ECD75E1B56B263008E80B2 /* AFURLConnectionOperation.m in Sources */,
 				F90F7A3A1B528DB300A32044 /* CreateExerciseTabBarController.m in Sources */,
@@ -4431,6 +4426,7 @@
 				F90F7A341B52768400A32044 /* ExerciseProtocol.m in Sources */,
 				F9ECD7741B56B26D008E80B2 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				F95FF5721B4696B100555327 /* TrainingContentViewController.m in Sources */,
+				F9EB3B111B57AA47004787A1 /* Exercise.m in Sources */,
 				F9ECD7731B56B26D008E80B2 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				072D87D81ADE546A001F4370 /* ExerciseCircleView.m in Sources */,
 				F9ECD75A1B56B263008E80B2 /* AFHTTPRequestOperationManager.m in Sources */,

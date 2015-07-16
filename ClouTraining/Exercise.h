@@ -2,7 +2,7 @@
 //  Exercise.h
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 14.07.15.
+//  Created by Steffen Gruschka on 16.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
@@ -13,12 +13,13 @@
 
 @interface Exercise : NSManagedObject
 
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSString * describe;
 @property (nonatomic, retain) NSNumber * exerciseid;
 @property (nonatomic, retain) NSNumber * maxWeight;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * shared;
-@property (nonatomic, retain) NSDate * date;
+@property (nonatomic, retain) NSNumber * own;
 @property (nonatomic, retain) NSSet *medias;
 @property (nonatomic, retain) NSSet *protocols;
 @property (nonatomic, retain) NSSet *trainings;

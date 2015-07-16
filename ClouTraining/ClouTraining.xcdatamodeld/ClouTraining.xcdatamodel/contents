@@ -6,6 +6,7 @@
         <attribute name="exerciseid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="maxWeight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="own" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shared" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="medias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Media" inverseName="exercise" inverseEntity="Media" syncable="YES"/>
         <relationship name="protocols" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ExerciseProtocol" inverseName="exercise" inverseEntity="ExerciseProtocol" syncable="YES"/>
@@ -44,7 +45,7 @@
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="protocols" inverseEntity="Training" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-342" positionY="-211" width="128" height="178"/>
+        <element name="Exercise" positionX="-342" positionY="-211" width="128" height="195"/>
         <element name="ExerciseProtocol" positionX="-290" positionY="101" width="128" height="88"/>
         <element name="Media" positionX="-108" positionY="-189" width="128" height="118"/>
         <element name="SetEntry" positionX="-92" positionY="99" width="128" height="88"/>

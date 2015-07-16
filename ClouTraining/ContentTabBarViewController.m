@@ -30,6 +30,7 @@
         TrainingContentViewController *tcvc = [self.viewControllers objectAtIndex:0];
         [tcvc reloadToExercise:e ofTraining:(Training*)t completition:^(BOOL complete){
             if(complete){
+                [self setSelectedIndex:0];
                 setupComplete(YES);
             }else{
                 setupComplete(NO);

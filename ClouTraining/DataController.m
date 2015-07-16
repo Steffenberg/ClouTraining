@@ -196,6 +196,8 @@
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
             e.maxWeight = [data objectForKey:@"maxWeight"];
+            e.own = [data objectForKey:@"own"];
+            e.date = [data objectForKey:@"date"];
             
             [e addTrainingsObject:training];
             [training addExercisesObject:e];
@@ -223,6 +225,8 @@
             e.describe = [data objectForKey:@"describe"];
             e.shared = [data objectForKey:@"shared"];
             e.maxWeight = [data objectForKey:@"maxWeight"];
+            e.own = [data objectForKey:@"own"];
+            e.date = [data objectForKey:@"date"];
             
             [training addExercisesObject:e];
             [e addTrainingsObject:training];
@@ -250,8 +254,20 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES];
 }
 
+-(NSArray*)getAllOwnExercises{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"own = 1"];
+}
+
 -(NSArray*)getAllSharedExercises{
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"shared = 1"];
+}
+
+-(BOOL)hasExerciseForID:(NSNumber*)exerciseID{
+    if([[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"exerciseid = %@",exerciseID].count>0){
+        return YES;
+    }else{
+        return NO;
+    }
 }
 
 -(NSArray*)getAllExercisesNotInTraining:(Training*)t{

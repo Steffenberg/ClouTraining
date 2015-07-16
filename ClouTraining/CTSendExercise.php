@@ -19,13 +19,13 @@ include ("function_sql.php");
         }
     }
     
-    function createExercise($name,$describe,$maxWeight,$shared,$date)
+    function createExercise($name,$description,$maxWeight,$shared,$date)
     {
        
         $zero = 0;
         
         global $mysqli;
-        if (!($stmt = $mysqli->prepare('replace into Exercise  (name,describe,maxWeight,shared,date) values(?,?,?,?,?)'))) {
+        if (!($stmt = $mysqli->prepare('INSERT INTO exercise (name,description,maxWeight,shared,date) VALUES (?,?,?,?,?)'))) {
             echo "error-1-7<br>\n";
             echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
             exit();
@@ -40,12 +40,14 @@ include ("function_sql.php");
             echo "error-1-9<br>\n".$mysqli->error;
             exit();
         }
+        
+        return mysqli_stmt_insert_id ($stmt);
     }
     
-    function updateExercise($exerciseID,$name,$describe,$maxWeight,$shared,$date)
+    function updateExercise($exerciseID,$name,$description,$maxWeight,$shared,$date)
     {
         global $mysqli;
-        if (!($stmt = $mysqli->prepare('UPDATE Training SET name =?, describe=?, maxWeight =?, shared=?, date = ? WHERE exerciseID = ?'))) {
+        if (!($stmt = $mysqli->prepare('UPDATE exercise SET name =?, description=?, maxWeight =?, shared=?, date = ? WHERE exerciseID = ?'))) {
             echo "error-2-7<br>\n";
             echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
             exit();
@@ -64,7 +66,7 @@ include ("function_sql.php");
         
         
     }
-    echo "BOB";
+    
     
     $jsonEncoded = filter_input(INPUT_POST, 'data', FILTER_UNSAFE_RAW);
     
@@ -78,23 +80,25 @@ include ("function_sql.php");
 
         $exerciseID = $jsonDecoded->{'exerciseID'};
         $name = $jsonDecoded->{'name'};
-        $describe = $jsonDecoded->{'describe'};
+        $description = $jsonDecoded->{'describe'};
         $maxWeight = $jsonDecoded->{'maxWeight'};
         $shared = $jsonDecoded->{'shared'};
         $date = date("Y-m-d H:i:s",$jsonDecoded->{'date'});
        
-        if(exerciseID != 0){
-            updateExercise($exerciseID,$name,$describe,$maxWeight,$shared,$date)
+        if($exerciseID != 0){
+            updateExercise($exerciseID,$name,$description,$maxWeight,$shared,$date);
+            echo "OK-UPDATE";
         }else{
-            createExercise($name,$describe,$maxWeight,$shared,$date);
+            $returnID = createExercise($name,$description,$maxWeight,$shared,$date);
+            echo "OK-ID".$returnID;
         }
         
 
         
       
-        echo "OK";
+        
     }else{
-        echo "ERROR";
+        echo "NODATA";
     }
     exit();
 
