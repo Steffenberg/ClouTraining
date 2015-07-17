@@ -15,19 +15,27 @@ typedef void (^ExportCallback) (AVAssetExportSession*);
 
 
 
-@interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate>
+@interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate,UITextFieldDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextField *titleField;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnailView;
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UIButton *uploadButton;
 @property Exercise *exercise;
 @property UIImagePickerController *picker;
 @property UIActionSheet *sheet;
-
+@property NSInteger type;
 
 @property (strong) NSData *uploadData;
-@property (strong) NSArray *images;
+@property UIImage *thumbnail;
+@property NSString *mediaTitle;
+//@property (strong) NSArray *images;
 
 - (IBAction)createVideo:(id)sender;
 - (IBAction)createImage:(id)sender;
 - (IBAction)createText:(id)sender;
+- (IBAction)closeThumbnailView:(id)sender;
 
 
 @end

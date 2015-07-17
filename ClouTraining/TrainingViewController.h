@@ -12,6 +12,10 @@
 
 @interface TrainingViewController : UIViewController<UIGestureRecognizerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIView *imagePresenterView;
+@property (weak, nonatomic) IBOutlet UILabel *imageTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 @property (strong, nonatomic) IBOutlet GravityCircleView *gravityCircleView;
 @property (weak, nonatomic) IBOutlet ContentGravityView *contentGravityView;
 @property (weak, nonatomic) IBOutlet UILabel *dragHereLabel;

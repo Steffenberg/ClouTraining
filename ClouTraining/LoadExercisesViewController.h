@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoadExercisesViewController : UIViewController
+@interface LoadExercisesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property Training *training;
+@property NSArray *exercises;
 @end

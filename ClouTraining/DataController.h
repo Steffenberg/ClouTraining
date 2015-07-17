@@ -34,13 +34,19 @@ typedef void (^InitCallbackBlock)(void);
 -(void)addExercise:(Exercise*)e toTraining:(Training*)t;
 -(void)removeExercise:(Exercise*)e fromTraining:(Training*)t;
 
+-(void)createExerciseWithData:(NSDictionary *)data;
+-(Exercise*)createReturnExerciseWithData:(NSDictionary *)data;
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
+-(void)updateExercise:(Exercise *)e;
 -(void)updateExercise:(Exercise *)e ID:(NSInteger)exerciseID;
+-(void)deleteExercise:(Exercise*)e;
 -(NSArray*)getExercisesForTraining:(Training*)t;
 -(NSArray*)getAllExercises;
 -(NSArray*)getAllSharedExercises;
+-(NSArray*)getAllOwnExercises;
 -(NSArray*)getAllExercisesNotInTraining:(Training*)t;
+-(BOOL)hasExerciseForID:(NSNumber*)exerciseID;
 
 -(TrainingProtocol*)createProtocolForTraining:(Training*)training;
 -(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;

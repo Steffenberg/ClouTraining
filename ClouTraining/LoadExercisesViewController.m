@@ -7,6 +7,7 @@
 //
 
 #import "LoadExercisesViewController.h"
+#import "CreateTrainingTableViewCell.h"
 
 @interface LoadExercisesViewController ()
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleExerciseUpdate:) name:@"SharedExercisesUpdate" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +26,113 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [[Communicator sharedInstance]getSharedExercises];
+}
+
+-(void)handleExerciseUpdate:(NSNotification*)note{
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSDictionary *data = note.object;
+        NSMutableArray *tmp = [NSMutableArray array];
+        for(NSString *str in [data allKeys]){
+            if(![[DataController sharedInstance]hasExerciseForID:[[data objectForKey:str]objectForKey:@"exerciseID"]]){
+                 [tmp addObject:[data objectForKey:str]];
+            }
+           
+        }
+        _exercises = tmp;
+        
+        [_table reloadData];
+    });
+}
+
+
+#pragma mark - tableView
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44.0f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 17.0f;
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    return @"Übungen online";
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return _exercises.count;
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+   
+    return 1;
+}
+
+
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section = indexPath.section;
+    NSInteger row = indexPath.row;
+    
+    static NSString *CellIdentifier = @"CreateTrainingTableViewCell";
+    CreateTrainingTableViewCell *cell = (CreateTrainingTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(!cell){
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"CreateTrainingTableViewCell" owner:self options:nil]objectAtIndex:0];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if(_training){
+       cell.titleLabel.text = [(NSDictionary*)[_exercises objectAtIndex:row]objectForKey:@"name"];
+    }else{
+       cell.titleLabel.text = [(NSDictionary*)[_exercises objectAtIndex:row]objectForKey:@"name"];
+        
+    }
+    
+    
+    
+    
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.tabBarController){
+        return NO;
+    }
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        Exercise *e = [_exercises objectAtIndex:indexPath.row];
+        [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
+            if(complete){
+                [[DataController sharedInstance]deleteExercise:e];
+                _exercises = [[DataController sharedInstance]getAllOwnExercises];
+                [tableView reloadData]; // tell table to refresh now
+            }
+        }];
+        
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(_training){
+        
+    }else{
+        
+    }
+}
 /*
 #pragma mark - Navigation
 

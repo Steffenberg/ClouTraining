@@ -183,11 +183,50 @@
 }
 
 #pragma mark - Exercises
+-(void)createExerciseWithData:(NSDictionary *)data{
+    [[self privateContext]performBlockAndWait:^{
+        
+        Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+        e.exerciseid = [NSNumber numberWithInteger:0];
+        e.name = [data objectForKey:@"name"];
+        e.describe = [data objectForKey:@"describe"];
+        e.shared = [data objectForKey:@"shared"];
+        e.maxWeight = [data objectForKey:@"maxWeight"];
+        e.own = [data objectForKey:@"own"];
+        e.date = [data objectForKey:@"date"];
+
+        [self save];
+        
+        
+    }];
+}
+
+-(Exercise*)createReturnExerciseWithData:(NSDictionary *)data{
+    
+    __block Exercise *e;
+    [[self privateContext]performBlockAndWait:^{
+    
+        e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+        e.exerciseid = [NSNumber numberWithInteger:0];
+        e.name = [data objectForKey:@"name"];
+        e.describe = [data objectForKey:@"describe"];
+        e.shared = [data objectForKey:@"shared"];
+        e.maxWeight = [data objectForKey:@"maxWeight"];
+        e.own = [data objectForKey:@"own"];
+        e.date = [data objectForKey:@"date"];
+        
+        [self save];
+        
+    }];
+    
+    
+    return e;
+}
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t{
     
         [[self privateContext]performBlockAndWait:^{
-            
+           
              Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
             
             Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
@@ -239,15 +278,31 @@
     return e;
 }
 
+-(void)updateExercise:(Exercise *)e{
+    Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    [exercise setName:e.name];
+    [exercise setDescribe:e.describe];
+    [exercise setShared:e.shared];
+    [exercise setMaxWeight:e.maxWeight];
+    [exercise setExerciseid:e.exerciseid];
+    [self save];
+}
+
 -(void)updateExercise:(Exercise *)e ID:(NSInteger)exerciseID{
     Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
     [exercise setExerciseid:[NSNumber numberWithInteger:exerciseID]];
     [self save];
 }
 
+-(void)deleteExercise:(Exercise*)e{
+    Exercise *exercise = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+    [[self managedObjectContext]deleteObject:exercise];
+    [self save];
+}
+
 -(NSArray*)getExercisesForTraining:(Training*)t{
     Training *training = (Training*)[[self privateContext]existingObjectWithID:t.objectID error:nil];
-    return [training.exercises sortedArrayUsingDescriptors:nil];
+    return [training.exercises sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]];
 }
 
 -(NSArray*)getAllExercises{

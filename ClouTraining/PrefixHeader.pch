@@ -9,6 +9,7 @@
     #import <Foundation/Foundation.h>
     #import "DataController.h"
     #import "Communicator.h"
+#import "ImageConverter.h"
 #endif
 
 #ifndef ClouTraining_PrefixHeader_pch

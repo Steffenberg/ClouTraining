@@ -976,6 +976,7 @@
 		F9ECD7781B56B26D008E80B2 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD76E1B56B26D008E80B2 /* UIProgressView+AFNetworking.m */; };
 		F9ECD7791B56B26D008E80B2 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD7701B56B26D008E80B2 /* UIRefreshControl+AFNetworking.m */; };
 		F9ECD77A1B56B26D008E80B2 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ECD7721B56B26D008E80B2 /* UIWebView+AFNetworking.m */; };
+		F9ED011E1B58EE6F00BDE1E1 /* ImageConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F9ED011D1B58EE6F00BDE1E1 /* ImageConverter.m */; };
 		F9EFFA811B4A5E4000E87DC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */; };
 		F9EFFA831B4A5EB500E87DC6 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */; };
 		F9EFFA861B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EFFA851B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.m */; };
@@ -2044,6 +2045,8 @@
 		F9ECD7701B56B26D008E80B2 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		F9ECD7711B56B26D008E80B2 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		F9ECD7721B56B26D008E80B2 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		F9ED011C1B58EE6F00BDE1E1 /* ImageConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageConverter.h; sourceTree = "<group>"; };
+		F9ED011D1B58EE6F00BDE1E1 /* ImageConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageConverter.m; sourceTree = "<group>"; };
 		F9EFFA801B4A5E4000E87DC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9EFFA821B4A5EB500E87DC6 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
 		F9EFFA841B4A600900E87DC6 /* NSManagedObjectContext-EasyFetch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext-EasyFetch.h"; sourceTree = "<group>"; };
@@ -2130,7 +2133,7 @@
 				072D87DC1ADE547D001F4370 /* TrainingViewController */,
 				F96B08631B4FAEE2001BDEA1 /* DataManagementViewControllers */,
 				F96B08531B4FA73E001BDEA1 /* DataCreation */,
-				F9FCCF221B518E2400E72CFB /* CaptrueVideo */,
+				F9FCCF221B518E2400E72CFB /* CreateTipps */,
 				F9ECD7101B56B233008E80B2 /* AFNetworking */,
 				F95FF5671B468E3F00555327 /* Settings */,
 				F90F7A411B52BF6900A32044 /* Support */,
@@ -2219,12 +2222,6 @@
 				F95FF56D1B46969900555327 /* ContentTabBarViewController.h */,
 				F95FF56E1B46969900555327 /* ContentTabBarViewController.m */,
 				F9D5F3901B4EAB4500097B84 /* Content */,
-				F95FF5731B4696C800555327 /* VideoContentViewController.h */,
-				F95FF5741B4696C800555327 /* VideoContentViewController.m */,
-				F95FF5761B4696D800555327 /* ImageContentViewController.h */,
-				F95FF5771B4696D800555327 /* ImageContentViewController.m */,
-				F95FF5791B4696E900555327 /* TippsContentViewController.h */,
-				F95FF57A1B4696E900555327 /* TippsContentViewController.m */,
 			);
 			name = ContentView;
 			sourceTree = "<group>";
@@ -3266,6 +3263,8 @@
 				F9C0ADF71B55820400ACD494 /* Communicator.m */,
 				F9C0ADF91B55826500ACD494 /* DataConverter.h */,
 				F9C0ADFA1B55826500ACD494 /* DataConverter.m */,
+				F9ED011C1B58EE6F00BDE1E1 /* ImageConverter.h */,
+				F9ED011D1B58EE6F00BDE1E1 /* ImageConverter.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -3278,6 +3277,12 @@
 				F9D5F3911B4EAB6400097B84 /* TrainingContentTableViewCell.h */,
 				F9D5F3921B4EAB6400097B84 /* TrainingContentTableViewCell.m */,
 				F9D5F3931B4EAB6400097B84 /* TrainingContentTableViewCell.xib */,
+				F95FF5731B4696C800555327 /* VideoContentViewController.h */,
+				F95FF5741B4696C800555327 /* VideoContentViewController.m */,
+				F95FF5761B4696D800555327 /* ImageContentViewController.h */,
+				F95FF5771B4696D800555327 /* ImageContentViewController.m */,
+				F95FF5791B4696E900555327 /* TippsContentViewController.h */,
+				F95FF57A1B4696E900555327 /* TippsContentViewController.m */,
 			);
 			name = Content;
 			sourceTree = "<group>";
@@ -3354,7 +3359,7 @@
 			name = DataModels;
 			sourceTree = "<group>";
 		};
-		F9FCCF221B518E2400E72CFB /* CaptrueVideo */ = {
+		F9FCCF221B518E2400E72CFB /* CreateTipps */ = {
 			isa = PBXGroup;
 			children = (
 				F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */,
@@ -3364,7 +3369,7 @@
 				F90F7A3B1B52A80D00A32044 /* CreateTippsViewController.h */,
 				F90F7A3C1B52A80D00A32044 /* CreateTippsViewController.m */,
 			);
-			name = CaptrueVideo;
+			name = CreateTipps;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4417,6 +4422,7 @@
 				F909D68A1B4FB99C0041792E /* CreateTrainingTableViewCell.m in Sources */,
 				F949500B1B5269FD00DFAFDA /* ChooseExercisesViewController.m in Sources */,
 				F95FF56C1B468ECD00555327 /* MainMenuViewController.m in Sources */,
+				F9ED011E1B58EE6F00BDE1E1 /* ImageConverter.m in Sources */,
 				F9ECD75B1B56B263008E80B2 /* AFHTTPSessionManager.m in Sources */,
 				F9ECD7611B56B263008E80B2 /* AFURLSessionManager.m in Sources */,
 				F9ECD7781B56B26D008E80B2 /* UIProgressView+AFNetworking.m in Sources */,
@@ -4569,6 +4575,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thorsten Brune (AQPSWP873K)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ClouTraining/PrefixHeader.pch";
 				INFOPLIST_FILE = ClouTraining/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4583,6 +4590,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/ClouTraining/PrefixHeader.pch";
 				INFOPLIST_FILE = ClouTraining/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateExerciseViewController : UIViewController<UITabBarDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface CreateExerciseViewController : UIViewController< UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *descField;
 @property (weak, nonatomic) IBOutlet UITextField *maxWeightField;

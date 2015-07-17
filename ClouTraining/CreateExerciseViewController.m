@@ -7,6 +7,7 @@
 //
 
 #import "CreateExerciseViewController.h"
+#import "Exercise.h"
 
 @interface CreateExerciseViewController ()
 
@@ -18,8 +19,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tabBarController.navigationItem.title = @"Übung erstellen";
-    self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Speichern" style:UIBarButtonItemStylePlain target:self action:@selector(saveExercise)];
+    if(_exercise){
+         self.navigationItem.title = @"Übung bearbeiten";
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Speichern" style:UIBarButtonItemStylePlain target:self action:@selector(saveExercise)];
+        _nameField.text = _exercise.name;
+        _descField.text = _exercise.describe;
+        _onlineSwitch.on = _exercise.shared.boolValue;
+        _maxWeightField.text = [NSString stringWithFormat:@"%@",_exercise.maxWeight];
+    }else{
+        if(self.tabBarController){
+            self.tabBarController.navigationItem.title = @"Übung erstellen";
+            self.tabBarController.navigationItem.title = @"Übung erstellen";
+            self.tabBarController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Speichern" style:UIBarButtonItemStylePlain target:self action:@selector(saveExercise)];
+        }else{
+            self.navigationItem.title = @"Übung erstellen";
+            self.navigationItem.title = @"Übung erstellen";
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"Speichern" style:UIBarButtonItemStylePlain target:self action:@selector(saveExercise)];
+        }
+        
+    }
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -39,18 +58,54 @@
 
 -(void)saveExercise{
     if(!_exercise){
+        if(self.tabBarController){
+            NSDictionary *data = @{@"name":_nameField.text,
+                                   @"describe":_descField.text,
+                                   @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
+                                   @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
+                                   @"own":[NSNumber numberWithBool:YES],
+                                   @"date":[NSDate date]
+                                   };
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
+            
+            [self.tabBarController.navigationController popViewControllerAnimated:YES];
+        }else{
+            NSDictionary *data = @{@"name":_nameField.text,
+                                   @"describe":_descField.text,
+                                   @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
+                                   @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
+                                   @"own":[NSNumber numberWithBool:YES],
+                                   @"date":[NSDate date]
+                                   };
+            
+            Exercise *e = [[DataController sharedInstance]createReturnExerciseWithData:data];
+            
+            if(e.shared.boolValue){
+                [[Communicator sharedInstance] sendExerciseToServer:e];
+            }
+                
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        }
+        
+       
+    }else{
+        [_exercise setName:_nameField.text];
+        [_exercise setDescribe:_descField.text];
+        [_exercise setShared:[NSNumber numberWithBool:_onlineSwitch.on]];
+        [_exercise setMaxWeight:[NSNumber numberWithFloat:[_maxWeightField.text floatValue]]];
+        [[DataController sharedInstance] updateExercise:_exercise];
+        
+        
+        if(_exercise.shared.boolValue){
+            [[Communicator sharedInstance] sendExerciseToServer:_exercise];
+        }else{
+            [[Communicator sharedInstance]setShared:_exercise.shared.boolValue forExercise:_exercise];
+        }
+        
+        
+        [self.navigationController popViewControllerAnimated:YES];
 
-        
-        NSDictionary *data = @{@"name":_nameField.text,
-                               @"describe":_descField.text,
-                               @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
-                               @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
-                               @"own":[NSNumber numberWithBool:YES],
-                               @"date":[NSDate date]
-                               };
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
-        
-        [self.tabBarController.navigationController popViewControllerAnimated:YES];
     }
     
     
@@ -76,6 +131,7 @@
 */
 
 - (IBAction)onlineSwitchChanged:(id)sender {
+    
 }
 
 

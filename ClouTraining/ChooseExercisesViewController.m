@@ -7,6 +7,7 @@
 //
 
 #import "ChooseExercisesViewController.h"
+#import "CreateExerciseViewController.h"
 #import "CreateExerciseTabBarController.h"
 #import "CreateTrainingTableViewCell.h"
 #import "Exercise.h"
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     [_table registerNib:[UINib nibWithNibName:@"CreateTrainingTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"CreateTrainingTableViewCell"];
     // Do any additional setup after loading the view.
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -29,15 +31,19 @@
     if(_training){
         _exercises = [[DataController sharedInstance]getAllExercisesNotInTraining:_training];
         _trainingExercises = [[DataController sharedInstance]getExercisesForTraining:_training];
-    }else{
-        _exercises = [[DataController sharedInstance]getAllExercises];
         
+    }else{
+        if(self.tabBarController){
+             _exercises = [[DataController sharedInstance]getAllExercises];
+        }else{
+            _exercises = [[DataController sharedInstance]getAllOwnExercises];
+           
+        }
         
     }
+    [_table reloadData];
    
 }
-
-
 
 #pragma mark - tableView
 
@@ -107,20 +113,48 @@
         }
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else{
-        cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
-        
-        CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
-        if ([tabControl hasExercise:[_exercises objectAtIndex:row]]) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        if(self.tabBarController){
+            cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
+            
+            CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
+            if ([tabControl hasExercise:[_exercises objectAtIndex:row]]) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }else{
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
         }else{
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
         }
+        
     }
     
     
     
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.tabBarController){
+        return NO;
+    }
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //remove the deleted object from your data source.
+        //If your data source is an NSMutableArray, do this
+        Exercise *e = [_exercises objectAtIndex:indexPath.row];
+        [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
+            if(complete){
+                [[DataController sharedInstance]deleteExercise:e];
+                _exercises = [[DataController sharedInstance]getAllOwnExercises];
+                [tableView reloadData]; // tell table to refresh now
+            }
+        }];
+        
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -145,26 +179,36 @@
             
         }
     }else{
-        CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
-        if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
-            [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
+        if(self.tabBarController){
+            CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
+            if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
+                [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
+            }else{
+                [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
+            }
+            [tableView reloadData];
         }else{
-            [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
+            _chosenExercise = [_exercises objectAtIndex:indexPath.row];
+            [self performSegueWithIdentifier:@"ShowEditExercise" sender:self];
         }
-        [tableView reloadData];
-        
     }
 }
 
 
-/*
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"ShowEditExercise"]){
+        CreateExerciseViewController *cevc = (CreateExerciseViewController*)segue.destinationViewController;
+        cevc.exercise = _chosenExercise;
+        
+    }else if([segue.identifier isEqualToString:@"ShowCreateExercise"]){
+        
+    }
 }
-*/
+
 
 @end

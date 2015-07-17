@@ -24,7 +24,7 @@
         NSLog(@"DataController created");
         if(![[NSUserDefaults standardUserDefaults]objectForKey:@"CTVersion"]){
             
-            Training *training = [[DataController sharedInstance]createTrainingWithData:@{@"name":@"TestTraining1",
+            /*Training *training = [[DataController sharedInstance]createTrainingWithData:@{@"name":@"TestTraining1",
                                                                                           @"describe":@"Check",
                                                                                           @"publicate":[NSNumber numberWithBool:YES],
                                                                                           @"own":[NSNumber numberWithBool:YES]
@@ -88,7 +88,7 @@
                                                                              } forTraining:training];
                     
                     
-                }
+                }*/
             
             [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithFloat:1.0] forKey:@"CTVersion"];
             [[NSUserDefaults standardUserDefaults]synchronize];

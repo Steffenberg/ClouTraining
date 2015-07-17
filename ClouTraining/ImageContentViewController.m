@@ -8,6 +8,7 @@
 
 #import "ImageContentViewController.h"
 #import "CreateTrainingTableViewCell.h"
+#import "ContentTabBarViewController.h"
 
 @interface ImageContentViewController ()
 
@@ -18,6 +19,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dataUpdate:) name:@"MediaDataUpdate" object:nil];
+    ContentTabBarViewController *ctbvc = (ContentTabBarViewController*)self.tabBarController;
+    [[Communicator sharedInstance]getMediaURLsForExercise:ctbvc.exercise type:2];
+}
+
+-(void)dataUpdate:(NSNotification*)note{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSDictionary *data = note.object;
+        NSMutableArray *tmp = [NSMutableArray array];
+        for(NSString *str in [data allKeys]){
+            [tmp addObject:[data objectForKey:str]];
+        }
+        _imageData = tmp;
+        
+        for(NSDictionary *d in _imageData){
+            NSLog(@"Titel: %@ - URL: %@",[d objectForKey:@"title"], [d objectForKey:@"url"]);
+        }
+        [_table reloadData];
+    });
+    
 }
 
 #pragma mark - tableView
@@ -59,10 +84,22 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *urlString = @"http://192.168.178.45/clouTraining";
+    NSString *urlString = [NSString stringWithFormat:@"%@/clouTraining",ipprefix];
     NSString *suffixString = [(NSDictionary*)[_imageData objectAtIndex:indexPath.row] objectForKey:@"url"];
+    if(!suffixString) return;
     suffixString = [suffixString stringByReplacingOccurrencesOfString:@".." withString:@""];
     urlString = [urlString stringByAppendingString:suffixString];
+    
+    
+    
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"ShowImagePresenter" object:nil userInfo:@{@"image":img,
+                                                                                                              @"title":[(NSDictionary*)[_imageData objectAtIndex:indexPath.row]objectForKey:@"title"]
+                                                                                                              }];
+        
+    });
     
     
     

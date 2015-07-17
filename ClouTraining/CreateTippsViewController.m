@@ -18,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    
+    [_uploadButton setTintColor:[UIColor whiteColor]];
+    [_uploadButton setImage:[ImageConverter maskImage:[UIImage imageNamed:@"small74@2x"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleUploadRecall:) name:@"MediaUploadRecall" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,6 +31,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(void)handleUploadRecall:(NSNotification*)note{
+    if(!note.object){
+        [self showThumbnailView:NO];
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alerView = [[UIAlertView alloc]initWithTitle:@"Fehler" message:@"Hochladen fehlgeschlagen" delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+            [alerView show];
+        });
+        
+    }
+}
 /*
  #pragma mark - Navigation
  
@@ -34,6 +52,31 @@
  // Pass the selected object to the new view controller.
  }
  */
+
+-(void)showThumbnailView:(BOOL)show{
+    if(show){
+        [self.view bringSubviewToFront:_previewView];
+        [UIView animateWithDuration:0.4 animations:^{
+            _previewView.alpha = 1.0;
+        }];
+    }else{
+        [UIView animateWithDuration:0.4 animations:^{
+            _previewView.alpha = 0.0;
+        } completion:^(BOOL finished){
+            [self.view sendSubviewToBack:_previewView];
+            _thumbnailView.image = nil;
+            _titleField.text = @"";
+            _mediaTitle = nil;
+            _thumbnail = nil;
+            _uploadData = nil;
+        }];
+    }
+}
+
+-(IBAction)uploadConfirm:(id)sender{
+    _mediaTitle = _titleField.text;
+    [self showActionSheetWithType:_type];
+}
 
 - (IBAction)createVideo:(id)sender {
     
@@ -61,21 +104,27 @@
         
         UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
         
-        _uploadData = UIImagePNGRepresentation(img);
-        if(_uploadData){
-            [self showActionSheetWithType:2];
-        }
-        
         
         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
-            if(_uploadData){
-                [self showActionSheetWithType:1];
-            }
+            
+            CGSize compressedSize = CGSizeMake(img.size.width/6, img.size.height/6);
+            UIImage *compressImage = [self imageWithImage:img scaledToSize:compressedSize];
+            
+            //_uploadData = UIImagePNGRepresentation(compressImage);
+            _uploadData = UIImageJPEGRepresentation(compressImage, 1.0f);
+            
+            _type = 2;
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                if(_uploadData){
+                    _thumbnailView.image = compressImage;
+                    //[self showActionSheetWithType:2];
+                    [self showThumbnailView:YES];
+                }
+            });
+            
         }];
         
-    }
-    
-    else if ([mediaType isEqualToString:@"public.movie"]){
+    }else if ([mediaType isEqualToString:@"public.movie"]){
         
         NSLog(@"Video Captured");
         
@@ -83,8 +132,8 @@
         
         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
             
-            
-            
+            _thumbnail = [self getThumbnailForVideo:videoURL];
+            _type = 1;
             _uploadData = [NSData dataWithContentsOfURL:videoURL];
             
             NSLog(@"Filesize - %f ", _uploadData.length/1000.0f);
@@ -95,7 +144,9 @@
             
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 if(_uploadData){
-                    [self showActionSheetWithType:1];
+                    [self showThumbnailView:YES];
+
+                    //[self showActionSheetWithType:1];
                 }
             });
             
@@ -133,7 +184,6 @@
     _picker = [[UIImagePickerController alloc]init];
     _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-    _picker.videoQuality = UIImagePickerControllerQualityTypeMedium;
     _picker.delegate = self;
     [self.navigationController presentViewController:_picker animated:YES completion:^(void){
         
@@ -149,9 +199,37 @@
      }*/
 }
 
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
+-(UIImage*)getThumbnailForVideo:(NSURL*)vidPath{
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:vidPath options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    CMTime time = CMTimeMakeWithSeconds(0.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *thumb = [[UIImage alloc] initWithCGImage:image];
+    CGImageRelease(image);
+    
+    return thumb;
+}
 
 - (IBAction)createText:(id)sender {
+}
+
+- (IBAction)closeThumbnailView:(id)sender {
+    [self showThumbnailView:NO];
 }
 
 -(void)showActionSheetWithType:(NSInteger)type{
@@ -167,17 +245,32 @@
     [_sheet showInView:self.view];
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+
     if(buttonIndex == 0){
+        if(!_mediaTitle) {
+            _mediaTitle = @"Kein Titel";
+            _titleField.text = _mediaTitle;
+        }
         NSDictionary *data = @{@"exerciseID":_exercise.exerciseid,
-                               @"title":@"Titel einfuegen",
+                               @"title":_mediaTitle,
                                @"type":[NSNumber numberWithInteger:actionSheet.tag],
                                @"date":[NSNumber numberWithInteger:[[NSDate date] timeIntervalSince1970]]
                                };
         
         [[Communicator sharedInstance]reuqestMediaInfoWithData:data andMedia:_uploadData];
+        
         return;
     }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex{
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Training, Exercise;
+
 @interface ChooseExercisesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
@@ -15,5 +17,7 @@
 @property NSArray *trainingExercises;
 
 @property Training *training;
+
+@property Exercise *chosenExercise;
 
 @end

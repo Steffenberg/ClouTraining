@@ -33,6 +33,11 @@
 -(IBAction)showCreateTraining:(id)sender{
     [self performSegueWithIdentifier:@"ShowManageTrainings" sender:self];
 }
+
+
+-(IBAction)showManageExercises:(id)sender{
+    [self performSegueWithIdentifier:@"ShowManageExercises" sender:self];
+}
 /*
 #pragma mark - Navigation
 

@@ -34,6 +34,8 @@
         }
     }*/
     
+    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    
     if(!_activeProtocol){
         _activeProtocol = [[DataController sharedInstance]createProtocolForTraining:_activeTraining];
         _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
@@ -48,6 +50,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleChildMaximized:) name:@"ChildMaximized" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showImagePresenter:) name:@"ShowImagePresenter" object:nil];
     
     
     UITapGestureRecognizer *doubleRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTab:)];
@@ -75,6 +79,29 @@
     
     
     [_gravityCircleView setNeedsDisplay];
+}
+
+-(void)showImagePresenter:(NSNotification*)note{
+    dispatch_async(dispatch_get_main_queue(), ^{
+    if(note){
+        _imageView.image = [note.userInfo objectForKey:@"image"];
+        _imageTitle.text = [note.userInfo objectForKey:@"title"];
+        
+        
+        [self.view bringSubviewToFront:_imagePresenterView];
+        [UIView animateWithDuration:0.4 animations:^{
+            _imagePresenterView.alpha = 1.0;
+        }];
+    }else{
+        [UIView animateWithDuration:0.4 animations:^{
+            _imagePresenterView.alpha = 0.0;
+        } completion:^(BOOL finished){
+            [self.view sendSubviewToBack:_imagePresenterView];
+            _imageView.image = nil;
+            _imageTitle.text = @"";
+        }];
+    }
+    });
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
@@ -150,6 +177,10 @@
         _firstStart = NO;
     }
     
+}
+
+-(IBAction)hideImagePresenter:(id)sender{
+    [self showImagePresenter:nil];
 }
 
 - (void)didReceiveMemoryWarning {
