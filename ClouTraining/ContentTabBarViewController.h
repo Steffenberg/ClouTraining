@@ -17,6 +17,6 @@ typedef void (^SetupComplete)(BOOL);
 @property Training *training;
 @property Exercise *exercise;
 
--(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t hide:(BOOL)hide completition:(SetupComplete)setupComplete;
+-(void)reloadWithData:(NSDictionary*)data hide:(BOOL)hide completition:(SetupComplete)setupComplete;
 
 @end

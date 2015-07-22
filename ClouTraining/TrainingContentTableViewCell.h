@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *weightLabel;
 @property (weak, nonatomic) IBOutlet UISlider *repSlider;
 @property (weak, nonatomic) IBOutlet UISlider *weightSlider;
+@property (weak, nonatomic) IBOutlet UISlider *floatWeightSlider;
 
 
 @end

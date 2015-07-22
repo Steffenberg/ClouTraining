@@ -55,5 +55,8 @@ typedef void (^InitCallbackBlock)(void);
 -(ExerciseProtocol*)createExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e;
 -(ExerciseProtocol*)getExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e;
 
+-(SetEntry*)createSetEntryForExProtocol:(ExerciseProtocol*)exp withNumber:(NSInteger)number;
+-(NSArray*)getSetEntriesForExProtocol:(ExerciseProtocol*)exp;
+
 
 @end

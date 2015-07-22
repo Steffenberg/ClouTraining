@@ -318,7 +318,7 @@
 }
 
 -(BOOL)hasExerciseForID:(NSNumber*)exerciseID{
-    if([[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"exerciseid = %@",exerciseID].count>0){
+    if([[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"exerciseid = %@ AND own = 1",exerciseID].count>0){
         return YES;
     }else{
         return NO;
@@ -385,13 +385,18 @@
 
 -(ExerciseProtocol*)createExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e{
     
+    ExerciseProtocol *exp = [self getExProtocolForTrainingProtocol:tp andExercise:e];
+    if(exp){
+        return exp;
+    }
+    
     __block ExerciseProtocol *protocol;
     [[self privateContext]performBlockAndWait:^{
         
-        TrainingProtocol *tmpTP = (TrainingProtocol*)[[self managedObjectContext]existingObjectWithID:tp.objectID error:nil];
-        Exercise *tmpE = (Exercise*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+        TrainingProtocol *tmpTP = (TrainingProtocol*)[[self privateContext]existingObjectWithID:tp.objectID error:nil];
+        Exercise *tmpE = (Exercise*)[[self privateContext]existingObjectWithID:e.objectID error:nil];
         
-        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"TrainingProtocol" inManagedObjectContext:[self privateContext]];
+        protocol = [NSEntityDescription insertNewObjectForEntityForName:@"ExerciseProtocol" inManagedObjectContext:[self privateContext]];
         
         [protocol setProtocol:tmpTP];
         [tmpTP addExerciseProtocolsObject:protocol];
@@ -414,6 +419,32 @@
     return [[[self managedObjectContext] fetchObjectsForEntityName:@"ExerciseProtocol" sortByKey:@"exercise.name" ascending:YES predicateWithFormat:@"protocol=%@ AND exercise=%@",tmpTP, tmpE]lastObject];
 }
 
+
+#pragma mark - ExerciseProtocol
+-(SetEntry*)createSetEntryForExProtocol:(ExerciseProtocol*)exp withNumber:(NSInteger)number{
+    __block SetEntry *entry;
+    [[self privateContext]performBlockAndWait:^{
+        
+        
+        ExerciseProtocol *tmp = (ExerciseProtocol*)[[self privateContext]existingObjectWithID:exp.objectID error:nil];
+        
+        entry = [NSEntityDescription insertNewObjectForEntityForName:@"SetEntry" inManagedObjectContext:[self privateContext]];
+        [entry setSetNumber:[NSNumber numberWithInteger:number]];
+        
+        [entry setExerciseProtocol:tmp];
+        [tmp addSetEntriesObject:entry];
+        
+        [self save];
+        
+        
+    }];
+    
+    return entry;
+}
+
+-(NSArray*)getSetEntriesForExProtocol:(ExerciseProtocol*)exp{
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"SetEntry" sortByKey:@"setNumber" ascending:YES predicateWithFormat:@"exerciseProtocol=%@", exp];
+}
 
 #pragma mark - Media
 

@@ -10,6 +10,8 @@
 #import "TrainingContentTableViewCell.h"
 #import "Training.h"
 #import "TrainingProtocol.h"
+#import "ExerciseProtocol.h"
+#import "SetEntry.h"
 #import "Exercise.h"
 
 @interface TrainingContentViewController ()
@@ -29,13 +31,17 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t completition:(SetupComplete)complete{
-    _exercise = e;
-    _training = t;
+-(void)reloadWithData:(NSDictionary*)data completition:(SetupComplete)complete{
+    _exercise = [data objectForKey:@"Exercise"];
+    _training = [data objectForKey:@"Training"];
+    _tProtocol = [data objectForKey:@"TrainingProtocol"];
     
-    if(_exercise && _training){
-        _exerciseLogs = [NSArray array];
-        _titleLabel.text = e.name;
+    if(_exercise && _training && _tProtocol){
+        
+        _titleLabel.text = _exercise.name;
+        _exProtocol = [[DataController sharedInstance]createExProtocolForTrainingProtocol:_tProtocol andExercise:_exercise];
+        
+        _setLogs = [[DataController sharedInstance]getSetEntriesForExProtocol:_exProtocol].mutableCopy;
         [_table reloadData];
         complete(YES);
     }else{
@@ -57,11 +63,12 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return _setLogs.count;
+    //return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return 110;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -82,6 +89,12 @@
     
     
     return cell;
+}
+
+- (IBAction)addSet:(id)sender {
+    SetEntry *entry = [[DataController sharedInstance]createSetEntryForExProtocol:_exProtocol withNumber:_setLogs.count+1];
+    [_setLogs addObject:entry];
+    [_table reloadData];
 }
 
 /*

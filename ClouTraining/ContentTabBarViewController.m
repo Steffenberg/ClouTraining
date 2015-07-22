@@ -23,12 +23,13 @@
     
 }
 
--(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t hide:(BOOL)hide completition:(SetupComplete)setupComplete{
+-(void)reloadWithData:(NSDictionary*)data hide:(BOOL)hide completition:(SetupComplete)setupComplete{
     if(!hide){
-        _exercise = e;
-        _training = t;
+        _exercise = [data objectForKey:@"Exercise"];
+        _training = [data objectForKey:@"Training"];
+        //TrainingProtocol *tp = [data objectForKey:@"TrainingProtocol"];
         TrainingContentViewController *tcvc = [self.viewControllers objectAtIndex:0];
-        [tcvc reloadToExercise:e ofTraining:(Training*)t completition:^(BOOL complete){
+        [tcvc reloadWithData:data completition:^(BOOL complete){
             if(complete){
                 [self setSelectedIndex:0];
                 setupComplete(YES);
@@ -38,6 +39,7 @@
         }];
    }else{
         _exercise = nil;
+       _training = nil;
        setupComplete (YES);
     }
     

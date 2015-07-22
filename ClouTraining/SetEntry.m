@@ -2,7 +2,7 @@
 //  SetEntry.m
 //  ClouTraining
 //
-//  Created by Steffen Gruschka on 12.07.15.
+//  Created by Steffen Gruschka on 22.07.15.
 //  Copyright (c) 2015 fastline. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 
 @dynamic repititions;
 @dynamic weight;
+@dynamic setNumber;
 @dynamic exerciseProtocol;
-
 
 @end

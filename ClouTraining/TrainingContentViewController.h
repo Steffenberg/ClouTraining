@@ -18,10 +18,12 @@ typedef void (^SetupComplete)(BOOL);
 @property Training *training;
 @property Exercise *exercise;
 @property ExerciseProtocol *exProtocol;
-@property NSArray *exerciseLogs;
+@property TrainingProtocol *tProtocol;
+@property NSMutableArray *setLogs;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
--(void)reloadToExercise:(Exercise*)e ofTraining:(Training*)t completition:(SetupComplete)setupComplete;
+-(void)reloadWithData:(NSDictionary*)data completition:(SetupComplete)complete;
 
 @end
