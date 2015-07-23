@@ -60,7 +60,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 55.0f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -91,8 +91,12 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:@"TrainingSelectionTableViewCell" owner:self options:nil]objectAtIndex:0];
     }
     
+    
+    
     if(section == 0){
-        cell.titleLabel.text =[NSString stringWithFormat:@"%@",[(Training*)[(TrainingProtocol*)[_recentProtocols objectAtIndex:row]training]name]];
+        TrainingProtocol *tp = [_recentProtocols objectAtIndex:row];
+        cell.titleLabel.text =[NSString stringWithFormat:@"%@",[tp.training name]];
+        cell.dateLabel.text = [self getDateAsString:tp.date];
     }
     if(section == 1){
          cell.titleLabel.text =[NSString stringWithFormat:@"%@",[(Training*)[_ownTrainings objectAtIndex:row]name]];
@@ -122,7 +126,16 @@
 }
 
 
-
+-(NSString*)getDateAsString:(NSDate*)date{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"dd.MM.yyyy - hh:mm"];
+    
+    //Optionally for time zone conversions
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    
+    return [formatter stringFromDate:date];
+    
+}
 
 
 #pragma mark - Navigation

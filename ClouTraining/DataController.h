@@ -36,6 +36,9 @@ typedef void (^InitCallbackBlock)(void);
 
 -(void)createExerciseWithData:(NSDictionary *)data;
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data;
+-(Exercise*)createReturnExerciseWithExtData:(NSDictionary *)data;
+-(void)createExerciseWithExtData:(NSDictionary *)data;
+
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(void)updateExercise:(Exercise *)e;
@@ -56,7 +59,9 @@ typedef void (^InitCallbackBlock)(void);
 -(ExerciseProtocol*)getExProtocolForTrainingProtocol:(TrainingProtocol*)tp andExercise:(Exercise*)e;
 
 -(SetEntry*)createSetEntryForExProtocol:(ExerciseProtocol*)exp withNumber:(NSInteger)number;
+-(void)updateSetEntry:(SetEntry*)e withData:(NSDictionary*)data;
 -(NSArray*)getSetEntriesForExProtocol:(ExerciseProtocol*)exp;
+
 
 
 @end

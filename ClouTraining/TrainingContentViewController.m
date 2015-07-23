@@ -35,6 +35,8 @@
     _exercise = [data objectForKey:@"Exercise"];
     _training = [data objectForKey:@"Training"];
     _tProtocol = [data objectForKey:@"TrainingProtocol"];
+    _exProtocol = nil;
+    _setLogs = nil;
     
     if(_exercise && _training && _tProtocol){
         
@@ -42,6 +44,10 @@
         _exProtocol = [[DataController sharedInstance]createExProtocolForTrainingProtocol:_tProtocol andExercise:_exercise];
         
         _setLogs = [[DataController sharedInstance]getSetEntriesForExProtocol:_exProtocol].mutableCopy;
+        /*for(SetEntry *entry in _setLogs){
+            NSLog(@"%zd: Weight: %.02f Reps: %zd", entry.setNumber.integerValue,entry.weight.floatValue, entry.repititions.integerValue);
+        }*/
+        
         [_table reloadData];
         complete(YES);
     }else{
@@ -51,7 +57,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return _setLogs.count;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -63,8 +69,8 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _setLogs.count;
-    //return 1;
+    
+    return 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -73,16 +79,33 @@
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger section = indexPath.section;
-    NSInteger row = indexPath.row;
     
     static NSString *CellIdentifier = @"TrainingContentTableViewCell";
     TrainingContentTableViewCell *cell = (TrainingContentTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    SetEntry *entry = [_setLogs objectAtIndex:section];
+    float deci = entry.weight.floatValue - floorf(entry.weight.floatValue);
+    NSInteger full = floor(entry.weight.floatValue);
+    NSInteger reps = entry.repititions.integerValue;
+    NSLog(@"%zd: Weight: %.02f Reps: %zd", entry.setNumber.integerValue,entry.weight.floatValue, entry.repititions.integerValue);
     
-    cell.weightLabel.text = [NSString stringWithFormat:@"%.02f KG", cell.weightSlider.value];
-    cell.repLabel.text = [NSString stringWithFormat:@"WDH: %.0f",cell.repSlider.value];
-    cell.weightSlider.maximumValue = _exercise.maxWeight.floatValue;
+    if(_exercise.maxWeight.floatValue == 0.0f){
+        cell.weightSlider.enabled = NO;
+        cell.floatWeightSlider.enabled = NO;
+    }
+    
+    cell.floatWeightSlider.value = deci;
+    
+    cell.weightSlider.maximumValue = floor(_exercise.maxWeight.floatValue);
+    cell.weightSlider.value = full;
+    
+    cell.repSlider.value = reps;
+    
+    cell.repLabel.text = [NSString stringWithFormat:@"WDH: %zd", reps];
+    cell.weightLabel.text = [NSString stringWithFormat:@"%zd.%.0f KG", full,deci*100.0f];
+    
+    cell.entry = entry;
     //CGFloat weight = _exercise.weight.integerValue/1000.0f;
     //cell.weightLabel.text = [NSString stringWithFormat:@"%.2f KG", weight];
     
@@ -95,6 +118,7 @@
     SetEntry *entry = [[DataController sharedInstance]createSetEntryForExProtocol:_exProtocol withNumber:_setLogs.count+1];
     [_setLogs addObject:entry];
     [_table reloadData];
+    [_table setContentOffset:CGPointMake(0, _table.contentSize.height - _table.frame.size.height) animated:YES];
 }
 
 /*

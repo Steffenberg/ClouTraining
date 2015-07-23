@@ -8,6 +8,7 @@
 
 #import "LoadExercisesViewController.h"
 #import "CreateTrainingTableViewCell.h"
+#import "Exercise.h"
 
 @interface LoadExercisesViewController ()
 
@@ -110,26 +111,24 @@
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //remove the deleted object from your data source.
-        //If your data source is an NSMutableArray, do this
-        Exercise *e = [_exercises objectAtIndex:indexPath.row];
-        [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
-            if(complete){
-                [[DataController sharedInstance]deleteExercise:e];
-                _exercises = [[DataController sharedInstance]getAllOwnExercises];
-                [tableView reloadData]; // tell table to refresh now
-            }
-        }];
-        
-    }
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(_training){
         
+        NSDictionary * extData = [_exercises objectAtIndex:indexPath.row];
+        
+        Exercise *e = [[DataController sharedInstance]createReturnExerciseWithExtData:extData];
+        
+        if(e){
+            [[DataController sharedInstance]addExercise:e toTraining:_training];
+        }
+        
+        
+        
     }else{
+        NSDictionary * extData = [_exercises objectAtIndex:indexPath.row];
+        
+        [[DataController sharedInstance]createExerciseWithExtData:extData];
         
     }
 }

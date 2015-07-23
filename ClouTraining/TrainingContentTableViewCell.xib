@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -19,35 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WDH: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aR-bm-IG9">
-                                <rect key="frame" x="19" y="7" width="69" height="21"/>
+                                <rect key="frame" x="19" y="12" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ziel: 30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Nc-LQ-eiG">
-                                <rect key="frame" x="19" y="24" width="69" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="fIa-1l-hlX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="30" translatesAutoresizingMaskIntoConstraints="NO" id="l0t-3Z-GsN">
                                 <rect key="frame" x="105" y="7" width="204" height="31"/>
                                 <connections>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpOutside" id="60W-7U-T4i"/>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="djV-O2-qhW"/>
                                     <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="ACA-wD-Cpj"/>
                                 </connections>
                             </slider>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="5aR-bm-IG9" firstAttribute="top" secondItem="l0t-3Z-GsN" secondAttribute="top" constant="5" id="5Yp-as-JZy"/>
                             <constraint firstItem="5aR-bm-IG9" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="19" id="Asw-Z9-fL8"/>
-                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="top" secondItem="5aR-bm-IG9" secondAttribute="bottom" constant="-4" id="Ily-Ca-tZg"/>
                             <constraint firstAttribute="trailing" secondItem="l0t-3Z-GsN" secondAttribute="trailing" constant="13" id="Pp4-8A-Dzn"/>
-                            <constraint firstItem="5aR-bm-IG9" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="7" id="Rvn-h5-6hV"/>
-                            <constraint firstItem="l0t-3Z-GsN" firstAttribute="top" secondItem="5aR-bm-IG9" secondAttribute="bottom" constant="-21" id="U84-kr-WYi"/>
+                            <constraint firstItem="5aR-bm-IG9" firstAttribute="top" secondItem="g22-gz-cXq" secondAttribute="top" constant="12" id="Rvn-h5-6hV"/>
                             <constraint firstItem="l0t-3Z-GsN" firstAttribute="leading" secondItem="5aR-bm-IG9" secondAttribute="trailing" constant="19" id="aS8-q3-suo"/>
-                            <constraint firstItem="2Nc-LQ-eiG" firstAttribute="leading" secondItem="g22-gz-cXq" secondAttribute="leading" constant="19" id="n5I-og-ChK"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlW-dY-8hy" userLabel="WeightView">
@@ -56,12 +47,14 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999.99 KG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pio-Uf-FMe">
                                 <rect key="frame" x="19" y="8" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="neb-J9-N6e">
                                 <rect key="frame" x="19" y="31" width="295" height="31"/>
                                 <connections>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gv8-VC-yZK"/>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpOutside" id="U0r-F6-ecn"/>
                                     <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="fYB-ug-TcO"/>
                                 </connections>
                             </slider>
@@ -71,6 +64,8 @@
                                     <constraint firstAttribute="width" constant="128" id="hc3-WY-gqh"/>
                                 </constraints>
                                 <connections>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpOutside" id="34O-so-F73"/>
+                                    <action selector="sliderEndDragging:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ahH-dw-tCK"/>
                                     <action selector="sliderValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="aky-i5-gbQ"/>
                                 </connections>
                             </slider>
@@ -102,7 +97,6 @@
                 <outlet property="floatWeightSlider" destination="ghJ-DH-TzL" id="i1U-Ht-6I3"/>
                 <outlet property="repLabel" destination="5aR-bm-IG9" id="aCV-v7-jVw"/>
                 <outlet property="repSlider" destination="l0t-3Z-GsN" id="JbE-te-Nbt"/>
-                <outlet property="targetLabel" destination="2Nc-LQ-eiG" id="0pk-cI-Dh5"/>
                 <outlet property="weightLabel" destination="pio-Uf-FMe" id="0sj-jR-9xJ"/>
                 <outlet property="weightSlider" destination="neb-J9-N6e" id="ljH-br-5sO"/>
             </connections>

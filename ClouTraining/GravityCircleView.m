@@ -38,7 +38,12 @@
     NSLog(@"Frame:%@", NSStringFromCGRect(self.frame));
     caliber = self.frame.size.height;
     extent = 2*(caliber/2)*M_PI;
-    childCaliber = (extent/childAmount)/2;
+    if(childAmount < 4){
+        childCaliber = (extent/4)/2;
+    }else{
+        childCaliber = (extent/childAmount)/2;
+    }
+    
     children = childAmount;
     self.backgroundColor = [UIColor clearColor];
     [self createChildren:exercises];

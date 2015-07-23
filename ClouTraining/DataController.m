@@ -205,7 +205,7 @@
     
     __block Exercise *e;
     [[self privateContext]performBlockAndWait:^{
-    
+        
         e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
         e.exerciseid = [NSNumber numberWithInteger:0];
         e.name = [data objectForKey:@"name"];
@@ -222,6 +222,49 @@
     
     return e;
 }
+
+-(Exercise*)createReturnExerciseWithExtData:(NSDictionary *)data{
+    
+    __block Exercise *e;
+    [[self privateContext]performBlockAndWait:^{
+        
+        e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+        e.exerciseid = [data objectForKey:@"exerciseID"];
+        e.name = [data objectForKey:@"name"];
+        e.describe = [data objectForKey:@"describe"];
+        e.shared = [data objectForKey:@"shared"];
+        e.maxWeight = [data objectForKey:@"maxWeight"];
+        e.own = [NSNumber numberWithBool:NO];
+        e.date = [GlobalHelperClass dateFromString:[data objectForKey:@"date"]];
+        NSLog(@"ID:%zd name:%@ describe:%@ maxWeight:%f date:%@ shared:%i own:%i",e.exerciseid.integerValue, e.name, e.describe, e.maxWeight.floatValue, @"date", e.shared.boolValue, e.own.boolValue );
+        [self save];
+        
+    }];
+    
+    
+    return e;
+}
+
+-(void)createExerciseWithExtData:(NSDictionary *)data{
+    
+    [[self privateContext]performBlockAndWait:^{
+        
+        Exercise *e = [NSEntityDescription insertNewObjectForEntityForName:@"Exercise" inManagedObjectContext:[self privateContext]];
+        e.exerciseid = [data objectForKey:@"exerciseID"];
+        e.name = [data objectForKey:@"name"];
+        e.describe = [data objectForKey:@"describe"];
+        e.shared = [data objectForKey:@"shared"];
+        e.maxWeight = [data objectForKey:@"maxWeight"];
+        e.own = [NSNumber numberWithBool:NO];
+        e.date =  [GlobalHelperClass dateFromString:[data objectForKey:@"date"]];
+        NSLog(@"ID:%zd name:%@ describe:%@ maxWeight:%f date:%@ shared:%i own:%i",e.exerciseid.integerValue, e.name, e.describe, e.maxWeight.floatValue, @"date", e.shared.boolValue, e.own.boolValue );
+        [self save];
+        
+    }];
+
+}
+
+
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t{
     
@@ -440,6 +483,18 @@
     }];
     
     return entry;
+}
+
+-(void)updateSetEntry:(SetEntry*)e withData:(NSDictionary*)data{
+    
+    
+        SetEntry *entry = (SetEntry*)[[self managedObjectContext]existingObjectWithID:e.objectID error:nil];
+        [entry setWeight:[data objectForKey:@"weight"]];
+        [entry setRepititions:[data objectForKey:@"repititions"]];
+        [self save];
+
+    
+    
 }
 
 -(NSArray*)getSetEntriesForExProtocol:(ExerciseProtocol*)exp{

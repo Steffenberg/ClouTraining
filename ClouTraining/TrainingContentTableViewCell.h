@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class SetEntry;
+
 @interface TrainingContentTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *repLabel;
 @property (weak, nonatomic) IBOutlet UILabel *targetLabel;
@@ -16,5 +18,5 @@
 @property (weak, nonatomic) IBOutlet UISlider *weightSlider;
 @property (weak, nonatomic) IBOutlet UISlider *floatWeightSlider;
 
-
+@property SetEntry *entry;
 @end

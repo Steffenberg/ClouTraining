@@ -13,11 +13,16 @@ typedef void (^MediaComplete)(BOOL);
 
 extern NSString const *ipprefix;
 
+@class Reachability;
+
 @interface Communicator : NSObject
 
-
+@property Reachability *reachability;
 
 +(Communicator*)sharedInstance;
+
++(BOOL)dataOnlyWLAN;
++(void)setDataOnlyLAN:(BOOL)only;
 
 -(void)sendExerciseToServer:(Exercise*)e;
 -(BOOL)setShared:(BOOL)shared forExercise:(Exercise*)e;

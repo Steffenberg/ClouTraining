@@ -26,7 +26,9 @@
     if([slider isEqual:_weightSlider]){
         NSInteger value = round(slider.value);
         slider.value = value;
-        _weightLabel.text = [NSString stringWithFormat:@"%zd.%zd KG",(NSInteger)_weightSlider.value,(NSInteger)_floatWeightSlider.value*100];
+        
+        NSInteger deci = _floatWeightSlider.value*100;
+        _weightLabel.text = [NSString stringWithFormat:@"%zd.%zd KG",value,deci];
     }
     
     if([slider isEqual:_floatWeightSlider]){
@@ -36,12 +38,24 @@
   
         _weightLabel.text = [NSString stringWithFormat:@"%zd.%zd KG",(NSInteger)_weightSlider.value,displayValue];
     }
-    if (slider.tag == 2) {
+    if ([slider isEqual:_repSlider]) {
         slider.value = round(slider.value);
         _repLabel.text = [NSString stringWithFormat:@"WDH: %.0f",slider.value];
     }
+    
+    
+    
 }
 
+- (IBAction)sliderEndDragging:(id)sender {
+    
+    NSInteger reps = _repSlider.value;
+    CGFloat deci = _floatWeightSlider.value;
+    CGFloat weight = _weightSlider.value+deci;
+    [[DataController sharedInstance]updateSetEntry:_entry withData:@{@"weight":[NSNumber numberWithFloat:weight],
+                                                                     @"repititions":[NSNumber numberWithInteger:reps]
+                                                                     }];
+}
 
 
 

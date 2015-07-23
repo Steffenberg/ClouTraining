@@ -10,6 +10,10 @@
     #import "DataController.h"
     #import "Communicator.h"
 #import "ImageConverter.h"
+#import "GlobalHelperClass.h"
+#import "Reachability.h"
+#import "ErrorHandler.h"
+#import "LoadingView.h"
 #endif
 
 #ifndef ClouTraining_PrefixHeader_pch

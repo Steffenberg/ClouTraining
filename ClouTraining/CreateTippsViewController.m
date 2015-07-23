@@ -133,6 +133,7 @@
         [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
             
             _thumbnail = [self getThumbnailForVideo:videoURL];
+            _thumbnailView.image = _thumbnail;
             _type = 1;
             _uploadData = [NSData dataWithContentsOfURL:videoURL];
             
