@@ -26,6 +26,9 @@
         
         [self generateTestTraining];
         
+        [GlobalHelperClass setTrainingDaysToShow:30];
+        [Communicator setDataOnlyLAN:YES];
+        
         [[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithFloat:1.0] forKey:@"CTVersion"];
         [[NSUserDefaults standardUserDefaults]synchronize];
     }

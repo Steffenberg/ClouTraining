@@ -43,15 +43,15 @@
 #pragma mark - tableView
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 2;
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if(section == 0){
-        return @"Kürzlich";
+        return @"Protokolle";
     }
     if(section == 1){
-        return @"Eigene";
+        return @"Trainings";
     }
     if (section == 2) {
         return @"Andere";

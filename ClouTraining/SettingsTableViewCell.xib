@@ -14,11 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du0-eX-Gjg" userLabel="WifiView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqF-CK-ulK" userLabel="DateView">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqF-CK-ulK" userLabel="DateView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zeige die letzten" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QYJ-h2-cIe">
@@ -31,9 +27,6 @@
                                 <rect key="frame" x="143" y="7" width="117" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                <connections>
-                                    <outlet property="delegate" destination="-1" id="Zt7-J9-LnA"/>
-                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jy9-CF-m9Z">
                                 <rect key="frame" x="268" y="11" width="37" height="21"/>
@@ -53,6 +46,31 @@
                             <constraint firstItem="jy9-CF-m9Z" firstAttribute="leading" secondItem="FX2-Ir-Fbs" secondAttribute="trailing" constant="8" id="wcJ-rp-q8O"/>
                         </constraints>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du0-eX-Gjg" userLabel="MobileDataview">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Daten für Medien nutzen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQy-q4-FuN">
+                                <rect key="frame" x="8" y="11" width="247" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h22-0X-EwU">
+                                <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                <connections>
+                                    <action selector="mobileSwitchChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="o45-l4-1kG"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="h22-0X-EwU" secondAttribute="trailing" constant="8" id="DP1-lG-egu"/>
+                            <constraint firstItem="sQy-q4-FuN" firstAttribute="top" secondItem="Du0-eX-Gjg" secondAttribute="top" constant="11" id="DoD-JA-P82"/>
+                            <constraint firstItem="sQy-q4-FuN" firstAttribute="leading" secondItem="Du0-eX-Gjg" secondAttribute="leading" constant="8" id="Z9h-oE-8sR"/>
+                            <constraint firstItem="h22-0X-EwU" firstAttribute="leading" secondItem="sQy-q4-FuN" secondAttribute="trailing" constant="8" id="t1y-gU-enk"/>
+                            <constraint firstItem="h22-0X-EwU" firstAttribute="top" secondItem="Du0-eX-Gjg" secondAttribute="top" constant="6" id="xAv-m1-Ole"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="CqF-CK-ulK" secondAttribute="trailing" constant="-8" id="Hec-NR-nF4"/>
@@ -65,6 +83,12 @@
                     <constraint firstAttribute="bottomMargin" secondItem="CqF-CK-ulK" secondAttribute="bottom" constant="-9" id="zaM-te-aLg"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="dateView" destination="CqF-CK-ulK" id="Frt-GP-je0"/>
+                <outlet property="daysField" destination="FX2-Ir-Fbs" id="Onu-dn-yqJ"/>
+                <outlet property="mobileSwitch" destination="h22-0X-EwU" id="p0g-Dw-XbR"/>
+                <outlet property="mobileView" destination="Du0-eX-Gjg" id="faJ-Ok-9bA"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

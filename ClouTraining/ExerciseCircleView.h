@@ -23,6 +23,7 @@ typedef void(^myCompletion)(BOOL);
 @property BOOL canMove;
 @property NSTimer *unlockTimer;
 @property UIView *contentSuperview;
+@property UILabel *titleLabel;
 
 @property Exercise *exercise;
 

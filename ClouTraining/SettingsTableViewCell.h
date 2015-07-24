@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewCell : UITableViewCell<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIView *mobileView;
+@property (weak, nonatomic) IBOutlet UITextField *daysField;
+@property (weak, nonatomic) IBOutlet UISwitch *mobileSwitch;
+@property (weak, nonatomic) IBOutlet UIView *dateView;
+- (IBAction)mobileSwitchChanged:(id)sender;
 
 @end

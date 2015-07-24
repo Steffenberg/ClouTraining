@@ -9,6 +9,7 @@
 #import "GravityCircleView.h"
 #import "ExerciseCircleView.h"
 #import "ContentGravityView.h"
+#import "Exercise.h"
 #include <math.h>
 
 @implementation GravityCircleView
@@ -59,6 +60,7 @@
     for(int i = 0; i<children; i++){
         ExerciseCircleView *child = [[ExerciseCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
         child.exercise = [exercises objectAtIndex:i];
+        child.titleLabel.text = child.exercise.name;
         child.backgroundColor = [UIColor clearColor];
         CGFloat radian = (360.0/children)* (M_PI / 180);
         CGFloat xy = self.frame.size.width/2;
@@ -165,8 +167,8 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 1.0f);
-    CGContextSetFillColorWithColor( context, UIColorFromRGB(PRIMARY_PRIME).CGColor );
-    CGContextSetStrokeColorWithColor(context,UIColorFromRGB(PRIMARY_PRIME).CGColor);
+    CGContextSetFillColorWithColor( context, UIColorFromRGB(MID_GRAY).CGColor );
+    CGContextSetStrokeColorWithColor(context,UIColorFromRGB(MID_GRAY).CGColor);
     
     //CGContextAddEllipseInRect(context, CGRectMake(self.frame.size.width/4, self.frame.size.height/2-self.frame.size.width/4, self.frame.size.width/2, self.frame.size.width/2));
     CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));

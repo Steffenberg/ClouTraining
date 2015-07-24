@@ -20,4 +20,8 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)mobileSwitchChanged:(id)sender {
+    UISwitch *sw = (UISwitch*)sender;
+    [Communicator setDataOnlyLAN:!sw.on];
+}
 @end

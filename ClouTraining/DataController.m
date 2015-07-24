@@ -421,7 +421,7 @@
 }
 
 -(NSArray*)getRecentProtocols{
-    return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-(30*24*60*60)]];
+    return [[self managedObjectContext] fetchObjectsForEntityName:@"TrainingProtocol" sortByKey:@"date" ascending:NO predicateWithFormat:@"date>=%@", [NSDate dateWithTimeIntervalSinceNow:-([GlobalHelperClass getTrainingDaysToShow]*24*60*60)]];
 }
 
 #pragma mark - ExerciseProtocol

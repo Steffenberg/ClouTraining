@@ -22,4 +22,13 @@
     return dateFromString;
 }
 
++(void)setTrainingDaysToShow:(NSInteger)days{
+    [[NSUserDefaults standardUserDefaults]setInteger:days forKey:@"TrainingDaysToShow"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+
++(NSInteger)getTrainingDaysToShow{
+    return [[NSUserDefaults  standardUserDefaults]integerForKey:@"TrainingDaysToShow"];
+}
+
 @end

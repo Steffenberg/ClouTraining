@@ -27,6 +27,10 @@
     _addedExercises = [NSMutableArray array];
     _chosenExercises = [NSMutableArray array];
     
+    _descField.layer.borderWidth = 0.5f;
+    _descField.layer.cornerRadius = 5.0f;
+    _descField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(exerciseAdded:) name:@"ExerciseAdded" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(exercisesChosen:) name:@"ExercisesChosen" object:nil];
 }

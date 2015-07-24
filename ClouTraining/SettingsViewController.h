@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *table;
 
 @end

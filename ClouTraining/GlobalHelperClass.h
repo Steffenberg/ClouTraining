@@ -12,4 +12,7 @@
 
 +(NSDate*)dateFromString:(NSString*)dateString;
 
++(void)setTrainingDaysToShow:(NSInteger)days;
++(NSInteger)getTrainingDaysToShow;
+
 @end

@@ -16,6 +16,13 @@
     if(self){
         _canMove = YES;
         self.opaque = NO;
+        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width-10, self.frame.size.height-10)];
+        _titleLabel.font = [UIFont systemFontOfSize:12.0f];
+        _titleLabel.numberOfLines = 2;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+        [self addSubview:_titleLabel];
     }
     return self;
 }
@@ -89,11 +96,13 @@
 
 -(void)showContent{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"ChildMaximized" object:self userInfo:@{@"training":@"Test",@"shown":[NSNumber numberWithBool:NO]}];
+    _titleLabel.hidden =  YES;
     
 }
 
 -(void)hideContent{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"ChildMaximized" object:self userInfo:@{@"training":@"Test",@"shown":[NSNumber numberWithBool:NO]}];
+    _titleLabel.hidden = NO;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -102,8 +111,8 @@
         // Drawing code
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 1.0f);
-        CGContextSetFillColorWithColor( context, UIColorFromRGB(SECONDARY_PRIME).CGColor );
-        CGContextSetStrokeColorWithColor(context,UIColorFromRGB(SECONDARY_PRIME).CGColor);
+        CGContextSetFillColorWithColor( context, UIColorFromRGB(LIGHT_GRAY).CGColor );
+        CGContextSetStrokeColorWithColor(context,UIColorFromRGB(LIGHT_GRAY).CGColor);
         //CGContextAddEllipseInRect(context, CGRectMake(self.frame.size.width/4, self.frame.size.height/2-self.frame.size.width/4, self.frame.size.width/2, self.frame.size.width/2));
         CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
         
@@ -112,8 +121,8 @@
         // Drawing code
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSetLineWidth(context, 1.0f);
-        CGContextSetFillColorWithColor( context, UIColorFromRGB(SECONDARY_PRIME).CGColor );
-        CGContextSetStrokeColorWithColor(context,UIColorFromRGB(SECONDARY_PRIME).CGColor);
+        CGContextSetFillColorWithColor( context, UIColorFromRGB(LIGHT_GRAY).CGColor );
+        CGContextSetStrokeColorWithColor(context,UIColorFromRGB(LIGHT_GRAY).CGColor);
         //CGContextAddEllipseInRect(context, CGRectMake(self.frame.size.width/4, self.frame.size.height/2-self.frame.size.width/4, self.frame.size.width/2, self.frame.size.width/2));
         CGContextFillRect (context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
         

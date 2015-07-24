@@ -23,6 +23,8 @@
     [_uploadButton setTintColor:[UIColor whiteColor]];
     [_uploadButton setImage:[ImageConverter maskImage:[UIImage imageNamed:@"small74@2x"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     
+    self.navigationItem.title = _exercise.name;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleUploadRecall:) name:@"MediaUploadRecall" object:nil];
 }
 
