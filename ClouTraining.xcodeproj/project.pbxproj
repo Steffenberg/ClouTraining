@@ -1033,14 +1033,12 @@
 		07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_deleteTraining.php; sourceTree = "<group>"; };
 		07B733191B4D42B500D31399 /* coachyy_sendSession.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendSession.php; sourceTree = "<group>"; };
 		07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = coachyy_sendTraining_old.php; sourceTree = "<group>"; };
-		07B7331C1B4D42B600D31399 /* create_user.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = create_user.php; sourceTree = "<group>"; };
 		07B7331D1B4D42B600D31399 /* find_trainer.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = find_trainer.php; sourceTree = "<group>"; };
 		07B7331F1B4D42B600D31399 /* get_pulses_old.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_pulses_old.php; sourceTree = "<group>"; };
 		07B733201B4D42B600D31399 /* get_pulses.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = get_pulses.php; sourceTree = "<group>"; };
 		07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = getConnectAboDateIOS.php; sourceTree = "<group>"; };
 		07B733221B4D42B600D31399 /* getCustomPlans.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = getCustomPlans.php; sourceTree = "<group>"; };
 		07B733231B4D42B600D31399 /* getTrainerAboDate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = getTrainerAboDate.php; sourceTree = "<group>"; };
-		07B733241B4D42B600D31399 /* login.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = login.php; sourceTree = "<group>"; };
 		07B733251B4D42B600D31399 /* select_liveTrainers.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = select_liveTrainers.php; sourceTree = "<group>"; };
 		07B733261B4D42B600D31399 /* send_live_pulszoneEXT.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = send_live_pulszoneEXT.php; sourceTree = "<group>"; };
 		07B733271B4D42B600D31399 /* sendTrainingData.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = sendTrainingData.php; sourceTree = "<group>"; };
@@ -2216,14 +2214,12 @@
 				07B733181B4D42B500D31399 /* coachyy_deleteTraining.php */,
 				07B733191B4D42B500D31399 /* coachyy_sendSession.php */,
 				07B7331A1B4D42B600D31399 /* coachyy_sendTraining_old.php */,
-				07B7331C1B4D42B600D31399 /* create_user.php */,
 				07B7331D1B4D42B600D31399 /* find_trainer.php */,
 				07B7331F1B4D42B600D31399 /* get_pulses_old.php */,
 				07B733201B4D42B600D31399 /* get_pulses.php */,
 				07B733211B4D42B600D31399 /* getConnectAboDateIOS.php */,
 				07B733221B4D42B600D31399 /* getCustomPlans.php */,
 				07B733231B4D42B600D31399 /* getTrainerAboDate.php */,
-				07B733241B4D42B600D31399 /* login.php */,
 				07B733251B4D42B600D31399 /* select_liveTrainers.php */,
 				07B733261B4D42B600D31399 /* send_live_pulszoneEXT.php */,
 				07B733271B4D42B600D31399 /* sendTrainingData.php */,

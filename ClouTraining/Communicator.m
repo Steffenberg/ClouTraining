@@ -11,7 +11,7 @@
 #import "Exercise.h"
 #import "AFNetworking.h"
 
-NSString const *ipprefix = @"http://192.168.178.40";
+NSString const *ipprefix = @"http://192.168.178.39";
 //NSString const *ipprefix = @"http://127.0.0.1";
 
 @implementation Communicator
@@ -55,6 +55,77 @@ NSString const *ipprefix = @"http://192.168.178.40";
     if(remoteHostStatus == NotReachable) {NSLog(@"no");}
     else if (remoteHostStatus == ReachableViaWiFi) {NSLog(@"wifi"); }
     else if (remoteHostStatus == ReachableViaWWAN) {NSLog(@"cell"); }
+}
+
+-(void)performLogin:(NSString*)nickname password:(NSString*)password{
+    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/clouTraining/scripts/CTlogin.php?username=%@&password=%@",ipprefix,nickname,password]]];
+    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [urlRequest setHTTPMethod:@"GET"];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if(error){
+                                   NSLog(@"Schwerer Fehler:%@",error.localizedDescription);
+                                   
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       
+                                       NSString *str = [NSString stringWithFormat:@"Error: %@",error.localizedDescription];
+                                       UIAlertView *alerView = [[UIAlertView alloc]initWithTitle:@"Fehler" message:str delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+                                       [alerView show];
+                                   });
+                                   
+                               }else{
+                                   NSString *replyString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"RESPONSE:%@",replyString);
+                                   
+                                   if([replyString hasPrefix:@"OK"]){
+                                       replyString = [replyString stringByReplacingOccurrencesOfString:@"OK" withString:@""];
+                                       [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:replyString.integerValue],
+                                                                                                                           @"nickname":nickname,
+                                                                                                                           @"password":password
+                                                                                                                           }];
+                                   }else{
+                                       
+                                   }
+                               }
+                               
+                           }];
+}
+
+-(void)performRegister:(NSString*)mail password:(NSString*)password nickname:(NSString*)nickname{
+    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/clouTraining/scripts/CTRegister.php?email=%@&username=%@&password=%@",ipprefix,mail,nickname,password]]];
+    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [urlRequest setHTTPMethod:@"GET"];
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if(error){
+                                   NSLog(@"Schwerer Fehler:%@",error.localizedDescription);
+                                   
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       
+                                       NSString *str = [NSString stringWithFormat:@"Error: %@",error.localizedDescription];
+                                       UIAlertView *alerView = [[UIAlertView alloc]initWithTitle:@"Fehler" message:str delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles: nil];
+                                       [alerView show];
+                                   });
+                                   
+                               }else{
+                                   NSString *replyString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"RESPONSE:%@",replyString);
+                                   
+                                   if([replyString isEqualToString:@"OK"]){
+                                       replyString = [replyString stringByReplacingOccurrencesOfString:@"OK" withString:@""];
+                                       [[NSNotificationCenter defaultCenter]postNotificationName:@"RegisterComplete" object:nil];
+                                   }else if([replyString isEqualToString:@"email"]){
+                                       [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"email bereits vergeben"];
+                                   }else if([replyString isEqualToString:@"username"]){
+                                       [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Benutzername bereits vergeben"];
+                                   }
+                               }
+                               
+                           }];
 }
 
 -(void)sendExerciseToServer:(Exercise*)e{
@@ -105,13 +176,6 @@ NSString const *ipprefix = @"http://192.168.178.40";
                                }
                                
                            }];
-    
-    
-    
-    
-    
-    
-    
     
 }
 

@@ -15,4 +15,12 @@
 +(void)setTrainingDaysToShow:(NSInteger)days;
 +(NSInteger)getTrainingDaysToShow;
 
++(void)setUsername:(NSString*)username;
++(NSString*)getUsername;
++(void)setMail:(NSString*)mail;
++(NSString*)getMail;
++(void)setPassword:(NSString*)password;
++(NSString*)getPassword;
+
++ (NSString *) createSHA512:(NSString *)source;
 @end

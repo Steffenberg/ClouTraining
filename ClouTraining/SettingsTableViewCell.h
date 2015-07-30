@@ -13,6 +13,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *daysField;
 @property (weak, nonatomic) IBOutlet UISwitch *mobileSwitch;
 @property (weak, nonatomic) IBOutlet UIView *dateView;
+
+@property (weak, nonatomic) IBOutlet UIView *registerView;
+@property (weak, nonatomic) IBOutlet UITextField *nicknameField;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UITextField *mailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+
+@property (weak, nonatomic) IBOutlet UIView *loginView;
+@property (weak, nonatomic) IBOutlet UITextField *loginNickField;
+@property (weak, nonatomic) IBOutlet UITextField *loginPWField;
 - (IBAction)mobileSwitchChanged:(id)sender;
 
 @end

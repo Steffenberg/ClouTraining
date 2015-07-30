@@ -24,6 +24,8 @@ extern NSString const *ipprefix;
 +(BOOL)dataOnlyWLAN;
 +(void)setDataOnlyLAN:(BOOL)only;
 
+-(void)performRegister:(NSString*)mail password:(NSString*)password nickname:(NSString*)nickname;
+-(void)performLogin:(NSString*)nickname password:(NSString*)password;
 -(void)sendExerciseToServer:(Exercise*)e;
 -(BOOL)setShared:(BOOL)shared forExercise:(Exercise*)e;
 -(void)deleteExercise:(Exercise*)e completition:(OnlineComplete)complete;

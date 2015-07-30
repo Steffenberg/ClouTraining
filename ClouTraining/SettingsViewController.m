@@ -19,12 +19,25 @@
     [super viewDidLoad];
     [_table registerNib:[UINib nibWithNibName:@"SettingsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SettingsTableViewCell"];
 
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(registerComplete:) name:@"RegisterComplete" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginComplete:) name:@"LoginComplete" object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
+- (void)registerComplete:(NSNotification*)note{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)loginComplete:(NSNotification*)note{
+    NSDictionary *dic = note.object;
+    
+    [GlobalHelperClass setUsername:[dic objectForKey:@"username"]];
+    [GlobalHelperClass setPassword:[dic objectForKey:@"password"]];
+    
+    [_table reloadData];
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -52,33 +65,101 @@
 #pragma mark - tableView
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    if([GlobalHelperClass getUsername]){
+        return 3;
+    }
+    return 4;
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(section == 0){
-        return @"Trainings-Einstellungen";
+    if([GlobalHelperClass getUsername]){
+        if(section == 0){
+            return @"Login";
+        }
+        if(section == 1){
+            return @"Trainings-Einstellungen";
+        }
+        if(section == 2
+           ){
+            return @"Netzwerk-Einstelungen";
+        }
+    }else{
+        if(section == 0){
+            return @"Login";
+        }
+        if(section == 1){
+            return @"Registrieren";
+        }
+        if(section == 2){
+            return @"Trainings-Einstellungen";
+        }
+        if(section == 3){
+            return @"Netzwerk-Einstelungen";
+        }
     }
-    if(section == 1){
-        return @"Netzwerk-Einstelungen";
-    }
+    
     return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger section = indexPath.section;
+    if([GlobalHelperClass getUsername]){
+        if(section == 0){
+            return 80.0f;
+        }
+        if(section == 1){
+            return 44.0f;
+        }
+        if(section == 2
+           ){
+            return 44.0f;
+        }
+    }else{
+        if(section == 0){
+            return 80.0f;
+        }
+        if(section == 1){
+            return 120.0f;
+        }
+        if(section == 2){
+            return 44.0f;
+        }
+        if(section == 3){
+            return 44.0f;
+        }
+    }
     return 44.0f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 17.0f;
+    return 22.0f;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(section == 0){
-        return 1;
-    }
-    if(section == 1){
-        return 1;
+    if([GlobalHelperClass getUsername]){
+        if(section == 0){
+            return 1;
+        }
+        if(section == 1){
+            return 1;
+        }
+        if(section == 2
+           ){
+            return 1;
+        }
+    }else{
+        if(section == 0){
+            return 1;
+        }
+        if(section == 1){
+            return 1;
+        }
+        if(section == 2){
+            return 1;
+        }
+        if(section == 3){
+            return 1;
+        }
     }
     return 0;
 }
@@ -94,20 +175,43 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:@"SettingsTableViewCell" owner:self options:nil]objectAtIndex:0];
     }
     
-    
-    
     if(section == 0){
-        if (row == 0) {
+       cell.loginView.hidden = NO;
+        if([GlobalHelperClass getUsername]){
+            cell.nicknameField.text = [GlobalHelperClass getUsername];
+        }
+    }
+    
+    if(section == 1){
+        if([GlobalHelperClass getUsername]){
+            if (row == 0) {
+                cell.dateView.hidden = NO;
+                cell.daysField.delegate = self;
+                cell.daysField.text = [NSString stringWithFormat:@"%zd",[GlobalHelperClass getTrainingDaysToShow]];
+            }
+            
+        }else{
+            cell.registerView.hidden = NO;
+        }
+    }
+    if(section == 2){
+        if([GlobalHelperClass getUsername]){
+            if (row == 0) {
+                cell.mobileView.hidden = NO;
+                cell.mobileSwitch.on = ![Communicator dataOnlyWLAN];
+            }
+        }else{
             cell.dateView.hidden = NO;
             cell.daysField.delegate = self;
             cell.daysField.text = [NSString stringWithFormat:@"%zd",[GlobalHelperClass getTrainingDaysToShow]];
+            
         }
+        
     }
-    if(section == 1){
-        if (row == 0) {
-            cell.mobileView.hidden = NO;
-            cell.mobileSwitch.on = ![Communicator dataOnlyWLAN];
-        }
+    
+    if(section == 3){
+        cell.mobileView.hidden = NO;
+        cell.mobileSwitch.on = ![Communicator dataOnlyWLAN];
     }
     
     
