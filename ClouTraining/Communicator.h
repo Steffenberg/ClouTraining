@@ -29,6 +29,8 @@ extern NSString const *ipprefix;
 -(void)sendExerciseToServer:(Exercise*)e;
 -(BOOL)setShared:(BOOL)shared forExercise:(Exercise*)e;
 -(void)deleteExercise:(Exercise*)e completition:(OnlineComplete)complete;
+
+-(void)sendText:(NSString*)text withTitle:(NSString*)title forExercise:(Exercise*)e completition:(OnlineComplete)complete;
 -(void)reuqestMediaInfoWithData:(NSDictionary*)data andMedia:(NSData*)media;
 -(void)getMediaURLsForExercise:(Exercise*)e type:(NSInteger)type;
 -(void)getSharedExercises;

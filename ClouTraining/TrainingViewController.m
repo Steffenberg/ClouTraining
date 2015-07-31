@@ -34,7 +34,8 @@
         }
     }*/
     
-    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor redColor]] forState:UIControlStateNormal];
+    [_textClose setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor redColor]] forState:UIControlStateNormal];
     
     if(!_activeProtocol){
         _activeProtocol = [[DataController sharedInstance]createProtocolForTraining:_activeTraining];
@@ -52,6 +53,8 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleChildMaximized:) name:@"ChildMaximized" object:nil];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showImagePresenter:) name:@"ShowImagePresenter" object:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showTextPresenter:) name:@"ShowTextPresenter" object:nil];
     
     
     UITapGestureRecognizer *doubleRec = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleDoubleTab:)];
@@ -101,6 +104,29 @@
             _imageTitle.text = @"";
         }];
     }
+    });
+}
+
+-(void)showTextPresenter:(NSNotification*)note{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(note){
+            _textView.text = [note.userInfo objectForKey:@"text"];
+            _textTitle.text = [note.userInfo objectForKey:@"title"];
+            
+            
+            [self.view bringSubviewToFront:_textPresenterView];
+            [UIView animateWithDuration:0.4 animations:^{
+                _textPresenterView.alpha = 1.0;
+            }];
+        }else{
+            [UIView animateWithDuration:0.4 animations:^{
+                _textPresenterView.alpha = 0.0;
+            } completion:^(BOOL finished){
+                [self.view sendSubviewToBack:_textPresenterView];
+                _textView.text = @"";
+                _textTitle.text = @"";
+            }];
+        }
     });
 }
 
@@ -188,6 +214,11 @@
 -(IBAction)hideImagePresenter:(id)sender{
     [self showImagePresenter:nil];
 }
+
+-(IBAction)hideTextPresenter:(id)sender{
+    [self showTextPresenter:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

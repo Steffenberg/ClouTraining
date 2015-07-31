@@ -28,6 +28,11 @@
     [[Communicator sharedInstance]getMediaURLsForExercise:ctbvc.exercise type:2];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"MediaDataUpdate" object:nil];
+}
+
 -(void)dataUpdate:(NSNotification*)note{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         NSDictionary *data = note.object;

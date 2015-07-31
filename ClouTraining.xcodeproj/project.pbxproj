@@ -992,7 +992,6 @@
 		F9F013C61B5FC012001C9A6B /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F013C51B5FC012001C9A6B /* Training.m */; };
 		F9F013C91B5FC012001C9A6B /* TrainingProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F013C81B5FC012001C9A6B /* TrainingProtocol.m */; };
 		F9FCCF241B51937B00E72CFB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */; };
-		F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */; };
 		F9FCCF2A1B51956F00E72CFB /* ChooseExerciseCaptureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -2076,8 +2075,6 @@
 		F9F013C71B5FC012001C9A6B /* TrainingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainingProtocol.h; sourceTree = "<group>"; };
 		F9F013C81B5FC012001C9A6B /* TrainingProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainingProtocol.m; sourceTree = "<group>"; };
 		F9FCCF231B51937B00E72CFB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureVideoViewController.h; sourceTree = "<group>"; };
-		F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptureVideoViewController.m; sourceTree = "<group>"; };
 		F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseExerciseCaptureViewController.h; sourceTree = "<group>"; };
 		F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseExerciseCaptureViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3399,8 +3396,6 @@
 		F9FCCF221B518E2400E72CFB /* CreateTipps */ = {
 			isa = PBXGroup;
 			children = (
-				F9FCCF251B51955900E72CFB /* CaptureVideoViewController.h */,
-				F9FCCF261B51955900E72CFB /* CaptureVideoViewController.m */,
 				F9FCCF281B51956F00E72CFB /* ChooseExerciseCaptureViewController.h */,
 				F9FCCF291B51956F00E72CFB /* ChooseExerciseCaptureViewController.m */,
 				F90F7A3B1B52A80D00A32044 /* CreateTippsViewController.h */,
@@ -4430,7 +4425,6 @@
 				F9ECD75E1B56B263008E80B2 /* AFURLConnectionOperation.m in Sources */,
 				F90F7A3A1B528DB300A32044 /* CreateExerciseTabBarController.m in Sources */,
 				F9F013C01B5FC011001C9A6B /* SetEntry.m in Sources */,
-				F9FCCF271B51955900E72CFB /* CaptureVideoViewController.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
 				F9C0ADF81B55820400ACD494 /* Communicator.m in Sources */,
 				F9D95C4A1B6107210058511E /* LoadingView.m in Sources */,

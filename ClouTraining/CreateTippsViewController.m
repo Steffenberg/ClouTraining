@@ -18,10 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [_closeButton setImage:[ImageConverter maskImage:_closeButton.imageView.image withColor:[UIColor redColor]] forState:UIControlStateNormal];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapReturn)];
+    [_previewView addGestureRecognizer:tap];
     
     [_uploadButton setTintColor:[UIColor whiteColor]];
     [_uploadButton setImage:[ImageConverter maskImage:[UIImage imageNamed:@"small74@2x"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [_dynamicUploadButton setTintColor:[UIColor whiteColor]];
+    [_dynamicUploadButton setImage:[ImageConverter maskImage:[UIImage imageNamed:@"small74@2x"] withColor:[UIColor whiteColor]] forState:UIControlStateNormal];
     
     self.navigationItem.title = _exercise.name;
     
@@ -67,6 +71,9 @@
         } completion:^(BOOL finished){
             [self.view sendSubviewToBack:_previewView];
             _thumbnailView.image = nil;
+            _thumbnailView.hidden = NO;
+            _textView.text =@"";
+            _textView.hidden = YES;
             _titleField.text = @"";
             _mediaTitle = nil;
             _thumbnail = nil;
@@ -77,7 +84,25 @@
 
 -(IBAction)uploadConfirm:(id)sender{
     _mediaTitle = _titleField.text;
-    [self showActionSheetWithType:_type];
+    if([sender isEqual:_dynamicUploadButton]){
+        [_textView resignFirstResponder];
+        
+        
+    }
+    if(_textView.hidden){
+        [self showActionSheetWithType:_type];
+    }else{
+        if(![_textView.text isEqualToString:@""]){
+            [[Communicator sharedInstance]sendText:_textView.text withTitle:_mediaTitle forExercise:_exercise completition:^(BOOL complete){
+                [[LoadingView sharedInstance]hide];
+                if(complete){
+                    [self showThumbnailView:NO];
+                }
+            }];
+            
+        }
+    }
+    
 }
 
 - (IBAction)createVideo:(id)sender {
@@ -229,6 +254,10 @@
 }
 
 - (IBAction)createText:(id)sender {
+    [self showThumbnailView:YES];
+    _textView.hidden = NO;
+    _thumbnailView.hidden = YES;
+    
 }
 
 - (IBAction)closeThumbnailView:(id)sender {
@@ -255,7 +284,9 @@
             _mediaTitle = @"Kein Titel";
             _titleField.text = _mediaTitle;
         }
-        NSDictionary *data = @{@"exerciseID":_exercise.exerciseid,
+        NSDictionary *data = @{@"username":[GlobalHelperClass getUsername],
+                               @"password":[GlobalHelperClass getPassword],
+                               @"exerciseID":_exercise.exerciseid,
                                @"title":_mediaTitle,
                                @"type":[NSNumber numberWithInteger:actionSheet.tag],
                                @"date":[NSNumber numberWithInteger:[[NSDate date] timeIntervalSince1970]]
@@ -271,8 +302,29 @@
     
 }
 
+-(void)tapReturn{
+    [_textView resignFirstResponder];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)textViewDidBeginEditing:(UITextField *)textField{
+    _dynamicUploadButton.hidden = NO;
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    _dynamicUploadButton.hidden = YES;
+    return YES;
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if([string isEqualToString:@"\n"]){
+        
+    }
+    
     return YES;
 }
 

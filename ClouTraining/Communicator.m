@@ -120,7 +120,7 @@ NSString const *ipprefix = @"http://192.168.178.39";
                                        [[NSNotificationCenter defaultCenter]postNotificationName:@"RegisterComplete" object:nil];
                                    }else if([replyString isEqualToString:@"email"]){
                                        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"email bereits vergeben"];
-                                   }else if([replyString isEqualToString:@"username"]){
+                                   }else if([replyString isEqualToString:@"nickname"]){
                                        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Benutzername bereits vergeben"];
                                    }
                                }
@@ -129,6 +129,9 @@ NSString const *ipprefix = @"http://192.168.178.39";
 }
 
 -(void)sendExerciseToServer:(Exercise*)e{
+    if(![GlobalHelperClass getUsername]){
+        return;
+    }
     if([Communicator dataOnlyWLAN]){
         if([_reachability isReachable] && ![_reachability isReachableViaWiFi]){
             [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht eine Verbindung zum Internet, du hast jedoch die Kommunikation für mobile Daten aktiviert. Verbinde dich mit einem WLAN oder aktiviere die Kommunikation für mobile Daten"];
@@ -238,6 +241,9 @@ NSString const *ipprefix = @"http://192.168.178.39";
 }
 
 -(BOOL)setShared:(BOOL)shared forExercise:(Exercise*)e{
+    if(![GlobalHelperClass getUsername]){
+        return NO;
+    }
     if([Communicator dataOnlyWLAN]){
         if([_reachability isReachable] && ![_reachability isReachableViaWiFi]){
             [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht eine Verbindung zum Internet, du hast jedoch die Kommunikation für mobile Daten aktiviert. Verbinde dich mit einem WLAN oder aktiviere die Kommunikation für mobile Daten"];
@@ -280,6 +286,9 @@ NSString const *ipprefix = @"http://192.168.178.39";
 }
 
 -(void)deleteExercise:(Exercise*)e completition:(OnlineComplete)complete{
+    if(![GlobalHelperClass getUsername]){
+        complete(NO);
+    }
     if([Communicator dataOnlyWLAN]){
         if([_reachability isReachable] && ![_reachability isReachableViaWiFi]){
             [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht eine Verbindung zum Internet, du hast jedoch die Kommunikation für mobile Daten aktiviert. Verbinde dich mit einem WLAN oder aktiviere die Kommunikation für mobile Daten"];
@@ -384,6 +393,71 @@ NSString const *ipprefix = @"http://192.168.178.39";
     
     
 }
+#pragma mark - send tipp
+-(void)sendText:(NSString*)text withTitle:(NSString*)title forExercise:(Exercise*)e completition:(OnlineComplete)complete{
+    if(![GlobalHelperClass getUsername]){
+        complete(NO);
+    }
+    if([Communicator dataOnlyWLAN]){
+        if([_reachability isReachable] && ![_reachability isReachableViaWiFi]){
+            [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht eine Verbindung zum Internet, du hast jedoch die Kommunikation für mobile Daten aktiviert. Verbinde dich mit einem WLAN oder aktiviere die Kommunikation für mobile Daten"];
+            complete(NO);
+        }
+    }else{
+        if(![_reachability isReachable]){
+            [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht keine Verbindung zum Internet."];
+            complete(NO);
+        }
+    }
+    
+    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/clouTraining/scripts/CTCreateMedia.php",ipprefix]]];
+    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [urlRequest setHTTPMethod:@"POST"];
+    
+    NSDictionary *data = @{@"username":[GlobalHelperClass getUsername],
+                           @"password":[GlobalHelperClass getPassword],
+                           @"exerciseID":e.exerciseid,
+                          @"text":text,
+                           @"title":title,
+                           @"type":[NSNumber numberWithInteger:3],
+                           @"date":[NSNumber numberWithInteger:[e.date timeIntervalSince1970]],
+                          };
+    
+    [urlRequest setHTTPBody:[DataConverter createJSONForData:data]];
+    
+    [[LoadingView sharedInstance]show];
+    
+    
+    [NSURLConnection sendAsynchronousRequest:urlRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if(error){
+                                   NSLog(@"Schwerer Fehler:%@",error.localizedDescription);
+                                   
+                                   complete(NO);
+                                   
+                               }else{
+                                   NSString *replyString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+                                   NSLog(@"RESPONSE:%@",replyString);
+                                   
+                                   if([replyString isEqualToString:@"TEXTINSERT"]){
+                                       
+                                       complete(YES);
+                                   }
+                                   if([replyString hasPrefix:@"ERROR"]){
+                                       
+                                       complete(NO);
+                                   }
+                                   
+                                   
+                               }
+                               complete(NO);
+                           }];
+    
+    
+    
+}
+
 
 #pragma mark - send media
 
@@ -391,7 +465,9 @@ NSString const *ipprefix = @"http://192.168.178.39";
     if(!media){
         return;
     }
-    
+    if(![GlobalHelperClass getUsername]){
+        return;
+    }
     if([Communicator dataOnlyWLAN]){
         if([_reachability isReachable] && ![_reachability isReachableViaWiFi]){
             [[ErrorHandler sharedInstance]handleSimpleError:@"Netzwerkfehler" andMessage:@"Es besteht eine Verbindung zum Internet, du hast jedoch die Kommunikation für mobile Daten aktiviert. Verbinde dich mit einem WLAN oder aktiviere die Kommunikation für mobile Daten"];

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TippsContentViewController : UIViewController
+@interface TippsContentViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+
+
+@property (weak, nonatomic) IBOutlet UITableView *table;
+@property NSArray *tippsData;
 
 @end

@@ -16,6 +16,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *imageTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *closeButton;
+@property (weak, nonatomic) IBOutlet UIView *textPresenterView;
+@property (weak, nonatomic) IBOutlet UILabel *textTitle;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+@property (weak, nonatomic) IBOutlet UIButton *textClose;
+
 @property (strong, nonatomic) IBOutlet GravityCircleView *gravityCircleView;
 @property (weak, nonatomic) IBOutlet ContentGravityView *contentGravityView;
 @property (weak, nonatomic) IBOutlet UILabel *dragHereLabel;

@@ -27,14 +27,17 @@
 
 - (void)registerComplete:(NSNotification*)note{
     
+    [[ErrorHandler sharedInstance]handleSimpleError:@"Erfolg" andMessage:@"Registrierung erfolgreich"];
     
+    [_table reloadData];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)loginComplete:(NSNotification*)note{
     NSDictionary *dic = note.object;
-    
-    [GlobalHelperClass setUsername:[dic objectForKey:@"username"]];
+    [[ErrorHandler sharedInstance]handleSimpleError:@"Erfolg" andMessage:@"Login erfolgreich"];
+    [GlobalHelperClass setUsername:[dic objectForKey:@"nickname"]];
     [GlobalHelperClass setPassword:[dic objectForKey:@"password"]];
     
     [_table reloadData];
@@ -170,21 +173,19 @@
     
     static NSString *CellIdentifier = @"SettingsTableViewCell";
     SettingsTableViewCell *cell = (SettingsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(!cell){
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"SettingsTableViewCell" owner:self options:nil]objectAtIndex:0];
-    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if(section == 0){
        cell.loginView.hidden = NO;
         if([GlobalHelperClass getUsername]){
-            cell.nicknameField.text = [GlobalHelperClass getUsername];
+            cell.loginNickField.text = [GlobalHelperClass getUsername];
         }
     }
     
     if(section == 1){
         if([GlobalHelperClass getUsername]){
             if (row == 0) {
+                cell.registerView.hidden = YES;
                 cell.dateView.hidden = NO;
                 cell.daysField.delegate = self;
                 cell.daysField.text = [NSString stringWithFormat:@"%zd",[GlobalHelperClass getTrainingDaysToShow]];

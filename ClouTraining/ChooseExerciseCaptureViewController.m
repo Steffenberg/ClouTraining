@@ -29,6 +29,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if(![GlobalHelperClass getUsername]){
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Du musst dich einloggen um Tipps erstellen zu können"];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 
 #pragma mark - tableView
 

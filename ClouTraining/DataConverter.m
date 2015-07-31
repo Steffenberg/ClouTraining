@@ -26,14 +26,16 @@
                            @"describe":@"lol",
                            @"maxWeight":e.maxWeight,
                            @"shared":e.shared,
-                           @"date":[NSNumber numberWithInteger:[e.date timeIntervalSince1970]]
+                           @"date":[NSNumber numberWithInteger:[e.date timeIntervalSince1970]],
+                           @"username":[GlobalHelperClass getUsername],
+                           @"password":[GlobalHelperClass getPassword]
                            
                            };
     NSString *jsonPrefix =@"data=";
     NSMutableData * jsonData = [jsonPrefix dataUsingEncoding:NSUTF8StringEncoding].mutableCopy;
     
     [jsonData appendData:[NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil]];
-    NSString *check = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //NSString *check = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     
     
@@ -48,7 +50,7 @@
     NSMutableData * jsonData = [jsonPrefix dataUsingEncoding:NSUTF8StringEncoding].mutableCopy;
     
     [jsonData appendData:[NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:nil]];
-    NSString *check = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //NSString *check = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     
     

@@ -118,7 +118,10 @@
     SetEntry *entry = [[DataController sharedInstance]createSetEntryForExProtocol:_exProtocol withNumber:_setLogs.count+1];
     [_setLogs addObject:entry];
     [_table reloadData];
-    [_table setContentOffset:CGPointMake(0, _table.contentSize.height - _table.frame.size.height) animated:YES];
+    if(_setLogs.count >1){
+        [_table setContentOffset:CGPointMake(0, _table.contentSize.height - _table.frame.size.height) animated:YES];
+    }
+    
 }
 
 /*
