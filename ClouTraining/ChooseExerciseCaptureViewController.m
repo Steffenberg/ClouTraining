@@ -33,7 +33,7 @@
     [super viewDidAppear:animated];
     if(![GlobalHelperClass getUsername]){
         [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Du musst dich einloggen um Tipps erstellen zu können"];
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
     }
 }
 

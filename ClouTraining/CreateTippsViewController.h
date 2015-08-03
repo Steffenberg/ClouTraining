@@ -13,8 +13,6 @@
 
 typedef void (^ExportCallback) (AVAssetExportSession*);
 
-
-
 @interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate,UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleField;

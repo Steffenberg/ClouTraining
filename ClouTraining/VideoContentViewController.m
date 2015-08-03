@@ -98,6 +98,7 @@
     NSURL *movieURL = [NSURL URLWithString:urlString];
     _movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
     [self presentMoviePlayerViewControllerAnimated:_movieController];
+    [_movieController.moviePlayer prepareToPlay];
     [_movieController.moviePlayer play];
 }
 

@@ -156,8 +156,34 @@
         NSLog(@"Video Captured");
         
         NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
+        NSURL *tempURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"temp.mp4"]];
         
-        [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
+        [self convertVideoToLowerQuailtyWithInputURL:videoURL outputURL:tempURL handler:^(AVAssetExportSession *e){
+            [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
+                
+                _thumbnail = [self getThumbnailForVideo:tempURL];
+                _thumbnailView.image = _thumbnail;
+                _type = 1;
+                _uploadData = [NSData dataWithContentsOfURL:tempURL];
+                
+                NSLog(@"Filesize - %f ", _uploadData.length/1000.0f);
+                
+                //WICHTIG!!! QUELLVIEDEOS LÖSCHEN!!!
+                [[NSFileManager defaultManager] removeItemAtPath:[tempURL path] error:nil];
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    if(_uploadData){
+                        [self showThumbnailView:YES];
+                        
+                        //[self showActionSheetWithType:1];
+                    }
+                });
+                
+            }];
+        }];
+        
+        /*[picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
             
             _thumbnail = [self getThumbnailForVideo:videoURL];
             _thumbnailView.image = _thumbnail;
@@ -178,7 +204,7 @@
                 }
             });
             
-        }];
+        }];*/
         
     }
     
@@ -190,12 +216,13 @@
 {
     [[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPreset640x480];
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
     exportSession.outputURL = outputURL;
     exportSession.outputFileType = AVFileTypeMPEG4;
-    NSLog(@"Expected length:%zd",exportSession.estimatedOutputFileLength);
+   
     [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
      {
+         [[NSFileManager defaultManager] removeItemAtURL:inputURL error:nil];
          handler(exportSession);
          
      }];
