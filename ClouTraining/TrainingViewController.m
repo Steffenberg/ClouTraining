@@ -79,8 +79,6 @@
         }
     }
     
-    
-    
     [_gravityCircleView setNeedsDisplay];
 }
 
@@ -207,6 +205,19 @@
         _contentGravityView.circleView = _gravityCircleView;
         
         _firstStart = NO;
+    }
+    
+    if(!_effectView){
+        // create blur effect
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        
+        // create vibrancy effect
+        UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
+        _effectView = [[UIVisualEffectView alloc]initWithEffect:blur];
+        _effectView.frame = CGRectMake(0, 0, _bgView.frame.size.width, _bgView.frame.size.height);
+        [_bgView addSubview:_effectView];
+    }else{
+        _effectView.frame = CGRectMake(0, 0, _bgView.frame.size.width, _bgView.frame.size.height);
     }
     
 }

@@ -38,11 +38,15 @@
     NSInteger childAmount = exercises.count;
     NSLog(@"Frame:%@", NSStringFromCGRect(self.frame));
     caliber = self.frame.size.height;
-    extent = 2*(caliber/2)*M_PI;
-    if(childAmount < 4){
-        childCaliber = (extent/4)/2;
+    //extent = 2*(caliber/2)*M_PI;
+    if(childAmount <= 9){
+        childCaliber = (caliber/3);
+    }else if(childAmount >9 && childAmount <= 12){
+        childCaliber = (caliber/3);
+    }else if(childAmount >12 && childAmount <= 16){
+        childCaliber = (caliber/3.5);
     }else{
-        childCaliber = (extent/childAmount)/2;
+        return;
     }
     
     children = childAmount;
@@ -57,18 +61,150 @@
 -(void)createChildren:(NSArray*)exercises{
     
     _anchors = [NSMutableArray array];
+    
     for(int i = 0; i<children; i++){
+        
         ExerciseCircleView *child = [[ExerciseCircleView alloc]initWithFrame:CGRectMake(0, 0, childCaliber, childCaliber)];
         child.exercise = [exercises objectAtIndex:i];
         child.titleLabel.text = child.exercise.name;
         child.backgroundColor = [UIColor clearColor];
-        CGFloat radian = (360.0/children)* (M_PI / 180);
-        CGFloat xy = self.frame.size.width/2;
-        
-        child.center = CGPointMake(((caliber-childCaliber/2)/2)*cosf(i*radian)+xy, ((caliber-childCaliber/2)/2)*sinf(i*radian)+xy);
+ 
+        if(children <= 9){
+            child.center = [self getPositionFor3x3:i];
+        }else if(children >9 && children <= 12){
+            child.center = [self getPositionFor4x3:i];
+        }else if(children >12 && children <= 16){
+            child.center = [self getPositionFor4x4:i];
+        }
         [self addSubview:child];
         [_anchors addObject:@{@"X":[NSNumber numberWithFloat:child.center.x],@"Y":[NSNumber numberWithFloat:child.center.y],@"Occupied":child}.mutableCopy];
     }
+}
+
+-(CGPoint)getPositionFor3x3:(NSInteger)number{
+    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat x = center.x;
+    CGFloat y = center.y;
+    
+    if(number%3 == 0){
+        x = x-(3*childCaliber/2);
+        if(number-3 <0){
+           y = y-(childCaliber);
+        }else if (number-3 >=3){
+            y = y+(childCaliber);
+        }
+    }else  if(number%3 == 1){
+        x = center.x;
+        if(number-3 <0){
+            y = y-(childCaliber);
+        }else if (number-3 >=3){
+            y = y+(childCaliber);
+        }
+    }else  if(number%3 == 2){
+         x = x+(3*childCaliber/2);
+        if(number-3 <0){
+            y = y-(childCaliber);
+        }else if (number-3 >=3){
+            y = y+(childCaliber);
+        }
+    }
+    
+    
+    return CGPointMake(x, y);
+}
+
+-(CGPoint)getPositionFor4x3:(NSInteger)number{
+    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat x = center.x;
+    CGFloat y = center.y;
+    
+    if(number%4 == 0){
+        x = x-(3*childCaliber/2);
+        if(number-4 <0){
+            y = y-(childCaliber);
+        }else if (number-4 >=4){
+            y = y+(childCaliber);
+        }
+    }else  if(number%4 == 1){
+        x = x-(childCaliber/2);
+        if(number-4 <0){
+            y = y-(childCaliber);
+        }else if (number-4 >=4){
+            y = y+(childCaliber);
+        }
+    }else  if(number%4 == 2){
+        x = x+(childCaliber/2);
+        if(number-4 <0){
+            y = y-(childCaliber);
+        }else if (number-4 >=4){
+            y = y+(childCaliber);
+        }
+    }else  if(number%4 == 3){
+        x = x+(3*childCaliber/2);
+        if(number-4 <0){
+            y = y-(childCaliber);
+        }else if (number-4 >=4){
+            y = y+(childCaliber);
+        }
+    }
+    
+    
+    return CGPointMake(x, y);
+}
+
+-(CGPoint)getPositionFor4x4:(NSInteger)number{
+    CGPoint center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    CGFloat x = center.x;
+    CGFloat y = center.y;
+    
+    if(number%4 == 0){
+        x = x-(3*childCaliber/2);
+        if(number-4 <0){
+            y = y-(3*childCaliber/2);
+        }else if(number-4 >=0 && number-4 <4){
+            y = y-(childCaliber/2);
+        }else if(number-4 >=4 && number-4 <8){
+            y = y+(childCaliber/2);
+        }else if (number-4 >=8){
+            y = y+(3*childCaliber/2);
+        }
+    }else  if(number%4 == 1){
+        x = x-(childCaliber/2);
+        if(number-4 <0){
+            y = y-(3*childCaliber/2);
+        }else if(number-4 >=0 && number-4 <4){
+            y = y-(childCaliber/2);
+        }else if(number-4 >=4 && number-4 <8){
+            y = y+(childCaliber/2);
+        }else if (number-4 >=8){
+            y = y+(3*childCaliber/2);
+        }
+    }else  if(number%4 == 2){
+        x = x+(childCaliber/2);
+        if(number-4 <0){
+            y = y-(3*childCaliber/2);
+        }else if(number-4 >=0 && number-4 <4){
+            y = y-(childCaliber/2);
+        }else if(number-4 >=4 && number-4 <8){
+            y = y+(childCaliber/2);
+        }else if (number-4 >=8){
+            y = y+(3*childCaliber/2);
+        }
+    }else  if(number%4 == 3){
+        x = x+(3*childCaliber/2);
+        if(number-4 <0){
+            y = y-(3*childCaliber/2);
+        }else if(number-4 >=0 && number-4 <4){
+            y = y-(childCaliber/2);
+        }else if(number-4 >=4 && number-4 <8){
+            y = y+(childCaliber/2);
+        }else if (number-4 >=8){
+            y = y+(3*childCaliber/2);
+        }
+    }
+    
+    
+    return CGPointMake(x, y);
 }
 
 #pragma mark handle begin-movement of children
@@ -158,7 +294,7 @@
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
+/*- (void)drawRect:(CGRect)rect {
     // Drawing code
     self.backgroundColor = [UIColor clearColor];
     
@@ -174,7 +310,7 @@
     CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
     
     CGContextStrokePath(context);
-}
+}*/
 
 
 @end

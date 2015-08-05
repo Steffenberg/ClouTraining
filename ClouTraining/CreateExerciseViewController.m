@@ -8,6 +8,8 @@
 
 #import "CreateExerciseViewController.h"
 #import "Exercise.h"
+#import "Training.h"
+#import "CreateExerciseTabBarController.h"
 
 @interface CreateExerciseViewController ()
 
@@ -59,16 +61,22 @@
 -(void)saveExercise{
     if(!_exercise){
         if(self.tabBarController){
-            NSDictionary *data = @{@"name":_nameField.text,
-                                   @"describe":_descField.text,
-                                   @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
-                                   @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
-                                   @"own":[NSNumber numberWithBool:YES],
-                                   @"date":[NSDate date]
-                                   };
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
+            CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
+            if (tabControl.exercisesToAdd.count + tabControl.training.exercises.count < 16) {
+                NSDictionary *data = @{@"name":_nameField.text,
+                                       @"describe":_descField.text,
+                                       @"shared":[NSNumber numberWithBool:_onlineSwitch.on],
+                                       @"maxWeight":[NSNumber numberWithFloat:[_maxWeightField.text floatValue]],
+                                       @"own":[NSNumber numberWithBool:YES],
+                                       @"date":[NSDate date]
+                                       };
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseAdded" object:data];
+                
+                [self.tabBarController.navigationController popViewControllerAnimated:YES];
+            }else{
+                [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Dein Training darf aus maximal 16 Übungen bestehen."];
+            }
             
-            [self.tabBarController.navigationController popViewControllerAnimated:YES];
         }else{
             NSDictionary *data = @{@"name":_nameField.text,
                                    @"describe":_descField.text,

@@ -12,9 +12,6 @@
 
 @interface GravityCircleView : UIView{
     CGRect circleRect;
-    
-    
-    
     CGFloat caliber;
     float extent;
     float lowerExtend;

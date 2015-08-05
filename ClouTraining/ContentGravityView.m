@@ -30,6 +30,7 @@
 -(void)maximizeChild{
     //change shape
     _child.displaysContent = YES;
+    _occupied = YES;
     [_child setNeedsDisplay];
     
     //get point that child would have in self
@@ -42,7 +43,7 @@
        // _child.center = [self.superview convertPoint:self.center toView:_child.superview];
     } completion:^(BOOL finished){
         _child.canMove = NO;
-        _occupied = YES;
+        
         [_child showContent];
     }];
 }

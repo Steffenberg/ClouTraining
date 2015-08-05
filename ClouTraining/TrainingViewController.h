@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *textPresenterView;
 @property (weak, nonatomic) IBOutlet UILabel *textTitle;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgView;
 
 @property (weak, nonatomic) IBOutlet UIButton *textClose;
 
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIView *contentTabSuperview;
 @property BOOL firstStart;
 
+@property UIVisualEffectView *effectView;
 
 @property Training *activeTraining;
 @property TrainingProtocol *activeProtocol;

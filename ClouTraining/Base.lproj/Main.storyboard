@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F6a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oBE-Wl-aKu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oBE-Wl-aKu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -114,7 +114,7 @@
                                     <constraint firstAttribute="bottom" secondItem="u06-a6-uWV" secondAttribute="bottom" id="q19-Kn-kaK"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArnieBG.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VTy-8I-iVC">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArnieBG2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VTy-8I-iVC">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjU-Dt-Xyz" customClass="ContentGravityView">
@@ -148,10 +148,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NvC-bc-0TC" userLabel="CircleView" customClass="GravityCircleView">
-                                <rect key="frame" x="190" y="84" width="222" height="222"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NvC-bc-0TC" secondAttribute="height" multiplier="1:1" id="Iu1-X9-apG"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="84" width="568" height="222"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,6 +158,8 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="VTy-8I-iVC" secondAttribute="bottom" id="4pK-0d-gzp"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oH8-fP-wcx" secondAttribute="bottom" id="5GD-ga-VND"/>
                             <constraint firstAttribute="centerX" secondItem="NvC-bc-0TC" secondAttribute="centerX" constant="-0.5" id="7rQ-mk-9nk"/>
+                            <constraint firstItem="NvC-bc-0TC" firstAttribute="trailing" secondItem="ilp-BC-jvD" secondAttribute="trailingMargin" id="8mw-Sa-DVM"/>
+                            <constraint firstItem="NvC-bc-0TC" firstAttribute="leading" secondItem="ilp-BC-jvD" secondAttribute="leadingMargin" id="9hE-uk-Ijd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pjU-Dt-Xyz" secondAttribute="trailing" constant="-16" id="GjU-v1-0k4"/>
                             <constraint firstItem="xvK-dT-pu2" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="NpQ-aA-z97"/>
                             <constraint firstItem="xvK-dT-pu2" firstAttribute="leading" secondItem="ilp-BC-jvD" secondAttribute="leadingMargin" constant="-16" id="PuO-pG-hVj"/>
@@ -181,6 +180,7 @@
                     <navigationItem key="navigationItem" title="Training" id="d3c-T6-fft"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bgView" destination="VTy-8I-iVC" id="qwl-Ei-XiH"/>
                         <outlet property="closeButton" destination="gjC-Bq-MHG" id="KZs-S9-8SQ"/>
                         <outlet property="contentGravityView" destination="pjU-Dt-Xyz" id="Nch-QR-EQm"/>
                         <outlet property="contentTabSuperview" destination="80X-mY-eG3" id="KSU-w7-xFG"/>
@@ -465,10 +465,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDS-IB-Qk0" userLabel="Training wählen">
-                                <rect key="frame" x="20" y="84" width="560" height="109"/>
+                                <rect key="frame" x="20" y="84" width="560" height="158"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-EX-RfM">
-                                        <rect key="frame" x="10" y="10" width="540" height="89"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9H-EX-RfM" customClass="MainMenuButton">
+                                        <rect key="frame" x="10" y="10" width="540" height="138"/>
                                         <state key="normal" title="Trainieren">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -486,10 +486,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdB-MT-EpW" userLabel="Training erstellen">
-                                <rect key="frame" x="20" y="213" width="560" height="109"/>
+                                <rect key="frame" x="20" y="253" width="560" height="158"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9m-HZ-ltl">
-                                        <rect key="frame" x="10" y="10" width="265" height="89"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9m-HZ-ltl" customClass="MainMenuButton">
+                                        <rect key="frame" x="10" y="10" width="265" height="138"/>
                                         <state key="normal" title="Trainings verwalten">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -497,8 +497,8 @@
                                             <action selector="showCreateTraining:" destination="A0f-7g-qOZ" eventType="touchUpInside" id="ach-DF-Hlm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60t-dD-gfQ">
-                                        <rect key="frame" x="285" y="10" width="265" height="89"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60t-dD-gfQ" customClass="MainMenuButton">
+                                        <rect key="frame" x="285" y="10" width="265" height="138"/>
                                         <state key="normal" title="Übungen Verwalten">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -519,11 +519,11 @@
                                     <constraint firstItem="60t-dD-gfQ" firstAttribute="leading" secondItem="l9m-HZ-ltl" secondAttribute="trailing" constant="10" id="zg1-kX-JGU"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdT-t9-LAP" userLabel="Tipp erstellen">
-                                <rect key="frame" x="20" y="342" width="560" height="109"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09z-Zd-03w" userLabel="Settings">
+                                <rect key="frame" x="20" y="422" width="560" height="158"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-9J-EzD">
-                                        <rect key="frame" x="10" y="10" width="540" height="89"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-9J-EzD" customClass="MainMenuButton">
+                                        <rect key="frame" x="10" y="10" width="265" height="138"/>
                                         <state key="normal" title="Tipp erstellen">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -531,20 +531,8 @@
                                             <segue destination="hYn-0m-QvP" kind="show" id="pvD-sj-ch2"/>
                                         </connections>
                                     </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="top" secondItem="zdT-t9-LAP" secondAttribute="top" constant="10" id="PQW-4E-IWh"/>
-                                    <constraint firstAttribute="trailing" secondItem="LbI-9J-EzD" secondAttribute="trailing" constant="10" id="RUd-js-YRn"/>
-                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="leading" secondItem="zdT-t9-LAP" secondAttribute="leading" constant="10" id="qYd-7H-Nqs"/>
-                                    <constraint firstAttribute="bottom" secondItem="LbI-9J-EzD" secondAttribute="bottom" constant="10" id="wft-xX-Agh"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09z-Zd-03w" userLabel="Settings">
-                                <rect key="frame" x="20" y="471" width="560" height="109"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-0E-kih">
-                                        <rect key="frame" x="10" y="10" width="540" height="89"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBV-0E-kih" customClass="MainMenuButton">
+                                        <rect key="frame" x="285" y="10" width="265" height="138"/>
                                         <state key="normal" title="Einstellungen">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -555,35 +543,40 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="OBV-0E-kih" firstAttribute="top" secondItem="09z-Zd-03w" secondAttribute="top" constant="10" id="beX-b8-LlF"/>
-                                    <constraint firstItem="OBV-0E-kih" firstAttribute="leading" secondItem="09z-Zd-03w" secondAttribute="leading" constant="10" id="jv4-zh-Hwm"/>
-                                    <constraint firstAttribute="trailing" secondItem="OBV-0E-kih" secondAttribute="trailing" constant="10" id="k5b-d0-lTX"/>
-                                    <constraint firstAttribute="bottom" secondItem="OBV-0E-kih" secondAttribute="bottom" constant="10" id="qPs-CD-Iwa"/>
+                                    <constraint firstItem="OBV-0E-kih" firstAttribute="width" secondItem="LbI-9J-EzD" secondAttribute="width" id="0RK-WN-rT3"/>
+                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="leading" secondItem="09z-Zd-03w" secondAttribute="leading" constant="10" id="GKF-Qy-T5u"/>
+                                    <constraint firstItem="OBV-0E-kih" firstAttribute="top" secondItem="09z-Zd-03w" secondAttribute="top" constant="10" id="NAx-b3-lSf"/>
+                                    <constraint firstItem="OBV-0E-kih" firstAttribute="leading" secondItem="LbI-9J-EzD" secondAttribute="trailing" constant="10" id="Xye-OR-nT2"/>
+                                    <constraint firstAttribute="trailing" secondItem="OBV-0E-kih" secondAttribute="trailing" constant="10" id="fCh-6s-xOk"/>
+                                    <constraint firstItem="LbI-9J-EzD" firstAttribute="top" secondItem="09z-Zd-03w" secondAttribute="top" constant="10" id="lIf-ek-PbN"/>
+                                    <constraint firstAttribute="bottom" secondItem="OBV-0E-kih" secondAttribute="bottom" constant="10" id="r4k-EO-aaI"/>
+                                    <constraint firstAttribute="bottom" secondItem="LbI-9J-EzD" secondAttribute="bottom" constant="10" id="rch-lG-cr5"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="09z-Zd-03w" firstAttribute="height" secondItem="zdT-t9-LAP" secondAttribute="height" id="1un-df-tfb"/>
-                            <constraint firstItem="zdT-t9-LAP" firstAttribute="height" secondItem="wdB-MT-EpW" secondAttribute="height" id="51P-Mq-GAB"/>
                             <constraint firstItem="pDS-IB-Qk0" firstAttribute="leading" secondItem="DzV-oI-fBd" secondAttribute="leadingMargin" constant="4" id="7OD-W5-cBK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zdT-t9-LAP" secondAttribute="trailing" constant="4" id="De1-ab-VIY"/>
-                            <constraint firstItem="wdB-MT-EpW" firstAttribute="top" secondItem="pDS-IB-Qk0" secondAttribute="bottom" constant="20" id="G8Y-zY-utY"/>
+                            <constraint firstItem="09z-Zd-03w" firstAttribute="height" secondItem="wdB-MT-EpW" secondAttribute="height" id="AEj-j9-Hzp"/>
+                            <constraint firstItem="wdB-MT-EpW" firstAttribute="top" secondItem="pDS-IB-Qk0" secondAttribute="bottom" constant="11" id="G8Y-zY-utY"/>
                             <constraint firstItem="wdB-MT-EpW" firstAttribute="leading" secondItem="DzV-oI-fBd" secondAttribute="leadingMargin" constant="4" id="IdD-r9-Jh8"/>
                             <constraint firstItem="wdB-MT-EpW" firstAttribute="height" secondItem="pDS-IB-Qk0" secondAttribute="height" id="JeL-TZ-mRD"/>
                             <constraint firstItem="pDS-IB-Qk0" firstAttribute="top" secondItem="5XV-3m-Ks7" secondAttribute="bottom" constant="20" id="Nev-Zi-4Wd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pDS-IB-Qk0" secondAttribute="trailing" constant="4" id="R6v-NX-laj"/>
-                            <constraint firstItem="zdT-t9-LAP" firstAttribute="leading" secondItem="DzV-oI-fBd" secondAttribute="leadingMargin" constant="4" id="dHK-By-6lQ"/>
+                            <constraint firstItem="09z-Zd-03w" firstAttribute="top" secondItem="wdB-MT-EpW" secondAttribute="bottom" constant="11" id="S75-MR-dwY"/>
                             <constraint firstItem="09z-Zd-03w" firstAttribute="leading" secondItem="DzV-oI-fBd" secondAttribute="leadingMargin" constant="4" id="dKd-yr-ZPt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="09z-Zd-03w" secondAttribute="trailing" constant="4" id="gPS-oq-gMB"/>
-                            <constraint firstItem="09z-Zd-03w" firstAttribute="top" secondItem="zdT-t9-LAP" secondAttribute="bottom" constant="20" id="h1d-jg-Qvo"/>
                             <constraint firstItem="WJ9-VF-8xx" firstAttribute="top" secondItem="09z-Zd-03w" secondAttribute="bottom" constant="20" id="ht3-fm-rPq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wdB-MT-EpW" secondAttribute="trailing" constant="4" id="mLP-S3-aPg"/>
-                            <constraint firstItem="zdT-t9-LAP" firstAttribute="top" secondItem="wdB-MT-EpW" secondAttribute="bottom" constant="20" id="mTY-K8-Dvf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="ClouTraining" id="beg-0h-LlW"/>
                     <connections>
+                        <outlet property="createTippsButton" destination="LbI-9J-EzD" id="D8X-ew-ZXE"/>
+                        <outlet property="editExerciseButton" destination="60t-dD-gfQ" id="fmD-ki-LfN"/>
+                        <outlet property="editTrainingButton" destination="l9m-HZ-ltl" id="lhs-Gt-1WX"/>
+                        <outlet property="settingsButton" destination="OBV-0E-kih" id="fTQ-Fj-Xqf"/>
+                        <outlet property="trainingButton" destination="i9H-EX-RfM" id="GMK-YA-bES"/>
                         <segue destination="uvR-N8-4TS" kind="show" identifier="ShowTrainingChooser" id="UX9-zG-4i4"/>
                         <segue destination="KzW-zw-bhN" kind="show" identifier="ShowManageTrainings" id="F28-Em-iSg"/>
                         <segue destination="4sD-hQ-mCy" kind="show" identifier="ShowManageExercises" id="hMS-3Y-gQd"/>
@@ -1494,7 +1487,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ArnieBG.jpg" width="1080" height="1920"/>
+        <image name="ArnieBG2.jpg" width="1144" height="1600"/>
         <image name="camera19" width="16" height="16"/>
         <image name="camera19@3x.png" width="128" height="128"/>
         <image name="close9.png" width="32" height="32"/>

@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuViewController.h"
+#import "MainMenuButton.h"
 
 @interface MainMenuViewController ()
 
@@ -16,6 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_trainingButton setImage:[UIImage imageNamed:@"standingMan@3x"] forState:UIControlStateNormal];
+    [_editTrainingButton setImage:[UIImage imageNamed:@"screwdriver3@3x"] forState:UIControlStateNormal];
+    [_editExerciseButton setImage:[UIImage imageNamed:@"screwdriver3@3x"] forState:UIControlStateNormal];
+    [_createTippsButton setImage:[UIImage imageNamed:@"question3@3x"] forState:UIControlStateNormal];
+    [_settingsButton setImage:[UIImage imageNamed:@"little17@3x"] forState:UIControlStateNormal];
     
     
     // Do any additional setup after loading the view.

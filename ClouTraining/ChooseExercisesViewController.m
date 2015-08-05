@@ -146,47 +146,77 @@
         //remove the deleted object from your data source.
         //If your data source is an NSMutableArray, do this
         Exercise *e = [_exercises objectAtIndex:indexPath.row];
-        [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
-            if(complete){
-                [[DataController sharedInstance]deleteExercise:e];
-                _exercises = [[DataController sharedInstance]getAllOwnExercises];
-                [tableView reloadData]; // tell table to refresh now
-            }
-        }];
+        if(e.shared.boolValue){
+            [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
+                if(complete){
+                    [[DataController sharedInstance]deleteExercise:e];
+                    _exercises = [[DataController sharedInstance]getAllOwnExercises];
+                    [tableView reloadData]; // tell table to refresh now
+                }else{
+                    [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Löschen nicht möglich"];
+                }
+            }];
+        }else{
+            
+            [[DataController sharedInstance]deleteExercise:e];
+            _exercises = [[DataController sharedInstance]getAllOwnExercises];
+            [tableView reloadData];
+            [[Communicator sharedInstance]deleteExercise:e completition:^(BOOL complete){
+                // tell table to refresh now
+                 if(complete){
+                     [[ErrorHandler sharedInstance]handleSimpleError:@"Erfolg" andMessage:@"Löschenauf Server erfolgreich"];
+                 }else{
+                     [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Löschen auf Server nicht möglich"];
+                 }
+            }];
+        }
+        
         
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(_training){
-        if(indexPath.section == 0){
-            [[DataController sharedInstance]removeExercise:[_trainingExercises objectAtIndex:indexPath.row] fromTraining:_training];
-            
-            _exercises = [[DataController sharedInstance]getAllExercisesNotInTraining:_training];
-            _trainingExercises = [[DataController sharedInstance]getExercisesForTraining:_training];
-            
-            [tableView reloadData];
-            
+        if (_training.exercises.count < 16) {
+            if(indexPath.section == 0){
+                [[DataController sharedInstance]removeExercise:[_trainingExercises objectAtIndex:indexPath.row] fromTraining:_training];
+                
+                _exercises = [[DataController sharedInstance]getAllExercisesNotInTraining:_training];
+                _trainingExercises = [[DataController sharedInstance]getExercisesForTraining:_training];
+                
+                [tableView reloadData];
+                
+            }
+            if(indexPath.section == 1){
+                [[DataController sharedInstance]addExercise:[_exercises objectAtIndex:indexPath.row] toTraining:_training];
+                _exercises = [[DataController sharedInstance]getAllExercisesNotInTraining:_training];
+                _trainingExercises = [[DataController sharedInstance]getExercisesForTraining:_training];
+                
+                
+                [tableView reloadData];
+                
+                
+            }
+        }else{
+            [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Dein Training darf aus maximal 16 Übungen bestehen."];
         }
-        if(indexPath.section == 1){
-            [[DataController sharedInstance]addExercise:[_exercises objectAtIndex:indexPath.row] toTraining:_training];
-            _exercises = [[DataController sharedInstance]getAllExercisesNotInTraining:_training];
-            _trainingExercises = [[DataController sharedInstance]getExercisesForTraining:_training];
-            
-            
-            [tableView reloadData];
-            
-            
-        }
+        
+        
     }else{
         if(self.tabBarController){
             CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
-            if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
-                [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
+            if (tabControl.exercisesToAdd.count < 16) {
+                if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
+                    [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
+                }else{
+                    [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
+                }
+                [tableView reloadData];
             }else{
-                [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
+                [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Dein Training darf aus maximal 16 Übungen bestehen."];
             }
-            [tableView reloadData];
+            
+            
         }else{
             _chosenExercise = [_exercises objectAtIndex:indexPath.row];
             [self performSegueWithIdentifier:@"ShowEditExercise" sender:self];

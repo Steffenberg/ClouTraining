@@ -18,6 +18,8 @@
 		072D87DA1ADE546A001F4370 /* GravityCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D51ADE546A001F4370 /* GravityCircleView.m */; };
 		072D87DB1ADE546A001F4370 /* TrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 072D87D71ADE546A001F4370 /* TrainingViewController.m */; };
 		072D87E01ADE5D45001F4370 /* Colors in Resources */ = {isa = PBXBuildFile; fileRef = 072D87DF1ADE5D45001F4370 /* Colors */; };
+		07F60BE61B71F4A000361260 /* MainMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F60BE51B71F4A000361260 /* MainMenuButton.m */; };
+		07F60BE81B7211DC00361260 /* ArnieBG2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 07F60BE71B7211DC00361260 /* ArnieBG2.jpg */; };
 		07F731CF1B4E5D5A005ECE10 /* 2x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5B1B4E5D59005ECE10 /* 2x2.png */; };
 		07F731D01B4E5D5A005ECE10 /* 3x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5C1B4E5D59005ECE10 /* 3x3.png */; };
 		07F731D11B4E5D5A005ECE10 /* adjust2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07F72E5D1B4E5D59005ECE10 /* adjust2.png */; };
@@ -1047,6 +1049,9 @@
 		07B7332B1B4D42B600D31399 /* setTrainerAboDate.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = setTrainerAboDate.php; sourceTree = "<group>"; };
 		07B733421B4D42D000D31399 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		07B733431B4D42D000D31399 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		07F60BE41B71F4A000361260 /* MainMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuButton.h; sourceTree = "<group>"; };
+		07F60BE51B71F4A000361260 /* MainMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuButton.m; sourceTree = "<group>"; };
+		07F60BE71B7211DC00361260 /* ArnieBG2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArnieBG2.jpg; sourceTree = "<group>"; };
 		07F72E5B1B4E5D59005ECE10 /* 2x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2x2.png; sourceTree = "<group>"; };
 		07F72E5C1B4E5D59005ECE10 /* 3x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3x3.png; sourceTree = "<group>"; };
 		07F72E5D1B4E5D59005ECE10 /* adjust2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adjust2.png; sourceTree = "<group>"; };
@@ -2131,6 +2136,7 @@
 			isa = PBXGroup;
 			children = (
 				07F737C41B4E7515005ECE10 /* ArnieBG.jpg */,
+				07F60BE71B7211DC00361260 /* ArnieBG2.jpg */,
 				07F72E591B4E5D41005ECE10 /* Icons */,
 				07B733421B4D42D000D31399 /* DataManager.h */,
 				07B733431B4D42D000D31399 /* DataManager.m */,
@@ -2151,6 +2157,7 @@
 				F95FF5671B468E3F00555327 /* Settings */,
 				F9D95C471B6106720058511E /* SplashViews */,
 				F90F7A411B52BF6900A32044 /* Support */,
+				07F60BE31B71F48400361260 /* CustomViews */,
 				072D87B71ADE51CF001F4370 /* Images.xcassets */,
 				072D87B91ADE51CF001F4370 /* LaunchScreen.xib */,
 				072D87A71ADE51CF001F4370 /* SupportingFiles */,
@@ -2236,6 +2243,15 @@
 				F9D5F3901B4EAB4500097B84 /* Content */,
 			);
 			name = ContentView;
+			sourceTree = "<group>";
+		};
+		07F60BE31B71F48400361260 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				07F60BE41B71F4A000361260 /* MainMenuButton.h */,
+				07F60BE51B71F4A000361260 /* MainMenuButton.m */,
+			);
+			name = CustomViews;
 			sourceTree = "<group>";
 		};
 		07F72E591B4E5D41005ECE10 /* Icons */ = {
@@ -3786,6 +3802,7 @@
 				07F734A61B4E5D5A005ECE10 /* little27@3x.png in Resources */,
 				07F735251B4E5D5A005ECE10 /* tablet3@3x.png in Resources */,
 				07F735031B4E5D5A005ECE10 /* social17@3x.png in Resources */,
+				07F60BE81B7211DC00361260 /* ArnieBG2.jpg in Resources */,
 				07F737241B4E6F93005ECE10 /* pencil9@2x.png in Resources */,
 				07F731D31B4E5D5A005ECE10 /* archive5.png in Resources */,
 				07F734D11B4E5D5A005ECE10 /* outlined3@3x.png in Resources */,
@@ -4427,6 +4444,7 @@
 				F9F013C01B5FC011001C9A6B /* SetEntry.m in Sources */,
 				F95FF5751B4696C800555327 /* VideoContentViewController.m in Sources */,
 				F9C0ADF81B55820400ACD494 /* Communicator.m in Sources */,
+				07F60BE61B71F4A000361260 /* MainMenuButton.m in Sources */,
 				F9D95C4A1B6107210058511E /* LoadingView.m in Sources */,
 				F9D5F3941B4EAB6400097B84 /* TrainingContentTableViewCell.m in Sources */,
 				F9ECD7601B56B263008E80B2 /* AFURLResponseSerialization.m in Sources */,
