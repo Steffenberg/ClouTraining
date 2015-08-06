@@ -10,5 +10,6 @@
 
 @interface SettingsViewController : UIViewController<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSpace;
 
 @end

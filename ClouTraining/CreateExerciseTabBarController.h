@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateExerciseTabBarController : UITabBarController
+@interface CreateExerciseTabBarController : UITabBarController<UITabBarControllerDelegate>
 
 @property Training *training;
 @property NSMutableArray *exercisesToAdd;

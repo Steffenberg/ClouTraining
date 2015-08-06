@@ -14,6 +14,7 @@
     [super layoutSubviews];
     
     CGFloat kTextTopPadding = 1.0f;
+    self.titleLabel.numberOfLines = 2.0f;
     
     CGRect titleLabelFrame = self.titleLabel.frame;
     CGSize labelSize = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];

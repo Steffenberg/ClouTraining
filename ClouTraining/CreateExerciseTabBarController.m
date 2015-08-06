@@ -8,6 +8,7 @@
 
 #import "CreateExerciseTabBarController.h"
 #import "Exercise.h"
+#import "LoadExercisesViewController.h"
 
 @interface CreateExerciseTabBarController ()
 
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _exercisesToAdd = [NSMutableArray array];
+    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +33,15 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ExercisesChosen" object:_exercisesToAdd];
     }
     
+}
+
+-(BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    if([viewController isKindOfClass:[LoadExercisesViewController class]]){
+        if (![GlobalHelperClass getUsername]) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 -(BOOL)hasExercise:(Exercise*)exercise{

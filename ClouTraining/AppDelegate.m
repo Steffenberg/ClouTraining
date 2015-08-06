@@ -24,7 +24,7 @@
     NSLog(@"DataController created");
     if(![[NSUserDefaults standardUserDefaults]objectForKey:@"CTVersion"]){
         
-        [self generateTestTraining];
+        //[self generateTestTraining];
         
         [GlobalHelperClass setTrainingDaysToShow:30];
         [Communicator setDataOnlyLAN:YES];

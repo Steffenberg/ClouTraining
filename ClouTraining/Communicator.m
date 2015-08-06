@@ -11,7 +11,7 @@
 #import "Exercise.h"
 #import "AFNetworking.h"
 
-NSString const *ipprefix = @"http://192.168.178.39";
+NSString const *ipprefix = @"http://192.168.178.50";
 //NSString const *ipprefix = @"http://127.0.0.1";
 
 @implementation Communicator
@@ -194,8 +194,8 @@ NSString const *ipprefix = @"http://192.168.178.39";
             return;
         }
     }
-    
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/clouTraining/scripts/CTGetSharedExercises.php",ipprefix]]];
+    //NSString *check = [NSString stringWithFormat:@"%@/clouTraining/scripts/CTGetSharedExercises.php?username=%@&password=%@",ipprefix,[GlobalHelperClass getUsername],[GlobalHelperClass getPassword]];
+    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/clouTraining/scripts/CTGetSharedExercises.php?username=%@&password=%@",ipprefix,[GlobalHelperClass getUsername],[GlobalHelperClass getPassword]]]];
     //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [urlRequest setHTTPMethod:@"GET"];
     

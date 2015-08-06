@@ -39,7 +39,7 @@
         NSDictionary *data = note.object;
         NSMutableArray *tmp = [NSMutableArray array];
         for(NSString *str in [data allKeys]){
-            if(![[DataController sharedInstance]hasExerciseForID:[[data objectForKey:str]objectForKey:@"exerciseID"]]){
+            if(![[DataController sharedInstance]hasExerciseForID:[[data objectForKey:str]objectForKey:@"exerciseID"] own:NO]){
                  [tmp addObject:[data objectForKey:str]];
             }
            
@@ -117,11 +117,14 @@
         
         NSDictionary * extData = [_exercises objectAtIndex:indexPath.row];
         
-        Exercise *e = [[DataController sharedInstance]createReturnExerciseWithExtData:extData];
         
-        if(e){
-            [[DataController sharedInstance]addExercise:e toTraining:_training];
+        if(![[DataController sharedInstance]hasExerciseForID:[extData objectForKey:@"exerciseID"] own:NO]){
+            Exercise *e = [[DataController sharedInstance]createReturnExerciseWithExtData:extData];
+            if(e){
+                [[DataController sharedInstance]addExercise:e toTraining:_training];
+            }
         }
+        
         
         
         

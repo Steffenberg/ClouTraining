@@ -49,7 +49,7 @@ typedef void (^InitCallbackBlock)(void);
 -(NSArray*)getAllSharedExercises;
 -(NSArray*)getAllOwnExercises;
 -(NSArray*)getAllExercisesNotInTraining:(Training*)t;
--(BOOL)hasExerciseForID:(NSNumber*)exerciseID;
+-(BOOL)hasExerciseForID:(NSNumber*)exerciseID own:(BOOL)own;
 
 -(TrainingProtocol*)createProtocolForTraining:(Training*)training;
 -(void)updateProtocol:(TrainingProtocol *)p withData:(NSDictionary*)data;

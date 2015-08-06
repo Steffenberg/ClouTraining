@@ -360,13 +360,18 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"shared = 1"];
 }
 
--(BOOL)hasExerciseForID:(NSNumber*)exerciseID{
-    if([[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"exerciseid = %@ AND own = 1",exerciseID].count>0){
+
+-(BOOL)hasExerciseForID:(NSNumber*)exerciseID own:(BOOL)own{
+    NSArray *array = [[self managedObjectContext] fetchObjectsForEntityName:@"Exercise" sortByKey:@"name"ascending:YES predicateWithFormat:@"exerciseid = %@ AND own = %i",exerciseID,own];
+    if(array.count>0){
         return YES;
     }else{
         return NO;
     }
 }
+
+
+
 
 -(NSArray*)getAllExercisesNotInTraining:(Training*)t{
     NSArray *exercises = [self getAllExercises];
