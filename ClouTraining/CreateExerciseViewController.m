@@ -59,6 +59,11 @@
 }
 
 -(void)saveExercise{
+    if([_nameField.text isEqualToString:@""]){
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Bitte gib einen Namen für die Übung ein"];
+        return;
+    }
+    
     if(!_exercise){
         if(self.tabBarController){
             CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;

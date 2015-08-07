@@ -49,6 +49,16 @@
     [GlobalHelperClass setUsername:[dic objectForKey:@"nickname"]];
     [GlobalHelperClass setPassword:[dic objectForKey:@"password"]];
     
+    NSString *exercisesString = [dic objectForKey:@"trainings"];
+    NSDictionary *exercises = [NSJSONSerialization JSONObjectWithData:[exercisesString dataUsingEncoding:NSUTF8StringEncoding]
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:nil];
+    for(NSString *key in [exercises allKeys]){
+        NSMutableDictionary *exercise = [exercises objectForKey:key];
+        [[DataController sharedInstance]createExerciseWithLoginData:exercise];
+    }
+    
+    
     [_table reloadData];
 }
 

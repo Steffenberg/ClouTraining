@@ -81,9 +81,11 @@ NSString const *ipprefix = @"http://192.168.178.50";
                                    
                                    if([replyString hasPrefix:@"OK"]){
                                        replyString = [replyString stringByReplacingOccurrencesOfString:@"OK" withString:@""];
-                                       [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:replyString.integerValue],
+                                       NSArray *array = [replyString componentsSeparatedByString:@"-"];
+                                       [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:[(NSString*)[array firstObject]integerValue]],
                                                                                                                            @"nickname":nickname,
-                                                                                                                           @"password":password
+                                                                                                                           @"password":password,
+                                                                                                                           @"trainings":[array lastObject]
                                                                                                                            }];
                                    }else{
                                        

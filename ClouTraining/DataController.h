@@ -38,6 +38,7 @@ typedef void (^InitCallbackBlock)(void);
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data;
 -(Exercise*)createReturnExerciseWithExtData:(NSDictionary *)data;
 -(void)createExerciseWithExtData:(NSDictionary *)data;
+-(void)createExerciseWithLoginData:(NSDictionary *)data;
 
 -(void)createExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;
 -(Exercise*)createReturnExerciseWithData:(NSDictionary *)data forTraining:(Training*)t;

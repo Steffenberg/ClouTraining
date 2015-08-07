@@ -84,6 +84,11 @@
 
 -(IBAction)uploadConfirm:(id)sender{
     _mediaTitle = _titleField.text;
+    if(!_mediaTitle || [_mediaTitle isEqualToString:@""]){
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Bitte gib einen Titel ein"];
+        return;
+    }
+    
     if([sender isEqual:_dynamicUploadButton]){
         [_textView resignFirstResponder];
         

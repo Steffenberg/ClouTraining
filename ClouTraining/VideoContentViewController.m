@@ -44,10 +44,11 @@
         for(NSString *str in [data allKeys]){
             [tmp addObject:[data objectForKey:str]];
         }
-        _videoData = tmp;
+        NSSortDescriptor *desc = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+        _videoData = [tmp sortedArrayUsingDescriptors:@[desc]];
         
         for(NSDictionary *d in _videoData){
-            NSLog(@"Titel: %@ - URL: %@",[d objectForKey:@"title"], [d objectForKey:@"url "]);
+            NSLog(@"Titel: %@ - URL: %@",[d objectForKey:@"title"], [d objectForKey:@"url"]);
         }
         [_table reloadData];
     });
@@ -97,9 +98,20 @@
     
     NSURL *movieURL = [NSURL URLWithString:urlString];
     _movieController = [[MPMoviePlayerViewController alloc] initWithContentURL:movieURL];
+    [[NSNotificationCenter defaultCenter] removeObserver:_movieController  name:MPMoviePlayerPlaybackDidFinishNotification object:_movieController.moviePlayer];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(videoFinished:) name:MPMoviePlayerPlaybackDidFinishNotification object:_movieController.moviePlayer];
+    
     [self presentMoviePlayerViewControllerAnimated:_movieController];
     [_movieController.moviePlayer prepareToPlay];
     [_movieController.moviePlayer play];
+}
+
+-(void)videoFinished:(NSNotification*)aNotification{
+    int value = [[aNotification.userInfo valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey] intValue];
+    if (value == MPMovieFinishReasonUserExited) {
+        [self dismissMoviePlayerViewControllerAnimated];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

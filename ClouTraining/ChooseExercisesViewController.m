@@ -12,6 +12,7 @@
 #import "CreateTrainingTableViewCell.h"
 #import "Exercise.h"
 #import "Training.h"
+#import "CreateTrainingViewController.h"
 
 @interface ChooseExercisesViewController ()
 
@@ -115,9 +116,9 @@
     }else{
         if(self.tabBarController){
             cell.titleLabel.text = [(Exercise*)[_exercises objectAtIndex:row]name];
-            
-            CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
-            if ([tabControl hasExercise:[_exercises objectAtIndex:row]]) {
+            CreateTrainingViewController *ctvc = [self.navigationController.viewControllers objectAtIndex:0];
+            //CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
+            if ([ctvc hasExercise:[_exercises objectAtIndex:row]]) {
                 cell.accessoryType = UITableViewCellAccessoryCheckmark;
             }else{
                 cell.accessoryType = UITableViewCellAccessoryNone;
@@ -176,6 +177,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CreateTrainingTableViewCell *cell = (CreateTrainingTableViewCell*)[_table cellForRowAtIndexPath:indexPath];
     if(_training){
         if (_training.exercises.count < 16) {
             if(indexPath.section == 0){
@@ -205,16 +207,28 @@
     }else{
         if(self.tabBarController){
             CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
-            if (tabControl.exercisesToAdd.count < 16) {
-                if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
-                    [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
-                }else{
-                    [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
-                }
-                [tableView reloadData];
+            CreateTrainingViewController *ctvc = [self.navigationController.viewControllers objectAtIndex:0];
+            //CreateExerciseTabBarController *tabControl = (CreateExerciseTabBarController*)self.tabBarController;
+            if ([ctvc hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
+                [ctvc.chosenExercises removeObject:[_exercises objectAtIndex:indexPath.row]];
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                
             }else{
-                [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Dein Training darf aus maximal 16 Übungen bestehen."];
+                if (tabControl.exercisesToAdd.count < 16) {
+                    
+                    if ([tabControl hasExercise:[_exercises objectAtIndex:indexPath.row]]) {
+                        [tabControl.exercisesToAdd removeObject:[_exercises objectAtIndex:indexPath.row]];
+                        cell.accessoryType = UITableViewCellAccessoryNone;
+                    }else{
+                        [tabControl.exercisesToAdd addObject:[_exercises objectAtIndex:indexPath.row]];
+                        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                    }
+                    
+                }else{
+                    [[ErrorHandler sharedInstance]handleSimpleError:@"Achtung" andMessage:@"Dein Training darf aus maximal 16 Übungen bestehen."];
+                }
             }
+            
             
             
         }else{

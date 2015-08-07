@@ -67,6 +67,10 @@
 #pragma mark - saving
 
 -(void)saveTraining{
+    if([_nameField.text isEqualToString:@""]){
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Bitte gib einen Namen für das Training ein"];
+        return;
+    }
     if(!_training){
         [self createTraining];
         
@@ -94,6 +98,7 @@
     if(_training){
         for(NSDictionary *d in _addedExercises){
             [[DataController sharedInstance]createExerciseWithData:d forTraining:_training];
+            
             
         }
         for(Exercise *e in _chosenExercises){
@@ -187,10 +192,26 @@
         
     }
     
-    
-    
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 0){
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            [_addedExercises removeObjectAtIndex:indexPath.row];
+            [tableView reloadData];
+        }
+    }
+    
+}
+
+-(BOOL)hasExercise:(Exercise*)exercise{
+    for(Exercise *e in _chosenExercises){
+        if(e.objectID == exercise.objectID){
+            return YES;
+        }
+    }
+    return NO;
 }
 
 #pragma mark - textField/View

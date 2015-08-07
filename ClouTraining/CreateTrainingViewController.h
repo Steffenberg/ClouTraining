@@ -24,5 +24,6 @@
 
 - (IBAction)trainingSwitchChanged:(id)sender;
 - (IBAction)onlineSwitchChanged:(id)sender;
+-(BOOL)hasExercise:(Exercise*)exercise;
 
 @end
