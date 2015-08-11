@@ -11,7 +11,7 @@
 #import "Exercise.h"
 #import "AFNetworking.h"
 
-NSString const *ipprefix = @"http://192.168.178.50";
+NSString const *ipprefix = @"http://192.168.178.53";
 //NSString const *ipprefix = @"http://127.0.0.1";
 
 @implementation Communicator

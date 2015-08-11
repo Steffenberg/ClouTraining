@@ -546,9 +546,13 @@
     return [[self managedObjectContext] fetchObjectsForEntityName:@"SetEntry" sortByKey:@"setNumber" ascending:YES predicateWithFormat:@"exerciseProtocol=%@", exp];
 }
 
-#pragma mark - Media
+#pragma mark - SortedExercises
 
-
+-(NSArray *)getExercisesSortedForTraining:(Training*)t{
+    NSMutableArray *result = [self getExercisesForTraining:t].mutableCopy;
+    
+    return result;
+}
 
 
 @end

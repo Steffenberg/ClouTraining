@@ -50,7 +50,7 @@
         <element name="ExerciseProtocol" positionX="-290" positionY="101" width="128" height="88"/>
         <element name="Media" positionX="-108" positionY="-189" width="128" height="118"/>
         <element name="SetEntry" positionX="-92" positionY="99" width="128" height="105"/>
-        <element name="Training" positionX="-560" positionY="86" width="128" height="133"/>
+        <element name="Training" positionX="-560" positionY="86" width="128" height="135"/>
         <element name="TrainingProtocol" positionX="-288" positionY="233" width="128" height="118"/>
     </elements>
 </model>
