@@ -46,11 +46,11 @@
         <relationship name="training" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Training" inverseName="protocols" inverseEntity="Training" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-342" positionY="-211" width="128" height="195"/>
+        <element name="Exercise" positionX="-342" positionY="-211" width="128" height="193"/>
         <element name="ExerciseProtocol" positionX="-290" positionY="101" width="128" height="88"/>
         <element name="Media" positionX="-108" positionY="-189" width="128" height="118"/>
         <element name="SetEntry" positionX="-92" positionY="99" width="128" height="105"/>
-        <element name="Training" positionX="-560" positionY="86" width="128" height="135"/>
+        <element name="Training" positionX="-560" positionY="86" width="128" height="133"/>
         <element name="TrainingProtocol" positionX="-288" positionY="233" width="128" height="118"/>
     </elements>
 </model>

@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
+#import "SDAVAssetExportSession.h"
 
 
-typedef void (^ExportCallback) (AVAssetExportSession*);
+typedef void (^ExportCallback) (SDAVAssetExportSession*);
 
 @interface CreateTippsViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate,UITextFieldDelegate, UITextViewDelegate>
 

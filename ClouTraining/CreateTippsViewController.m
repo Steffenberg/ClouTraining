@@ -143,7 +143,9 @@
             UIImage *compressImage = [self imageWithImage:img scaledToSize:compressedSize];
             
             //_uploadData = UIImagePNGRepresentation(compressImage);
-            _uploadData = UIImageJPEGRepresentation(compressImage, 1.0f);
+            _uploadData = UIImageJPEGRepresentation(compressImage, 0.15f);
+            
+            NSLog(@"Filesize - %f ", _uploadData.length/1000.0f);
             
             _type = 2;
             dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -163,7 +165,7 @@
         NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
         NSURL *tempURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"temp.mp4"]];
         
-        [self convertVideoToLowerQuailtyWithInputURL:videoURL outputURL:tempURL handler:^(AVAssetExportSession *e){
+        [self convertVideoToLowerQuailtyWithInputURL:videoURL outputURL:tempURL handler:^(SDAVAssetExportSession *e){
             [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
                 
                 _thumbnail = [self getThumbnailForVideo:tempURL];
@@ -219,9 +221,9 @@
                                      outputURL:(NSURL*)outputURL
                                        handler:(ExportCallback)handler
 {
-    [[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
+    /*[[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
+    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough]; 
     exportSession.outputURL = outputURL;
     exportSession.outputFileType = AVFileTypeMPEG4;
    
@@ -230,7 +232,45 @@
          [[NSFileManager defaultManager] removeItemAtURL:inputURL error:nil];
          handler(exportSession);
          
-     }];
+     }];*/
+    
+    [[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
+    AVAssetTrack *track = [[asset tracksWithMediaType:AVMediaTypeVideo]firstObject];
+    CGSize movieSize = CGSizeApplyAffineTransform(track.naturalSize, track.preferredTransform);
+    SDAVAssetExportSession *exportSession = [[SDAVAssetExportSession alloc] initWithAsset:asset];
+    exportSession.outputURL = outputURL;
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    exportSession.videoSettings = @{
+                                         AVVideoCodecKey:AVVideoCodecH264,
+                                         AVVideoWidthKey:@(abs((int)movieSize.width)),
+                                         AVVideoHeightKey:@(abs((int)movieSize.height)),
+                                         AVVideoCompressionPropertiesKey: @{
+                                                 AVVideoAverageBitRateKey: @1200000,
+                                                 AVVideoProfileLevelKey: AVVideoProfileLevelH264Baseline30,
+                                                 AVVideoH264EntropyModeKey:AVVideoH264EntropyModeCAVLC,
+                                                 AVVideoExpectedSourceFrameRateKey:@(30),
+                                                 AVVideoAverageNonDroppableFrameRateKey:@(30)
+                                                 }
+                                         };
+    exportSession.audioSettings = @{
+                                    AVFormatIDKey: @(kAudioFormatMPEG4AAC),
+                                    AVNumberOfChannelsKey: @2,
+                                    AVSampleRateKey: @44100,
+                                    AVEncoderBitRateKey: @128000
+                                    };
+    
+    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        if(exportSession.status == AVAssetExportSessionStatusCompleted){
+            [[NSFileManager defaultManager] removeItemAtURL:inputURL error:nil];
+            handler(exportSession);
+            
+        }else if (exportSession.status == AVAssetExportSessionStatusCancelled){
+        
+        }else if (exportSession.status == AVAssetExportSessionStatusCompleted){
+            
+        }
+    }];
 }
 
 
