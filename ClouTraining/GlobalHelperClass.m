@@ -63,7 +63,7 @@
 
 + (NSString *) createSHA512:(NSString *)source {
     
-    NSString * rawstr = [NSString stringWithFormat:@"%@%@",source,@"kk6Tr7vxG0pqeZZd"];
+    NSString * rawstr = [NSString stringWithFormat:@"%@%@",source,@"kk6Tr7vxG0pqeZZdU7l35Ru1"];
     
     //const char *s = [rawstr cStringUsingEncoding:NSASCIIStringEncoding];
     
