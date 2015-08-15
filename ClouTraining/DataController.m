@@ -284,7 +284,7 @@
         e.maxWeight = [data objectForKey:@"maxWeight"];
         e.own = [NSNumber numberWithBool:YES];
         e.date =  [GlobalHelperClass dateFromString:[data objectForKey:@"date"]];
-        //NSLog(@"ID:%zd name:%@ describe:%@ maxWeight:%f date:%@ shared:%i own:%i",e.exerciseid.integerValue, e.name, e.describe, e.maxWeight.floatValue, @"date", e.shared.boolValue, e.own.boolValue );
+        NSLog(@"ID:%zd name:%@ describe:%@ maxWeight:%f date:%@ shared:%i own:%i",e.exerciseid.integerValue, e.name, e.describe, e.maxWeight.floatValue, @"date", e.shared.boolValue, e.own.boolValue );
         [self save];
         
     }];

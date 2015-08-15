@@ -11,7 +11,7 @@
 #import "Exercise.h"
 #import "AFNetworking.h"
 
-NSString const *ipprefix = @"http://192.168.178.58";
+NSString const *ipprefix = @"http://192.168.178.29";
 //NSString const *ipprefix = @"http://127.0.0.1";
 
 @implementation Communicator
@@ -81,12 +81,27 @@ NSString const *ipprefix = @"http://192.168.178.58";
                                    
                                    if([replyString hasPrefix:@"OK"]){
                                        replyString = [replyString stringByReplacingOccurrencesOfString:@"OK" withString:@""];
-                                       NSArray *array = [replyString componentsSeparatedByString:@"-"];
-                                       [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:[(NSString*)[array firstObject]integerValue]],
-                                                                                                                           @"nickname":nickname,
-                                                                                                                           @"password":password,
-                                                                                                                           @"trainings":[array lastObject]
-                                                                                                                           }];
+                                       
+                                       NSArray *array = [replyString componentsSeparatedByString:@"_"];
+                                       
+                                       
+                                       
+                                       if(array.count > 1){
+                                           NSString *jsonString = [array lastObject];
+                                           NSDictionary * exercises = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil];
+                                           [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:[(NSString*)[array firstObject]integerValue]],
+                                                                                                                               @"nickname":nickname,
+                                                                                                                               @"password":password,
+                                                                                                                               @"exercises":exercises
+                                                                                                                               }];
+                                       }else{
+                                           [[NSNotificationCenter defaultCenter]postNotificationName:@"LoginComplete" object:@{@"userid":[NSNumber numberWithInteger:[(NSString*)[array firstObject]integerValue]],
+                                                                                                                               @"nickname":nickname,
+                                                                                                                               @"password":password
+                                                                                                    
+                                                                                                                               }];
+                                       }
+                                       
                                    }else{
                                        
                                    }
