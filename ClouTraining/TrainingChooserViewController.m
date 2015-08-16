@@ -131,7 +131,7 @@
     [formatter setDateFormat:@"dd.MM.yyyy - hh:mm"];
     
     //Optionally for time zone conversions
-    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"..."]];
+    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"Europe/Berlin"]];
     
     return [formatter stringFromDate:date];
     

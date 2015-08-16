@@ -164,22 +164,23 @@
         
         NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
         NSURL *tempURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"temp.mp4"]];
-        
-        [self convertVideoToLowerQuailtyWithInputURL:videoURL outputURL:tempURL handler:^(SDAVAssetExportSession *e){
-            [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
+        [picker.presentingViewController dismissViewControllerAnimated:YES completion:^(void){
+            [self convertVideoToLowerQuailtyWithInputURL:videoURL outputURL:tempURL handler:^(SDAVAssetExportSession *e){
+            
                 
-                _thumbnail = [self getThumbnailForVideo:tempURL];
-                _thumbnailView.image = _thumbnail;
-                _type = 1;
-                _uploadData = [NSData dataWithContentsOfURL:tempURL];
-                
-                NSLog(@"Filesize - %f ", _uploadData.length/1000.0f);
-                
-                //WICHTIG!!! QUELLVIEDEOS LÖSCHEN!!!
-                [[NSFileManager defaultManager] removeItemAtPath:[tempURL path] error:nil];
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^(void){
+                    _thumbnail = [self getThumbnailForVideo:tempURL];
+                    _thumbnailView.image = _thumbnail;
+                    _type = 1;
+                    _uploadData = [NSData dataWithContentsOfURL:tempURL];
+                    
+                    
+                    NSLog(@"Filesize - %f ", _uploadData.length/1000.0f);
+                    
+                    //WICHTIG!!! QUELLVIEDEOS LÖSCHEN!!!
+                    [[NSFileManager defaultManager] removeItemAtPath:[tempURL path] error:nil];
                     if(_uploadData){
                         [self showThumbnailView:YES];
                         
@@ -221,6 +222,7 @@
                                      outputURL:(NSURL*)outputURL
                                        handler:(ExportCallback)handler
 {
+    [[LoadingView sharedInstance]show];
     /*[[NSFileManager defaultManager] removeItemAtURL:outputURL error:nil];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL options:nil];
     AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough]; 
@@ -261,14 +263,14 @@
                                     };
     
     [exportSession exportAsynchronouslyWithCompletionHandler:^{
+        
         if(exportSession.status == AVAssetExportSessionStatusCompleted){
             [[NSFileManager defaultManager] removeItemAtURL:inputURL error:nil];
             handler(exportSession);
+            [[LoadingView sharedInstance]hide];
             
         }else if (exportSession.status == AVAssetExportSessionStatusCancelled){
-        
-        }else if (exportSession.status == AVAssetExportSessionStatusCompleted){
-            
+            [[LoadingView sharedInstance]hide];
         }
     }];
 }

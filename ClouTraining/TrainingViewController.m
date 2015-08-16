@@ -45,7 +45,7 @@
         _exercises = [[DataController sharedInstance]getExercisesForTraining:_activeTraining];
     }
     
-    
+    self.navigationItem.title = _activeTraining.name;
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(handleContentViewMoved:) name:@"ContentViewMoved" object:nil];
