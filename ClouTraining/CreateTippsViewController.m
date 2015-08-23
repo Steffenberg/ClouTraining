@@ -111,17 +111,21 @@
 }
 
 - (IBAction)createVideo:(id)sender {
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        _picker = [[UIImagePickerController alloc]init];
+        _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _picker.videoMaximumDuration = 120;
+        _picker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
+        _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
+        _picker.videoQuality = UIImagePickerControllerQualityType640x480;
+        _picker.delegate = self;
+        [self.navigationController presentViewController:_picker animated:YES completion:^(void){
+            
+        }];
+    }else{
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Videoaufnahme auf dem Simulator nicht möglich"];
+    }
     
-    _picker = [[UIImagePickerController alloc]init];
-    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    _picker.videoMaximumDuration = 120;
-    _picker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeMovie];
-    _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModeVideo;
-    _picker.videoQuality = UIImagePickerControllerQualityType640x480;
-    _picker.delegate = self;
-    [self.navigationController presentViewController:_picker animated:YES completion:^(void){
-        
-    }];
     
 }
 
@@ -283,13 +287,19 @@
 }
 
 - (IBAction)createImage:(id)sender {
-    _picker = [[UIImagePickerController alloc]init];
-    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-    _picker.delegate = self;
-    [self.navigationController presentViewController:_picker animated:YES completion:^(void){
-        
-    }];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+        _picker = [[UIImagePickerController alloc]init];
+        _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        _picker.delegate = self;
+        [self.navigationController presentViewController:_picker animated:YES completion:^(void){
+            
+        }];
+    }else{
+        [[ErrorHandler sharedInstance]handleSimpleError:@"Fehler" andMessage:@"Fotoaufnahme auf dem Simulator nicht möglich"];
+    }
+    
     
     /*if(!_imagePicker){
      _imagePicker = [[ELCImagePickerController alloc] initImagePicker];
